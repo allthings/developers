@@ -18,8 +18,7 @@ Authorisation service | ALLTHINGS platform
 Client application    | your Micro-App
 
 The authorization the user grants to your app is represented by an
-*authorization grant.*
-
+*authorization grant.*  
 OAuth defines four authorization grant types to
 [obtain authorization](https://tools.ietf.org/html/rfc6749#section-4).
 
@@ -47,7 +46,9 @@ be refreshed.
 When the user wants to use the 3rd-party application (i.e. the MicroApp), they
 get redirected to the authorisation endpoint first:
 
-`https://api-sandbox.allthings.me/auth/authorize`
+```
+https://api-sandbox.allthings.me/auth/authorize
+```
 
 The authorisation endpoint requires the following query parameters for the
 authorization code grant:
@@ -58,9 +59,11 @@ client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
 response_type | `code`
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
 
-Example URL:
+**Example URL:**
 
-`https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com`
+```
+https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com
+```
 
 As MicroApps usually run inside the context of the ALLTHINGS app, the user is
 already authenticated at this point. If not, the user is redirected to a login
@@ -80,19 +83,22 @@ define the scope of data access for your MicroApp.
 When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with an auth code appended as `code` query parameter:
 
-`https://www.example.com/?code=zzzzzz`
+```
+https://www.example.com/?code=zzzzzz
+```
 
 Your app will have to use the auth code to request an `access_token` by
 sending a `POST` request to the token endpoint:
 
-`https://app.allthings.me/auth/token`
+```
+https://app.allthings.me/auth/token
+```
 
 **Notice**
 > The token endpoint can be used on any app domain - e.g. the generic
 > `app.allthings.me` in this example - as it does not require a user session.
 
-The required `application/x-www-form-urlencoded` form data for the auth code
-exchange:
+The required form data for the auth code exchange:
 
 Key           | Value
 --------------|----------------------------------------------------------------
@@ -102,15 +108,21 @@ grant_type    | `authorization_code`
 code          | The auth code, `zzzzzz` in the example below
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
 
-Example request data:
+**Notice**
+> The form data fields need to be encoded as content type
+`application/x-www-form-urlencoded`.
 
-`client_id=xxxxxx&client_secret=yyyyyy&grant_type=authorization_code&code=zzzzzz&redirect_uri=https%3A%2F%2Fwww.example.com`
+**Example request data:**
+
+```
+client_id=xxxxxx&client_secret=yyyyyy&grant_type=authorization_code&code=zzzzzz&redirect_uri=https%3A%2F%2Fwww.example.com
+```
 
 The response contains an `access_token` and a `refresh_token`.  
 The `access_token` can then be used to make api calls on behalf of the user,
 while the `refresh_token` can be used to retrieve a new `access_token`.
 
-Example response:
+**Example response:**
 
 ```json
 {
@@ -141,14 +153,15 @@ When the `access_token` has expired (the lifetime is `3600` seconds) or becomes
 invalid, you have to use the `refresh_token` to request a new `access_token` by
 sending a `POST` request to the token endpoint:
 
-`https://app.allthings.me/auth/token`
+```
+https://app.allthings.me/auth/token
+```
 
 **Notice**
 > The token endpoint can be used on any app domain - e.g. the generic
 > `app.allthings.me` in this example - as it does not require a user session.
 
-The required `application/x-www-form-urlencoded` form data to refresh the
-`access_token`:
+The required form data to refresh the `access_token`:
 
 Key           | Value
 --------------|----------------------------------------------------------------
@@ -157,15 +170,21 @@ client_secret | Will be provided by ALLTHINGS, `yyyyyy` in the example below
 grant_type    | `refresh_token`
 refresh_token | The refresh_token, `bbbbbb` in the example below
 
-Example request data:
+**Notice**
+> The form data fields need to be encoded as content type
+`application/x-www-form-urlencoded`.
 
-`client_id=xxxxxx&client_secret=yyyyyy&grant_type=refresh_token&refresh_token=bbbbbb`
+**Example request data:**
+
+```
+client_id=xxxxxx&client_secret=yyyyyy&grant_type=refresh_token&refresh_token=bbbbbb
+```
 
 The response contains an `access_token` and a `refresh_token`.  
 The `access_token` can then be used to make api calls on behalf of the user,
 while the `refresh_token` can be used to retrieve a new `access_token`.
 
-Example response:
+**Example response:**
 
 ```json
 {
@@ -192,7 +211,9 @@ limited amount of time, e.g. one-off usage.
 When the user wants to use the 3rd-party application (i.e. a widget), they must
 be redirected to the authorisation endpoint first:
 
-`https://api-sandbox.allthings.me/auth/authorize`
+```
+https://api-sandbox.allthings.me/auth/authorize
+```
 
 The authorisation endpoint requires the following query parameters for the
 implicit grant:
@@ -203,9 +224,11 @@ client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
 response_type | `token`
 redirect_uri  | The widget URL, e.g. `https://www.example.com`
 
-Example URL:
+**Example URL:**
 
-`https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com`
+```
+https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com
+```
 
 If the user is not already logged into the app, they are redirected to a login
 form.
@@ -222,7 +245,9 @@ define the scope of data access for your widget.
 When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
-`https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.allthings.me%2Fauth%2Fauthorize`
+```
+https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.allthings.me%2Fauth%2Fauthorize
+```
 
 ### 2. Make API calls
 

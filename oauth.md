@@ -125,14 +125,15 @@ Example response:
 
 ### 3. Make API calls
 
-Your app can then use the `access_token` to authorize calls to the API.  
-The preferred way is as HTTP header, as this will not appear in server logs: 
+Your app can then use the `access_token` to authorize calls to the API by
+sending it as `Authorization` HTTP header: 
 
-`Authorization: Bearer <access_token>`
+```
+Authorization: Bearer <access_token>
+```
 
-Alternatively, the `access_token` can be sent as query parameter:
-
-`https://api.allthings.me/api/v2/community-articles?access_token=aaaaaa`
+**Notice**
+> `Bearer` is the token type defined in the JSON response.
 
 ### 4. Refreshing expired access token
 
@@ -225,14 +226,15 @@ with the access token as URI fragment:
 
 ### 2. Make API calls
 
-Your app can then use the `access_token` to authorize calls to the API.  
-The preferred way is as HTTP header, as this will not appear in server logs: 
+Your app can then use the `access_token` to authorize calls to the API by
+sending it as `Authorization` HTTP header: 
 
-`Authorization: Bearer <access_token>`
+```
+Authorization: Bearer <access_token>
+```
 
-Alternatively, the `access_token` can be sent as query parameter:
-
-`https://api.allthings.me/api/v2/community-articles?access_token=aaaaaa`
+**Notice**
+> `Bearer` is the token type defined in the URI fragment.
 
 ### 3. Expired access token
 

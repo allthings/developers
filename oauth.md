@@ -222,7 +222,7 @@ define the scope of data access for your widget.
 When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
-`https://example.com#access_token=aaaaaa`
+`https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.allthings.me%2Fauth%2Fauthorize`
 
 ### 2. Make API calls
 

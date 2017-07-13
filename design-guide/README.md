@@ -10,5 +10,5 @@ to use colors, typography, logos and so on.
 
 ## Components
 
-[Components](components/)
+We provide pre-styled [Components](components/) explaining you how to layout your Application.
 

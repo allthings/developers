@@ -4,7 +4,7 @@
 
 Microapps should always come with an app bar.
 
-![App Bar](assets/app.bar.svg)
+![App Bar](https://rawgit.com/allthings/developers/design.guide/design-guide/components/assets/app.bar.svg)
 
 ## Fluid Layout
 
@@ -21,11 +21,19 @@ rectangular.
 ### Pinboard
 ![Who is Who](assets/example.pinboard.png)
 
+****
+
 ### Who is who
 ![Who is Who](assets/example.whoiswho.png)
+
+****
 
 ### Energy Consumption
 ![Energy Consumption](assets/example.energy.png)
 
+****
+
 ### Settings Page
 ![Settings](assets/example.settings.png)
+
+****

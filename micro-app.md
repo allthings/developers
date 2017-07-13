@@ -14,7 +14,7 @@ requires a minimal amount of effort to ensure compatibility.
 adapting to layouts from small smartphone screens to tablets and large desktop
 computers.
 * [HTTPS](https://en.wikipedia.org/wiki/HTTPS) connection for all resources.
-* Interface design must follow our Micro-App [style guide](style-guide.md).
+* Interface design must follow our Micro-App [design guide](design-guide/).
 
 ## With authorization
 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="518" height="124" viewBox="0 0 518 124">
+  <g fill="none" fill-rule="evenodd" transform="translate(0 -4)">
+    <polygon fill="#009CD1" points="55 90 518 90 518 40 55 40"/>
+    <text fill="#FFF" font-family="OpenSans, Open Sans" font-size="14">
+      <tspan x="117" y="64.935">Micr</tspan>
+    </text>
+    <text fill="#FFF" font-family="OpenSans, Open Sans" font-size="14">
+      <tspan x="145.294" y="64.935">oapp Name (14</tspan>
+    </text>
+    <text fill="#FFF" font-family="OpenSans, Open Sans" font-size="14">
+      <tspan x="245.338" y="64.935">p</tspan>
+    </text>
+    <text fill="#FFF" font-family="OpenSans, Open Sans" font-size="14">
+      <tspan x="253.654" y="64.935">x, Open Sans)</tspan>
+    </text>
+    <path fill="#FFF" d="M93,57 L99,57 L99,51 L93,51 L93,57 Z M84,57 L90,57 L90,51 L84,51 L84,57 Z M75,57 L81,57 L81,51 L75,51 L75,57 Z M93,66 L99,66 L99,60 L93,60 L93,66 Z M84,66 L90,66 L90,60 L84,60 L84,66 Z M75,66 L81,66 L81,60 L75,60 L75,66 Z M93,75 L99,75 L99,69 L93,69 L93,75 Z M84,75 L90,75 L90,69 L84,69 L84,75 Z M75,75 L81,75 L81,69 L75,69 L75,75 Z"/>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="274" y="126.382">100%</tspan>
+    </text>
+    <path stroke="#FF49F9" stroke-linecap="square" d="M32.5 39.5L32.5 88.5M25.5 39.5L39.536 39.5M25.5 89.5L39.536 89.5M55 27L75 27M54.5 33.5L54.5 21.5M75.5 33.5L75.5 21.5M101 27L121 27M100.5 33.5L100.5 21.5M121.5 33.5L121.5 21.5"/>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="54" y="11.382">15p</tspan>
+    </text>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="71.37" y="11.382">x</tspan>
+    </text>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="0" y="64.382">50p</tspan>
+    </text>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="17.37" y="64.382">x</tspan>
+    </text>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="99" y="11.382">15p</tspan>
+    </text>
+    <text fill="#FF67FA" font-family="OpenSans, Open Sans" font-size="10">
+      <tspan x="116.37" y="11.382">x</tspan>
+    </text>
+    <path stroke="#FF49F9" stroke-linecap="square" d="M55.5 108.5L517 108.5M55.5 115.5L55.5 101.464M517.5 115.5L517.5 101.464"/>
+  </g>
+</svg>

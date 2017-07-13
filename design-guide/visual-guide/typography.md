@@ -24,7 +24,7 @@ All our colors are fine! But don’t overuse them. For dark Text you should use
 
 ### Use
 - All our colors
-- `#333333 for dark text on light background
+- `#333333` for dark text on light background
 
 ### Don’t use
 - Underline

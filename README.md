@@ -11,5 +11,5 @@ authorization.
 To provide a single-sign-on experience for the end user, ALLTHINGS makes use of
 the open [OAuth 2.0](oauth.md) standard for third-party authorization.
 
-All Micro-Apps should follow the [Design Guide](design-guide/README.md) as good
+All Micro-Apps should follow the [Design Guide](design-guide/) as good
 as possible to retain a seamless look&feel across the whole Application.

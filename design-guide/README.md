@@ -4,11 +4,11 @@
 
 ## Visual Guide
 
-The [Visual Guide](visual-guide/README.md) provides you a lot of "basics" on how
+The [Visual Guide](visual-guide/) provides you a lot of "basics" on how
 to use colors, typography, logos and so on.
 
 
 ## Components
 
-[Components](components/README.md)
+[Components](components/)
 

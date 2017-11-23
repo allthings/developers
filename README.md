@@ -1,8 +1,4 @@
-![Allthings Developers](https://rawgit.com/allthings/developers/design.guide/assets/allthings.developers.dark.with_text.svg)
-
-**** 
-
-# ALLTHINGS Developer Guides
+# Developer Guides
 
 The ALLTHINGS platform has been built as an interoperable platform and provides
 a [REST API](rest.md) to exchange data with third-party applications, as well as

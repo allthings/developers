@@ -5,16 +5,16 @@ Detailed information regarding roles, protocol flow, authorization, endpoints
 and tokens can be found at
 [https://tools.ietf.org/html/rfc6749](https://tools.ietf.org/html/rfc6749) 
 
-The following section explain how the ALLTHINGS platform uses the OAuth 2.0
+The following section explain how the Allthings platform uses the OAuth 2.0
 protocol to authorize 3rd-party applications.
 
 The OAuth protocol defines four roles which are adapted as follows:
 
-OAuth                 | ALLTHINGS platform
+OAuth                 | Allthings platform
 ----------------------|-------------------
 Resource owner        | User
-Resource server       | ALLTHINGS platform
-Authorisation service | ALLTHINGS platform
+Resource server       | Allthings platform
+Authorisation service | Allthings platform
 Client application    | your Micro-App
 
 The authorization the user grants to your app is represented by an
@@ -22,14 +22,14 @@ The authorization the user grants to your app is represented by an
 OAuth defines four authorization grant types to
 [obtain authorization](https://tools.ietf.org/html/rfc6749#section-4).
 
-The ALLTHINGS platform supports two authorization grant types:
+The Allthings platform supports two authorization grant types:
 
 1. the **authorization code grant flow** and
 2. the **implicit grant flow**.
 
 **Notice**
 > Please replace `api-sandbox.allthings.me` in the following sections with the
-> domain of the ALLTHINGS app you want to authorize against.  
+> domain of the Allthings app you want to authorize against.  
 > Please also replace `www.example.com` with the domain of your
 > [MicroApp](micro-app.md) or widget.
 
@@ -55,7 +55,7 @@ authorization code grant:
 
 Key           | Value
 --------------|----------------------------------------------------------------
-client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
+client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `code`
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
 
@@ -65,11 +65,11 @@ redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
 https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com
 ```
 
-As MicroApps usually run inside the context of the ALLTHINGS app, the user is
+As MicroApps usually run inside the context of the Allthings app, the user is
 already authenticated at this point. If not, the user is redirected to a login
 form.
 
-After the user is authenticated, ALLTHINGS prompts the user to authorize your
+After the user is authenticated, Allthings prompts the user to authorize your
 MicroApp to access their data. The user can accept or decline your app and also
 define the scope of data access for your MicroApp.
 
@@ -102,8 +102,8 @@ The required form data for the auth code exchange:
 
 Key           | Value
 --------------|----------------------------------------------------------------
-client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
-client_secret | Will be provided by ALLTHINGS, `yyyyyy` in the example below
+client_id     | Will be provided by Allthings, `xxxxxx` in the example below
+client_secret | Will be provided by Allthings, `yyyyyy` in the example below
 grant_type    | `authorization_code`
 code          | The auth code, `zzzzzz` in the example below
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
@@ -165,8 +165,8 @@ The required form data to refresh the `access_token`:
 
 Key           | Value
 --------------|----------------------------------------------------------------
-client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
-client_secret | Will be provided by ALLTHINGS, `yyyyyy` in the example below
+client_id     | Will be provided by Allthings, `xxxxxx` in the example below
+client_secret | Will be provided by Allthings, `yyyyyy` in the example below
 grant_type    | `refresh_token`
 refresh_token | The refresh_token, `bbbbbb` in the example below
 
@@ -220,7 +220,7 @@ implicit grant:
 
 Key           | Value
 --------------|----------------------------------------------------------------
-client_id     | Will be provided by ALLTHINGS, `xxxxxx` in the example below
+client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `token`
 redirect_uri  | The widget URL, e.g. `https://www.example.com`
 
@@ -233,7 +233,7 @@ https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=t
 If the user is not already logged into the app, they are redirected to a login
 form.
 
-After the user is authenticated, ALLTHINGS prompts the user to authorize your
+After the user is authenticated, Allthings prompts the user to authorize your
 widget to access their data. The user can accept or decline your app and also
 define the scope of data access for your widget.
 

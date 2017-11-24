@@ -1,11 +1,11 @@
 # Micro-App
 
-A Micro-App is a standalone web application embedded into the ALLTHINGS
+A Micro-App is a standalone web application embedded into the Allthings
 interface.
 
 ## Without authorization
 
-This is the simplest form of integration into the ALLTHINGS platform and only
+This is the simplest form of integration into the Allthings platform and only
 requires a minimal amount of effort to ensure compatibility.
 
 ### Requirements
@@ -18,9 +18,9 @@ computers.
 
 ## With authorization
 
-A Micro-App that needs to connect to user data or other data on the ALLTHINGS
+A Micro-App that needs to connect to user data or other data on the Allthings
 platform has to be authorized via [OAuth 2.0](oauth.md) and can therefore access
-and modify resources on the ALLTHINGS platform on behalf of the user.
+and modify resources on the Allthings platform on behalf of the user.
 
 ### Additional requirements
 

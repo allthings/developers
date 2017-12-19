@@ -28,10 +28,10 @@ The Allthings platform supports two authorization grant types:
 2. the **implicit grant flow**.
 
 **Notice**
-> Please replace `api-sandbox.allthings.me` in the following sections with the
+> Please replace `api-sandbox.app.allthings.me` in the following sections with the
 > domain of the Allthings app you want to authorize against.  
 > Please also replace `www.example.com` with the domain of your
-> [MicroApp](micro-app.md) or widget.
+> [Micro-App](micro-app.md) or widget.
 
 ## Authorization Code Grant
 
@@ -39,15 +39,15 @@ Is to be used when a server acts as OAuth2 client and the client should have a
 long term API access on behalf of the user. Invalid or expired access tokens can
 be refreshed.
 
-**This is the preferred authorization grant type for MicroApps.**
+**This is the preferred authorization grant type for Micro-Apps.**
 
 ### 1. Authorization
 
-When the user wants to use the 3rd-party application (i.e. the MicroApp), they
+When the user wants to use the 3rd-party application (i.e. the Micro-App), they
 get redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/auth/authorize
+https://api-sandbox.app.allthings.me/auth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -57,21 +57,21 @@ Key           | Value
 --------------|----------------------------------------------------------------
 client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `code`
-redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
+redirect_uri  | The Micro-App URL, e.g. `https://www.example.com`
 
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com
+https://api-sandbox.app.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com
 ```
 
-As MicroApps usually run inside the context of the Allthings app, the user is
+As Micro-Apps usually run inside the context of the Allthings app, the user is
 already authenticated at this point. If not, the user is redirected to a login
 form.
 
 After the user is authenticated, Allthings prompts the user to authorize your
-MicroApp to access their data. The user can accept or decline your app and also
-define the scope of data access for your MicroApp.
+Micro-App to access their data. The user can accept or decline your app and also
+define the scope of data access for your Micro-App.
 
 **Notice**
 > If the user has already authorized your app, this step is skipped.  
@@ -106,7 +106,7 @@ client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 client_secret | Will be provided by Allthings, `yyyyyy` in the example below
 grant_type    | `authorization_code`
 code          | The auth code, `zzzzzz` in the example below
-redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
+redirect_uri  | The Micro-App URL, e.g. `https://www.example.com`
 
 **Notice**
 > The form data fields need to be encoded as content type
@@ -131,7 +131,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "token_type": "bearer",
   "scope": null,
   "refresh_token": "bbbbbb",
-  "auth_url": "https://api-sandbox.allthings.me/auth/authorize"
+  "auth_url": "https://api-sandbox.app.allthings.me/auth/authorize"
 }
 ```
 
@@ -193,7 +193,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "token_type": "bearer",
   "scope": null,
   "refresh_token":  "bbbbbb",
-  "auth_url": "https://api-sandbox.allthings.me/auth/authorize"
+  "auth_url": "https://api-sandbox.app.allthings.me/auth/authorize"
 }
 ```
 
@@ -212,7 +212,7 @@ When the user wants to use the 3rd-party application (i.e. a widget), they must
 be redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/auth/authorize
+https://api-sandbox.app.allthings.me/auth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -227,7 +227,7 @@ redirect_uri  | The widget URL, e.g. `https://www.example.com`
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com
+https://api-sandbox.app.allthings.me/auth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com
 ```
 
 If the user is not already logged into the app, they are redirected to a login
@@ -246,7 +246,7 @@ When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
 ```
-https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.allthings.me%2Fauth%2Fauthorize
+https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.app.allthings.me%2Fauth%2Fauthorize
 ```
 
 ### 2. Make API calls

@@ -136,10 +136,10 @@ Utilisation Periods bla bla
 | Field          | Type                                       | Description |
 | -------------- | ------------------------------------------ | ----------- |
 | **importType** | [ImportType](#import-type-enumerable-type) |
-| **endDate**    | [Date](#date-type)                         |
 | **id**         | [UUID](#uuid-type)                         |
-| **startDate**  | [Date](#date-type)                         |
 | **unitId**     | [UUID](#uuid-type)                         |
+| **startDate**  | [Date](#date-type)                         |
+| **endDate**    | [Date](#date-type)                         |
 
 #### Example
 
@@ -156,8 +156,8 @@ Tenant Check Ins bla bla
 | Field                   | Type                                       | Description |
 | ----------------------- | ------------------------------------------ | ----------- |
 | **importType**          | [ImportType](#import-type-enumerable-type) |
-| **tenantId**            | [UUID](#uuid-type)                         |
 | **utilisationPeriodId** | [UUID](#uuid-type)                         |
+| **tenantId**            | [UUID](#uuid-type)                         |
 
 #### Example
 
@@ -192,9 +192,9 @@ Property Teams bla bla
 | Field          | Type                                       | Description |
 | -------------- | ------------------------------------------ | ----------- |
 | **importType** | [ImportType](#import-type-enumerable-type) |
-| **agentId**    | [UUID](#uuid-type)                         |
-| **agentType**  | [string](#string-type)                     |
 | **propertyId** | [UUID](#uuid-type)                         |
+| **agentId**    | [UUID](#uuid-type)                         |
+| **agentType**  | [Agent Type](#agent-type-enumerable-type)  |
 
 #### Example
 
@@ -211,13 +211,13 @@ Agents bla bla
 | Field          | Type                                       | Description                   |
 | -------------- | ------------------------------------------ | ----------------------------- |
 | **importType** | [ImportType](#import-type-enumerable-type) |
-| **company**    | [string](#string-type)                     |
+| **id**         | [UUID](#uuid-type)                         |
 | **email**      | [string](#string-type)                     |
 | **firstName**  | [string](#string-type)                     |
-| **gender**     | [Gender](#gender-enumerable-type)          | @TODO do we really need this? |
-| **id**         | [UUID](#uuid-type)                         |
 | **lastName**   | [string](#string-type)                     |
 | **phone**      | [string](#string-type)                     |
+| **company**    | [string](#string-type)                     |
+| **gender**     | [Gender](#gender-enumerable-type)          | @TODO do we really need this? |
 
 #### Example
 
@@ -246,6 +246,10 @@ The manifest.json file bla bla triggers and stuff and also controls some config 
 ```
 
 ## Data Types
+
+### Agent Type Enumerable Type
+
+One of: `FIXME`, `FIXME`, `@TODO`
 
 ### Date Type
 

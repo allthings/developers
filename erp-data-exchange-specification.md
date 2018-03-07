@@ -232,9 +232,9 @@ The `agents.csv` file describes agent-user account data.
 
 ```csv
 importType,company,email,firstName,id,lastName,phone
-insert,Mueller Group,Amani_Williamson@yahoo.com,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
-insert,Douglas Ltd,Priscilla_Koelpin@yahoo.com,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,+9679915262
-update,,Schoen_Judah@Amos.me,,ea9012a3-3e98-4be3-8d60-6af255759962,,+5643541048
+insert,Mueller Group,Amani_Williamson@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
+insert,Douglas Ltd,Priscilla_Koelpin@yahoo.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,+9679915262
+update,,Schoen_Judah@Amos.test,,ea9012a3-3e98-4be3-8d60-6af255759962,,+5643541048
 update,,,,da79623e-a03b-4c4f-a569-571ce4ac620b,,+8804272042
 ```
 

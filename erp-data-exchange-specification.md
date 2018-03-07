@@ -19,8 +19,8 @@ This document specifies the Allthings ERP Data Exchange format.
 1.  [Data Types](#data-types)
     1.  [Date Type](#date-type)
     1.  [Country Type](#country-type)
-    1.  [Import Type Enumerable Type](#import-type-enumerable-type)
-    1.  [Resource Enumerable Type](#resource-enumerable-type)
+    1.  [Import Type Enumerable Type](#import-type)
+    1.  [Resource Enumerable Type](#resource-type)
     1.  [String Type](#string-type)
     1.  [UUID Type](#uuid-type)
 

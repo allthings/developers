@@ -184,10 +184,10 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 ```csv
 importType,id,registrationCode
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,37
-insert,ad257d42-1078-4279-9918-e774859555ae,189
-insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,34
-insert,41f93044-e050-4a33-9e52-ebdada55f9a7,174
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
+insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
 ```
 
 ### tenantCheckIns.csv

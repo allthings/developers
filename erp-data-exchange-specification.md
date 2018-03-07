@@ -20,6 +20,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [Country Type](#country-type)
     1.  [Date Type](#date-type)
     1.  [Import Type Enumerable Type](#import-type)
+    1.  [Phone Number Type](#phone-number-type)
     1.  [Resource Enumerable Type](#resource-type)
     1.  [String Type](#string-type)
     1.  [UUID Type](#uuid-type)
@@ -27,7 +28,7 @@ This document specifies the Allthings ERP Data Exchange format.
 ## Import Process Outline
 
 Customer Support will provide a data upload location (an AWS S3 Bucket).
-Uploading a set of CSVs and a `manifest.json` file constitutes an _Import Job_.
+Uploading a set of CSVs and a [_manifest.json_](#manifestjson) file constitutes an _Import Job_.
 The `manifest.json` file acts as a trigger to begin the import process for the uploaded set of CSVs.
 This file must be uploaded last to indicate that the _Import Job_ should begin the import.
 
@@ -38,7 +39,7 @@ Using CSV files to import data bla bla bla bla todo here
 #### Global Observations:
 
 * Columns can be in any order
-* First row must contain column field name
+* First row in CSV file must contain column field name
 * Column field names are case-sensitive
 * All fields are required when _importType_ is `insert`
 * Only UUID type fields required when _importType_ is `update`
@@ -71,11 +72,11 @@ The `properties.csv` file imports property resource data.
 
 #### Fields
 
-| Field          | Type                       | Description                       |
-| -------------- | -------------------------- | --------------------------------- |
-| **importType** | [ImportType](#import-type) |
-| **id**         | [UUID](#uuid-type)         | The foreign UUID of this property |
-| **name**       | [string](#string-type)     | The property name                 |
+| Field          | Type                        | Description                       |
+| -------------- | --------------------------- | --------------------------------- |
+| **importType** | [Import Type](#import-type) |
+| **id**         | [UUID](#uuid-type)          | The foreign UUID of this property |
+| **name**       | [string](#string-type)      | The property name                 |
 
 #### Example
 
@@ -94,7 +95,7 @@ The `groups.csv` file imports group data.
 
 | Field           | Type                            | Description                                            |
 | --------------- | ------------------------------- | ------------------------------------------------------ |
-| **importType**  | [ImportType](#import-type)      |
+| **importType**  | [Import Type](#import-type)     |
 | **id**          | [UUID](#uuid-type)              | The foreign UUID of the group                          |
 | **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property this group belongs to |
 | **name**        | [string](#string-type)          |
@@ -119,12 +120,12 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 
 #### Fields
 
-| Field          | Type                       | Description                                        |
-| -------------- | -------------------------- | -------------------------------------------------- |
-| **importType** | [ImportType](#import-type) |
-| **id**         | [UUID](#uuid-type)         | The foreign UUID of the unit                       |
-| **groupId**    | [UUID](#uuid-type)         | The foreign UUID of the group this unit belongs to |
-| **name**       | [string](#string-type)     |
+| Field          | Type                        | Description                                        |
+| -------------- | --------------------------- | -------------------------------------------------- |
+| **importType** | [Import Type](#import-type) |
+| **id**         | [UUID](#uuid-type)          | The foreign UUID of the unit                       |
+| **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group this unit belongs to |
+| **name**       | [string](#string-type)      |
 
 #### Example
 
@@ -142,13 +143,13 @@ The `utilisationPeriods.csv` describes utilisation periods.
 
 #### Fields
 
-| Field          | Type                       | Description |
-| -------------- | -------------------------- | ----------- |
-| **importType** | [ImportType](#import-type) |
-| **id**         | [UUID](#uuid-type)         |
-| **unitId**     | [UUID](#uuid-type)         |
-| **startDate**  | [Date](#date-type)         |
-| **endDate**    | [Date](#date-type)         |
+| Field          | Type                        | Description |
+| -------------- | --------------------------- | ----------- |
+| **importType** | [Import Type](#import-type) |
+| **id**         | [UUID](#uuid-type)          |
+| **unitId**     | [UUID](#uuid-type)          |
+| **startDate**  | [Date](#date-type)          |
+| **endDate**    | [Date](#date-type)          |
 
 #### Example
 
@@ -166,11 +167,11 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 #### Fields
 
-| Field                | Type                       | Description |
-| -------------------- | -------------------------- | ----------- |
-| **importType**       | [ImportType](#import-type) |
-| **id**               | [UUID](#uuid-type)         |
-| **registrationCode** | [string](#string-type)     |
+| Field                | Type                        | Description |
+| -------------------- | --------------------------- | ----------- |
+| **importType**       | [Import Type](#import-type) |
+| **id**               | [UUID](#uuid-type)          |
+| **registrationCode** | [string](#string-type)      |
 
 #### Example
 
@@ -188,11 +189,11 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 #### Fields
 
-| Field                   | Type                       | Description |
-| ----------------------- | -------------------------- | ----------- |
-| **importType**          | [ImportType](#import-type) |
-| **utilisationPeriodId** | [UUID](#uuid-type)         |
-| **tenantId**            | [UUID](#uuid-type)         |
+| Field                   | Type                        | Description |
+| ----------------------- | --------------------------- | ----------- |
+| **importType**          | [Import Type](#import-type) |
+| **utilisationPeriodId** | [UUID](#uuid-type)          |
+| **tenantId**            | [UUID](#uuid-type)          |
 
 #### Example
 
@@ -212,7 +213,7 @@ The `agents.csv` file describes agent-user account data.
 
 | Field          | Type                               | Description |
 | -------------- | ---------------------------------- | ----------- |
-| **importType** | [ImportType](#import-type)         |
+| **importType** | [Import Type](#import-type)        |
 | **id**         | [UUID](#uuid-type)                 |
 | **email**      | [string](#string-type)             |
 | **firstName**  | [string](#string-type)             |
@@ -236,11 +237,11 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 
 #### Fields
 
-| Field          | Type                       | Description |
-| -------------- | -------------------------- | ----------- |
-| **importType** | [ImportType](#import-type) |
-| **propertyId** | [UUID](#uuid-type)         |
-| **agentId**    | [UUID](#uuid-type)         |
+| Field          | Type                        | Description |
+| -------------- | --------------------------- | ----------- |
+| **importType** | [Import Type](#import-type) |
+| **propertyId** | [UUID](#uuid-type)          |
+| **agentId**    | [UUID](#uuid-type)          |
 
 #### Example
 
@@ -287,7 +288,7 @@ In other words, a single invalid field will terminate the entire import process 
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.                                 | `CH`, `DE`, `FR`                                                                                                       |
 | **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)                       | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
 | **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`<br/>`update`                                                                                    |
-| **Phone Number**<a name="phone-type" />                       | plus symbol `+` followed by only numbers, no formatting                                                              | `+4134567890`                                                                                                          |
+| **Phone Number**<a name="phone-number-type" />                | plus symbol `+` followed by only numbers, no formatting                                                              | `+4134567890`                                                                                                          |
 | **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                                             | `123-4567`, `3457`, `93012`                                                                                            |
 | **Resource**<a name="resource-type" />                        | One of:<br/>`property`<br/>`group`<br/>`unit`<br/>`utilisationPeriod`                                                |
 | **String**<a name="string-type" />                            | any UTF-8 string                                                                                                     | `This is OK`, `This 1 is also good.`, `これも大丈夫`                                                                   |

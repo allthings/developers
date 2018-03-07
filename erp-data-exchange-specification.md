@@ -17,8 +17,8 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [agents.csv](#agentscsv)
     1.  [manifest.json](#propertiesjson)
 1.  [Data Types](#data-types)
-    1.  [Date Type](#date-type)
     1.  [Country Type](#country-type)
+    1.  [Date Type](#date-type)
     1.  [Import Type Enumerable Type](#import-type)
     1.  [Resource Enumerable Type](#resource-type)
     1.  [String Type](#string-type)
@@ -246,8 +246,8 @@ The manifest.json file bla bla triggers and stuff and also controls some config 
 
 | Type                                                          | Description                                                                                                          | Example                                                                                                                |
 | ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)                       | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.                                 | `CH`, `DE`, `FR`                                                                                                       |
+| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)                       | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
 | **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`<br/>`update`                                                                                    |
 | **Phone Number**<a name="phone-type" />                       | plus symbol `+` followed by only numbers, no formatting                                                              | `+4134567890`                                                                                                          |
 | **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                                             | `123-4567`, `3457`, `93012`                                                                                            |

@@ -6,16 +6,16 @@ This document specifies the Allthings ERP Data Exchange format.
 
 1.  [Import Process Outline](#import-process-outline)
 1.  [CSV file specifications](#csv-file-specifications)
-    1.  [uuid-remappings.csv](#uuid-remappings-csv)
-    1.  [properties.csv](#properties-csv)
-    1.  [groups.csv](#groups-csv)
-    1.  [units.csv](#units-csv)
-    1.  [utilisationPeriods.csv](#utilisationPeriods-csv)
-    1.  [tenantCheckIns.csv](#tenantCheckIns-csv)
-    1.  [tenants.csv](#tenants-csv)
-    1.  [propertyTeams.csv](#propertyTeams-csv)
-    1.  [agents.csv](#agents-csv)
-    1.  [manifest.json](#properties-json)
+    1.  [uuid-remappings.csv](#uuid-remappingscsv)
+    1.  [properties.csv](#propertiescsv)
+    1.  [groups.csv](#groupscsv)
+    1.  [units.csv](#unitscsv)
+    1.  [utilisationPeriods.csv](#utilisationPeriodscsv)
+    1.  [tenantCheckIns.csv](#tenantCheckInscsv)
+    1.  [tenants.csv](#tenantscsv)
+    1.  [propertyTeams.csv](#propertyTeamscsv)
+    1.  [agents.csv](#agentscsv)
+    1.  [manifest.json](#propertiesjson)
 1.  [Data Types](#data-types)
     1.  [Date Type](#date-type)
     1.  [Country Type](#country-type)
@@ -46,11 +46,11 @@ The `uuid-remappings.csv` file allows for the remapping of UUIDs on resources.
 
 #### Fields
 
-| Field        | Type                                  | Description                               |
-| ------------ | ------------------------------------- | ----------------------------------------- |
-| **resource** | [Resource](#resource-enumerable-type) | The type of resource these UUIDs refer to |
-| **oldUuid**  | [UUID](#uuid-type)                    | The previous UUID                         |
-| **newUuid**  | [UUID](#uuid-type)                    | The new UUID                              |
+| Field        | Type                       | Description                               |
+| ------------ | -------------------------- | ----------------------------------------- |
+| **resource** | [Resource](#resource-type) | The type of resource these UUIDs refer to |
+| **oldUuid**  | [UUID](#uuid-type)         | The previous UUID                         |
+| **newUuid**  | [UUID](#uuid-type)         | The new UUID                              |
 
 #### Example
 
@@ -68,11 +68,11 @@ The `properties.csv` file imports property resouce data.
 
 #### Fields
 
-| Field          | Type                                       | Description                       |
-| -------------- | ------------------------------------------ | --------------------------------- |
-| **importType** | [ImportType](#import-type-enumerable-type) |
-| **id**         | [UUID](#uuid-type)                         | The foreign UUID of this property |
-| **name**       | [string](#string-type)                     | The property name                 |
+| Field          | Type                       | Description                       |
+| -------------- | -------------------------- | --------------------------------- |
+| **importType** | [ImportType](#import-type) |
+| **id**         | [UUID](#uuid-type)         | The foreign UUID of this property |
+| **name**       | [string](#string-type)     | The property name                 |
 
 #### Example
 
@@ -89,17 +89,17 @@ Groups bla bla
 
 #### Fields
 
-| Field           | Type                                       | Description                                            |
-| --------------- | ------------------------------------------ | ------------------------------------------------------ |
-| **importType**  | [ImportType](#import-type-enumerable-type) |
-| **id**          | [UUID](#uuid-type)                         | The foreign UUID of the group                          |
-| **propertyId**  | [UUID](#uuid-type)                         | The foreign UUID of the property this group belongs to |
-| **name**        | [string](#string-type)                     |
-| **country**     | [Country](#country-type)                   |
-| **city**        | [string](#string-type)                     |
-| **streetName**  | [string](#string-type)                     |
-| **houseNumber** | [string](#string-type)                     | @TODO rename to `address` ?                            |
-| **zipCode**     | [Postal Code](#postal-code-type)           |
+| Field           | Type                            | Description                                            |
+| --------------- | ------------------------------- | ------------------------------------------------------ |
+| **importType**  | [ImportType](#import-type)      |
+| **id**          | [UUID](#uuid-type)              | The foreign UUID of the group                          |
+| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property this group belongs to |
+| **name**        | [string](#string-type)          |
+| **country**     | [Country](#country-type)        |
+| **city**        | [string](#string-type)          |
+| **streetName**  | [string](#string-type)          |
+| **houseNumber** | [string](#string-type)          | @TODO rename to `streetNumber` ?                       |
+| **zipCode**     | [Postal Code](#postalcode-type) |
 
 #### Example
 
@@ -113,13 +113,12 @@ Units bla bla
 
 #### Fields
 
-| Field          | Type                                       | Description                                        |
-| -------------- | ------------------------------------------ | -------------------------------------------------- |
-| **importType** | [ImportType](#import-type-enumerable-type) |
-| **id**         | [UUID](#uuid-type)                         | The foreign UUID of the unit                       |
-| **groupId**    | [UUID](#uuid-type)                         | The foreign UUID of the group this unit belongs to |
-| **name**       | [string](#string-type)                     |
-| **type**       | [Unit Type](#unit-type-enumerable-type)    | The type of the unit                               |
+| Field          | Type                       | Description                                        |
+| -------------- | -------------------------- | -------------------------------------------------- |
+| **importType** | [ImportType](#import-type) |
+| **id**         | [UUID](#uuid-type)         | The foreign UUID of the unit                       |
+| **groupId**    | [UUID](#uuid-type)         | The foreign UUID of the group this unit belongs to |
+| **name**       | [string](#string-type)     |
 
 #### Example
 
@@ -133,13 +132,13 @@ Utilisation Periods bla bla
 
 #### Fields
 
-| Field          | Type                                       | Description |
-| -------------- | ------------------------------------------ | ----------- |
-| **importType** | [ImportType](#import-type-enumerable-type) |
-| **id**         | [UUID](#uuid-type)                         |
-| **unitId**     | [UUID](#uuid-type)                         |
-| **startDate**  | [Date](#date-type)                         |
-| **endDate**    | [Date](#date-type)                         |
+| Field          | Type                       | Description |
+| -------------- | -------------------------- | ----------- |
+| **importType** | [ImportType](#import-type) |
+| **id**         | [UUID](#uuid-type)         |
+| **unitId**     | [UUID](#uuid-type)         |
+| **startDate**  | [Date](#date-type)         |
+| **endDate**    | [Date](#date-type)         |
 
 #### Example
 
@@ -153,11 +152,11 @@ Tenant Check Ins bla bla
 
 #### Fields
 
-| Field                   | Type                                       | Description |
-| ----------------------- | ------------------------------------------ | ----------- |
-| **importType**          | [ImportType](#import-type-enumerable-type) |
-| **utilisationPeriodId** | [UUID](#uuid-type)                         |
-| **tenantId**            | [UUID](#uuid-type)                         |
+| Field                   | Type                       | Description |
+| ----------------------- | -------------------------- | ----------- |
+| **importType**          | [ImportType](#import-type) |
+| **utilisationPeriodId** | [UUID](#uuid-type)         |
+| **tenantId**            | [UUID](#uuid-type)         |
 
 #### Example
 
@@ -171,11 +170,11 @@ Tenants bla bla
 
 #### Fields
 
-| Field                | Type                                       | Description |
-| -------------------- | ------------------------------------------ | ----------- |
-| **importType**       | [ImportType](#import-type-enumerable-type) |
-| **id**               | [UUID](#uuid-type)                         |
-| **registrationCode** | [string](#string-type)                     |
+| Field                | Type                       | Description |
+| -------------------- | -------------------------- | ----------- |
+| **importType**       | [ImportType](#import-type) |
+| **id**               | [UUID](#uuid-type)         |
+| **registrationCode** | [string](#string-type)     |
 
 #### Example
 
@@ -189,12 +188,11 @@ Property Teams bla bla
 
 #### Fields
 
-| Field          | Type                                       | Description |
-| -------------- | ------------------------------------------ | ----------- |
-| **importType** | [ImportType](#import-type-enumerable-type) |
-| **propertyId** | [UUID](#uuid-type)                         |
-| **agentId**    | [UUID](#uuid-type)                         |
-| **agentType**  | [Agent Type](#agent-type-enumerable-type)  |
+| Field          | Type                       | Description |
+| -------------- | -------------------------- | ----------- |
+| **importType** | [ImportType](#import-type) |
+| **propertyId** | [UUID](#uuid-type)         |
+| **agentId**    | [UUID](#uuid-type)         |
 
 #### Example
 
@@ -208,16 +206,15 @@ Agents bla bla
 
 #### Fields
 
-| Field          | Type                                       | Description                   |
-| -------------- | ------------------------------------------ | ----------------------------- |
-| **importType** | [ImportType](#import-type-enumerable-type) |
-| **id**         | [UUID](#uuid-type)                         |
-| **email**      | [string](#string-type)                     |
-| **firstName**  | [string](#string-type)                     |
-| **lastName**   | [string](#string-type)                     |
-| **phone**      | [Phone Number](#phone-number-type)         |
-| **company**    | [string](#string-type)                     |
-| **gender**     | [Gender](#gender-enumerable-type)          | @TODO do we really need this? |
+| Field          | Type                               | Description |
+| -------------- | ---------------------------------- | ----------- |
+| **importType** | [ImportType](#import-type)         |
+| **id**         | [UUID](#uuid-type)                 |
+| **email**      | [string](#string-type)             |
+| **firstName**  | [string](#string-type)             |
+| **lastName**   | [string](#string-type)             |
+| **phone**      | [Phone Number](#phone-number-type) |
+| **company**    | [string](#string-type)             |
 
 #### Example
 
@@ -231,76 +228,29 @@ The manifest.json file bla bla triggers and stuff and also controls some config 
 
 #### Fields
 
-| Field           | Type         | Description                                                                   |
-| --------------- | ------------ | ----------------------------------------------------------------------------- |
-| **autoImport**  | boolean      | Controls whether to automatically import, or to send confirmation email first |
-| **reportEmail** | Array<Email> | List of email addresses which should receive report emails for this job       |
+| Field            | Type         | Description                                                                   |
+| ---------------- | ------------ | ----------------------------------------------------------------------------- |
+| **autoImport**   | boolean      | Controls whether to automatically import, or to send confirmation email first |
+| **reportEmails** | Array<Email> | List of email addresses which should receive report emails for this job       |
 
 #### Example
 
 ```json
 {
   "autoImport": false,
-  "reportEmail": ["mr.foo@bar.test", "mrs.foo@bar.test"]
+  "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
 }
 ```
 
 ## Data Types
 
-### Agent Type Enumerable Type
-
-One of: `FIXME`, `FIXME`, `@TODO`
-
-### Date Type
-
-[ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)
-
-E.g. `2001-05-11`, `2018-03-06`, `2063-04-05`
-
-### Country Type
-
-[ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
-
-E.g. `CH`, `DE`, `FR`
-
-### Gender Enumerable Type
-
-@TODO do we really need this field?
-
-One of: `male`, `female`, `non-binary`
-
-### Import Type Enumerable Type
-
-One of: `insert`, `update`
-
-### Phone Number Type
-
-E.g. `+4134567890`, `@TODO`, `@TODO`
-
-### Postal Code Type
-
-@TODO
-
-E.g. `123-4567`, `3457`, `93012`
-
-### Resource Enumerable Type
-
-One of: `property`, `group`, `unit`, `utilisationPeriod`
-
-### String Type
-
-Any UTF-8 string
-
-E.g. `This is OK`, `This 1 is also good.`, `これも大丈夫`
-
-### Unit Type Enumerable Type
-
-@TODO
-
-One of: `FIXME`, `FIXME`, `@TODO`
-
-### UUID Type
-
-[RFC 4122 version 4 (random) UUID](<https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_(random)>)
-
-E.g. `71b63eef-3c50-4632-924c-b3c59f45c0ef`, `71fc860f-7fa9-4012-a32e-88be33d607af`, `bf9d6003-19a2-4c3e-b68c-828c45d2cf10`
+| Type                                                      | Description                                                                                                          | Example                                                                                                                |
+| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Date<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)                       | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
+| Country<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.                                 | `CH`, `DE`, `FR`                                                                                                       |
+| Import Type<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`<br/>`update`                                                                                    |
+| Phone Number<a name="phone-type" />                       | plus symbol `+` followed by only numbers, no formatting                                                              | `+4134567890`                                                                                                          |
+| Postal Code<a name="postalcode-type" />                   | Only numbers and hyphens                                                                                             | `123-4567`, `3457`, `93012`                                                                                            |
+| Resource<a name="resource-type" />                        | One of:<br/>`property`<br/>`group`<br/>`unit`<br/>`utilisationPeriod`                                                |
+| String<a name="string-type" />                            | any UTF-8 string                                                                                                     | `This is OK`, `This 1 is also good.`, `これも大丈夫`                                                                   |
+| UUID<a name="uuid-type" />                                | [RFC 4122 version 4 (random) UUID](<https://en.wikipedia.org/wiki/Universally*unique_identifier#Version_4*(random)>) | `71b63eef-3c50-4632-924c-b3c59f45c0ef`, `71fc860f-7fa9-4012-a32e-88be33d607af`, `bf9d6003-19a2-4c3e-b68c-828c45d2cf10` |

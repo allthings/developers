@@ -215,7 +215,7 @@ Agents bla bla
 | **email**      | [string](#string-type)                     |
 | **firstName**  | [string](#string-type)                     |
 | **lastName**   | [string](#string-type)                     |
-| **phone**      | [string](#string-type)                     |
+| **phone**      | [Phone Number](#phone-number-type)         |
 | **company**    | [string](#string-type)                     |
 | **gender**     | [Gender](#gender-enumerable-type)          | @TODO do we really need this? |
 
@@ -272,6 +272,10 @@ One of: `male`, `female`, `non-binary`
 ### Import Type Enumerable Type
 
 One of: `insert`, `update`
+
+### Phone Number Type
+
+E.g. `+4134567890`, `@TODO`, `@TODO`
 
 ### Postal Code Type
 

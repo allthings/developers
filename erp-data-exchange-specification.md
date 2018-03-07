@@ -34,7 +34,14 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-Using CSV files to import data bla bla bla bla todo here
+There are 9 recognised CSV files:
+[_uuid-remappings.csv_](#uuid-remappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
+[_utilisationPeriods.csv_](#utilisationPeriodscsv), [_tenantCheckIns.csv_](#tenantCheckInscsv), [_tenants.csv_](#tenantscsv),
+[_propertyTeams.csv_](#propertyTeamscsv), [_agents.csv_](#agentscsv).
+It is not required that each CSV be included in each Import Job.
+For example, it is possible to include only the _agents.csv_ file, or any other combination.
+However, when inserting new data, the necessary data to resolve the foreign ID relationships _must_ also be included.
+Issues in resolving data relationships will result in an error, terminating the complete Import Job.
 
 #### Global Observations:
 

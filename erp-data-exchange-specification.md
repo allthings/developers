@@ -116,9 +116,9 @@ The `groups.csv` file imports group data.
 
 ```csv
 importType,city,country,houseNumber,id,name,propertyId,streetName,zipCode
-insert,Kaylieshire,CA,Apt. 838,80be246c-255d-480a-a132-f57a3d48dd86,Filomena Hills,ab463b8b-a76c-4f6a-a726-75ab5730b69b,999 Katrine Mount,12930-8559
-insert,South Elda,IE,Suite 226,e94b98c5-7abd-4229-bd5f-c11603e7e831,Fisher,ab463b8b-a76c-4f6a-a726-75ab5730b69b,78 Konopelski Run Suite 979,92671
-insert,Edmundfurt,FR,Suite 551,2a7e8b67-370c-4994-8e99-c752e0c295c7,Senger,ab463b8b-a76c-4f6a-a726-75ab5730b69b,4902 Brittany Ridge Apt. 249,32416-2182
+insert,Kaylieshire,CA,838,80be246c-255d-480a-a132-f57a3d48dd86,Filomena Hills,ab463b8b-a76c-4f6a-a726-75ab5730b69b,Katrine Mount,12930-8559
+insert,South Elda,IE,226,e94b98c5-7abd-4229-bd5f-c11603e7e831,Fisher,ab463b8b-a76c-4f6a-a726-75ab5730b69b,Konopelski Strasse,92671
+insert,Edmundfurt,FR,551,2a7e8b67-370c-4994-8e99-c752e0c295c7,Senger,ab463b8b-a76c-4f6a-a726-75ab5730b69b,Brittany Ridge Rd.,107-0231
 ```
 
 ### units.csv

@@ -79,11 +79,11 @@ The `properties.csv` file imports property resource data.
 
 #### Fields
 
-| Field          | Type                        | Description                       |
-| -------------- | --------------------------- | --------------------------------- |
+| Field          | Type                        | Description                 |
+| -------------- | --------------------------- | --------------------------- |
 | **importType** | [Import Type](#import-type) |
-| **id**         | [UUID](#uuid-type)          | The foreign UUID of this property |
-| **name**       | [string](#string-type)      | The property name                 |
+| **id**         | [UUID](#uuid-type)          | Your UUID for this property |
+| **name**       | [string](#string-type)      | The property name           |
 
 #### Example
 
@@ -103,8 +103,8 @@ The `groups.csv` file imports group data.
 | Field           | Type                            | Description                                                                    |
 | --------------- | ------------------------------- | ------------------------------------------------------------------------------ |
 | **importType**  | [Import Type](#import-type)     |
-| **id**          | [UUID](#uuid-type)              | The foreign UUID of the group                                                  |
-| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property this group belongs to                         |
+| **id**          | [UUID](#uuid-type)              | Your UUID for the group                                                        |
+| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property the group belongs to (_properties.csv_ `id`)  |
 | **name**        | [string](#string-type)          |
 | **country**     | [Country](#country-type)        |
 | **city**        | [string](#string-type)          |
@@ -127,11 +127,11 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 
 #### Fields
 
-| Field          | Type                        | Description                                        |
-| -------------- | --------------------------- | -------------------------------------------------- |
+| Field          | Type                        | Description                                                           |
+| -------------- | --------------------------- | --------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) |
-| **id**         | [UUID](#uuid-type)          | The foreign UUID of the unit                       |
-| **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group this unit belongs to |
+| **id**         | [UUID](#uuid-type)          | Your UUID for the unit                                                |
+| **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
 | **name**       | [string](#string-type)      |
 
 #### Example
@@ -150,11 +150,11 @@ The `utilisationPeriods.csv` describes utilisation periods.
 
 #### Fields
 
-| Field          | Type                        | Description |
-| -------------- | --------------------------- | ----------- |
+| Field          | Type                        | Description                                                                       |
+| -------------- | --------------------------- | --------------------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) |
-| **id**         | [UUID](#uuid-type)          |
-| **unitId**     | [UUID](#uuid-type)          |
+| **id**         | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
+| **unitId**     | [UUID](#uuid-type)          | The foreign UUID of the unit the utilisation period belongs to (_units.csv_ `id`) |
 | **startDate**  | [Date](#date-type)          |
 | **endDate**    | [Date](#date-type)          |
 
@@ -174,10 +174,10 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 #### Fields
 
-| Field                | Type                        | Description |
-| -------------------- | --------------------------- | ----------- |
+| Field                | Type                        | Description              |
+| -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) |
-| **id**               | [UUID](#uuid-type)          |
+| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant |
 | **registrationCode** | [string](#string-type)      |
 
 #### Example
@@ -196,11 +196,11 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 #### Fields
 
-| Field                   | Type                        | Description |
-| ----------------------- | --------------------------- | ----------- |
+| Field                   | Type                        | Description                                                                                           |
+| ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **importType**          | [Import Type](#import-type) |
-| **utilisationPeriodId** | [UUID](#uuid-type)          |
-| **tenantId**            | [UUID](#uuid-type)          |
+| **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
+| **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
 
 #### Example
 
@@ -218,10 +218,10 @@ The `agents.csv` file describes agent-user account data.
 
 #### Fields
 
-| Field          | Type                               | Description |
-| -------------- | ---------------------------------- | ----------- |
+| Field          | Type                               | Description             |
+| -------------- | ---------------------------------- | ----------------------- |
 | **importType** | [Import Type](#import-type)        |
-| **id**         | [UUID](#uuid-type)                 |
+| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent |
 | **email**      | [string](#string-type)             |
 | **firstName**  | [string](#string-type)             |
 | **lastName**   | [string](#string-type)             |
@@ -244,11 +244,11 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 
 #### Fields
 
-| Field          | Type                        | Description |
-| -------------- | --------------------------- | ----------- |
+| Field          | Type                        | Description                                                                       |
+| -------------- | --------------------------- | --------------------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) |
-| **propertyId** | [UUID](#uuid-type)          |
-| **agentId**    | [UUID](#uuid-type)          |
+| **propertyId** | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`) |
+| **agentId**    | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)        |
 
 #### Example
 

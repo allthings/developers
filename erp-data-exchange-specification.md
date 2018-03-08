@@ -100,16 +100,16 @@ The `groups.csv` file imports group data.
 
 #### Fields
 
-| Field           | Type                            | Description                                            |
-| --------------- | ------------------------------- | ------------------------------------------------------ |
+| Field           | Type                            | Description                                                                    |
+| --------------- | ------------------------------- | ------------------------------------------------------------------------------ |
 | **importType**  | [Import Type](#import-type)     |
-| **id**          | [UUID](#uuid-type)              | The foreign UUID of the group                          |
-| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property this group belongs to |
+| **id**          | [UUID](#uuid-type)              | The foreign UUID of the group                                                  |
+| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property this group belongs to                         |
 | **name**        | [string](#string-type)          |
 | **country**     | [Country](#country-type)        |
 | **city**        | [string](#string-type)          |
-| **streetName**  | [string](#string-type)          |
-| **houseNumber** | [string](#string-type)          |
+| **streetName**  | [string](#string-type)          | The name of the street the structure is located on, e.g. Kaiser-Joseph-Strasse |
+| **houseNumber** | [string](#string-type)          | The number of the structure on the street, e.g. 123                            |
 | **zipCode**     | [Postal Code](#postalcode-type) |
 
 #### Example

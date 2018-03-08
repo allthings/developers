@@ -109,7 +109,7 @@ The `groups.csv` file imports group data.
 | **country**     | [Country](#country-type)        |
 | **city**        | [string](#string-type)          |
 | **streetName**  | [string](#string-type)          |
-| **houseNumber** | [string](#string-type)          | @TODO rename to `streetNumber` ?                       |
+| **houseNumber** | [string](#string-type)          |
 | **zipCode**     | [Postal Code](#postalcode-type) |
 
 #### Example

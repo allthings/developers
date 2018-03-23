@@ -59,6 +59,7 @@ The `uuid-remappings.csv` file allows for the remapping of UUIDs on resources.
 
 | Field        | Type                       | Description                               |
 | ------------ | -------------------------- | ----------------------------------------- |
+| **importType** | [Import Type](#import-type) | Always use "update" |
 | **resource** | [Resource](#resource-type) | The type of resource these UUIDs refer to |
 | **oldUuid**  | [UUID](#uuid-type)         | The previous UUID                         |
 | **newUuid**  | [UUID](#uuid-type)         | The new UUID                              |

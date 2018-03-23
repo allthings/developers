@@ -67,11 +67,11 @@ The `uuid-remappings.csv` file allows for the remapping of UUIDs on resources.
 #### Example
 
 ```csv
-resource,oldUuid,newUuid
-property,7cebf887-8914-4576-ade4-077f3869c17d,40456bad-f487-4a49-b94a-9d215ce32379
-group,4FCC2A82-BB79-4CB2-B428-8EC6FF3200AF,bebf0794-9824-42cb-858b-f8365eddb560
-unit,8a9428f6-3059-4358-b93b-f1b4d689f087,e3d2ffdf-0c07-489a-a290-2fb70336643b
-utilisationPeriod,efd8b0f7-3e2e-4bc1-9bdb-7c5988835e68,76f3d8e4-70b5-49d0-9dc9-8b3a3a072629
+importType,resource,oldUuid,newUuid
+update,property,7cebf887-8914-4576-ade4-077f3869c17d,40456bad-f487-4a49-b94a-9d215ce32379
+update,group,4FCC2A82-BB79-4CB2-B428-8EC6FF3200AF,bebf0794-9824-42cb-858b-f8365eddb560
+update,unit,8a9428f6-3059-4358-b93b-f1b4d689f087,e3d2ffdf-0c07-489a-a290-2fb70336643b
+update,utilisationPeriod,efd8b0f7-3e2e-4bc1-9bdb-7c5988835e68,76f3d8e4-70b5-49d0-9dc9-8b3a3a072629
 ```
 
 ### properties.csv

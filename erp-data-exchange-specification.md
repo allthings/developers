@@ -273,6 +273,7 @@ These options are outlined here:
 | Field            | Type         | Description                                                                   |
 | ---------------- | ------------ | ----------------------------------------------------------------------------- |
 | **autoImport**   | boolean      | Controls whether to automatically import, or to send confirmation email first |
+| **locale** |  ISO-639 Language Codes  and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`   |
 | **reportEmails** | Array<Email> | List of email addresses which should receive report emails for this job       |
 
 #### Example
@@ -280,6 +281,7 @@ These options are outlined here:
 ```json
 {
   "autoImport": false,
+  "locale": "de_DE",
   "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
 }
 ```

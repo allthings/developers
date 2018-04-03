@@ -15,7 +15,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [tenants.csv](#tenantscsv)
     1.  [propertyTeams.csv](#propertyTeamscsv)
     1.  [agents.csv](#agentscsv)
-    1.  [manifest.json](#propertiesjson)
+    1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Country Type](#country-type)
     1.  [Date Type](#date-type)

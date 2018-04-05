@@ -6,14 +6,14 @@ This document specifies the Allthings ERP Data Exchange format.
 
 1.  [Import Process Outline](#import-process-outline)
 1.  [CSV file specifications](#csv-file-specifications)
-    1.  [uuid-remappings.csv](#uuid-remappingscsv)
+    1.  [uuidRemappings.csv](#uuid-remappingscsv)
     1.  [properties.csv](#propertiescsv)
     1.  [groups.csv](#groupscsv)
     1.  [units.csv](#unitscsv)
-    1.  [utilisationPeriods.csv](#utilisationPeriodscsv)
-    1.  [tenantCheckIns.csv](#tenantCheckInscsv)
+    1.  [utilisationPeriods.csv](#utilisationperiodscsv)
+    1.  [tenantCheckIns.csv](#tenantcheckinscsv)
     1.  [tenants.csv](#tenantscsv)
-    1.  [propertyTeams.csv](#propertyTeamscsv)
+    1.  [propertyTeams.csv](#propertyteamscsv)
     1.  [agents.csv](#agentscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
@@ -35,7 +35,7 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 ## CSV file specifications
 
 There are 9 recognised CSV files:
-[_uuid-remappings.csv_](#uuid-remappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
+[_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
 [_utilisationPeriods.csv_](#utilisationPeriodscsv), [_tenantCheckIns.csv_](#tenantCheckInscsv), [_tenants.csv_](#tenantscsv),
 [_propertyTeams.csv_](#propertyTeamscsv), [_agents.csv_](#agentscsv).
 It is not required that each CSV be included in each Import Job.
@@ -51,9 +51,9 @@ Issues in resolving data relationships will result in an error, terminating the 
 * All fields are required when _importType_ is `insert`
 * Only UUID type fields required when _importType_ is `update`
 
-### uuid-remappings.csv
+### uuidRemappings.csv
 
-The `uuid-remappings.csv` file allows for the remapping of UUIDs on resources.
+The `uuidRemappings.csv` file allows for the remapping of UUIDs on resources.
 
 #### Fields
 
@@ -199,7 +199,7 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 | Field                   | Type                        | Description                                                                                           |
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **importType**          | [Import Type](#import-type) |
+| **importType**          | [Import Type](#import-type) | Must always use "insert"
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
 | **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
 
@@ -227,7 +227,6 @@ The `agents.csv` file describes agent-user account data.
 | **firstName**  | [string](#string-type)             |
 | **lastName**   | [string](#string-type)             |
 | **phone**      | [Phone Number](#phone-number-type) |
-| **company**    | [string](#string-type)             |
 
 #### Example
 
@@ -247,7 +246,7 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) |
+| **importType** | [Import Type](#import-type) | Must always use "insert"
 | **propertyId** | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`) |
 | **agentId**    | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)        |
 

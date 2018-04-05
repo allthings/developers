@@ -6,7 +6,7 @@ This document specifies the Allthings ERP Data Exchange format.
 
 1.  [Import Process Outline](#import-process-outline)
 1.  [CSV file specifications](#csv-file-specifications)
-    1.  [uuidRemappings.csv](#uuid-remappingscsv)
+    1.  [uuidRemappings.csv](#uuidremappingscsv)
     1.  [properties.csv](#propertiescsv)
     1.  [groups.csv](#groupscsv)
     1.  [units.csv](#unitscsv)

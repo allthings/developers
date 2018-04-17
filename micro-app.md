@@ -25,3 +25,21 @@ and modify resources on the Allthings platform on behalf of the user.
 ### Additional requirements
 
 * Implementation of [OAuth 2.0](oauth.md) authorization flow.
+
+## Micro-Apps & Cookies:
+
+Cookies in 3rd-party Micro-Apps are by default **NOT** supported.
+The way to keep a session must be purely via the OAuth flow (basically using 
+the OAuth access token as session token).
+
+In the case of integrating existing apps that cannot get rid of session cookies 
+(e.g. shops), there’s one solution:
+Running the MicroApp in a subdomain of the app domain (or on the same Top-Level-Domain).
+
+This is however not a scalable solution, as it involves manual adoptions (setting up CNAME
+DNS entries and SSL certificates).
+
+The reason Cookies are not supported is that Apple’s Safari rejects 3rd-party cookies 
+by default, no matter if they’re set in an iframe or via XHR request. Safari will 
+accept cookies from domains that have been visited before, but that would only work 
+if the Micro-App is opened in the top level frame.

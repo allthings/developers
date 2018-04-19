@@ -4,6 +4,6 @@ steps:
     branches: "master"
     async: true
     build:
-      commit: "$BUILDKITE_PIPELINE_SLUG / $BUILDKITE_COMMIT"
+      commit: "$BUILDKITE_COMMIT"
       branch: "$BUILDKITE_BRANCH"
-      message: "$BUILDKITE_MESSAGE"
+      message: "$BUILDKITE_PIPELINE_SLUG / $BUILDKITE_MESSAGE"

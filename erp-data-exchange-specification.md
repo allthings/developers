@@ -53,7 +53,7 @@ Issues in resolving data relationships will result in an error, terminating the 
 
 ### uuidRemappings.csv
 
-The `uuidRemappings.csv` file allows for the remapping of UUIDs on resources.
+The `uuidRemappings.csv` file allows for the remapping of UUIDs on resources. **Note:** The `uuidRemappings.csv` cannot be combined with other CSV files within a single import. Doing so will result in an import error.
 
 #### Fields
 

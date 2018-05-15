@@ -48,7 +48,7 @@ When the user wants to use the 3rd-party application (i.e. a widget), they must
 be redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/auth/authorize
+https://api-sandbox.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -59,11 +59,13 @@ Key           | Value
 client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `token`
 redirect_uri  | The widget URL, e.g. `https://www.example.com`
+scope         | Specifies the scope of the access (currently only `user:profile`)
+state         | Value used by the client to maintain state between the request and callback
 
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com
+https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=color%3Agreen
 ```
 
 If the user is not already logged into the app, they are redirected to a login
@@ -75,14 +77,12 @@ define the scope of data access for your widget.
 
 **Notice**
 > If the user has already authorized your app, this step is skipped.  
-> At the moment, only pre-authorized partner applications are allowed, so this
-> step is always skipped.
 
 When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
 ```
-https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&auth_url=https%3A%2F%2Fapi-sandbox.allthings.me%2Fauth%2Fauthorize
+https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&state=color%3Agreen
 ```
 
 ### 2. Make API calls
@@ -116,7 +116,7 @@ When the user wants to use the 3rd-party application (i.e. the MicroApp), they
 get redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/auth/authorize
+https://api-sandbox.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -127,11 +127,13 @@ Key           | Value
 client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `code`
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
+scope         | Specifies the scope of the access (currently only `user:profile`)
+state         | Value used by the client to maintain state between the request and callback
 
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com
+https://api-sandbox.allthings.me/auth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&state=color%3Agreen&scope=user:profile
 ```
 
 As MicroApps usually run inside the context of the Allthings app, the user is
@@ -143,9 +145,7 @@ MicroApp to access their data. The user can accept or decline your app and also
 define the scope of data access for your MicroApp.
 
 **Notice**
-> If the user has already authorized your app, this step is skipped.  
-> At the moment, only pre-authorized partner applications are allowed, so this
-> step is always skipped.
+> If the user has already authorized your app, this step is skipped.
 
 ### 2. Exchange auth code
 
@@ -160,7 +160,7 @@ Your app will have to use the auth code to request an `access_token` by
 sending a `POST` request to the token endpoint:
 
 ```
-https://app.allthings.me/auth/token
+https://app.allthings.me/oauth/token
 ```
 
 **Notice**
@@ -199,8 +199,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "expires_in": 3600,
   "token_type": "bearer",
   "scope": null,
-  "refresh_token": "bbbbbb",
-  "auth_url": "https://api-sandbox.allthings.me/auth/authorize"
+  "refresh_token": "bbbbbb"
 }
 ```
 
@@ -223,7 +222,7 @@ invalid, you have to use the `refresh_token` to request a new `access_token` by
 sending a `POST` request to the token endpoint:
 
 ```
-https://app.allthings.me/auth/token
+https://app.allthings.me/oauth/token
 ```
 
 **Notice**
@@ -261,7 +260,6 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "expires_in": 3600,
   "token_type": "bearer",
   "scope": null,
-  "refresh_token":  "bbbbbb",
-  "auth_url": "https://api-sandbox.allthings.me/auth/authorize"
+  "refresh_token":  "bbbbbb"
 }
 ```

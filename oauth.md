@@ -60,12 +60,12 @@ client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `token`
 redirect_uri  | The widget URL, e.g. `https://www.example.com`
 scope         | Specifies the scope of the access (currently only `user:profile`)
-state         | Value used by the client to maintain state between the request and callback
+state         | Value used by the client to maintain state between the request and callback (for example an urlencoded json object)
 
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=color%3Agreen
+https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 
 If the user is not already logged into the app, they are redirected to a login

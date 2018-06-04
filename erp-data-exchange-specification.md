@@ -282,7 +282,7 @@ These options are outlined here:
 {
   "autoImport": false,
   "locale": "de_DE",
-  "receiveAdminNotifications": "false"
+  "receiveAdminNotifications": "false",
   "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
 }
 ```

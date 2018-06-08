@@ -139,10 +139,10 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 
 ```csv
 importType,groupId,id,name
-insert,80be246c-255d-480a-a132-f57a3d48dd86,1b6e456c-1ba0-4f04-aed2-f228944836be,Mrs. Giles Sporer @TODO property name
-insert,80be246c-255d-480a-a132-f57a3d48dd86,d3288db2-99ed-47c3-b40c-ad3b82c76cb1,Ms. Shanie Leuschke
-insert,80be246c-255d-480a-a132-f57a3d48dd86,35762dd3-3e10-43f8-8ee1-9f8ff1fecfaf,Ms. Lauren Koelpin
-insert,80be246c-255d-480a-a132-f57a3d48dd86,06a13020-5b67-4579-9184-3629d707e75d,Mrs. Sophie Hagenes
+insert,80be246c-255d-480a-a132-f57a3d48dd86,1b6e456c-1ba0-4f04-aed2-f228944836be,Lemon Drive 2
+insert,80be246c-255d-480a-a132-f57a3d48dd86,d3288db2-99ed-47c3-b40c-ad3b82c76cb1,Kaiser-Joseph Strasse 8
+insert,80be246c-255d-480a-a132-f57a3d48dd86,35762dd3-3e10-43f8-8ee1-9f8ff1fecfaf,Lollypop Lane 5
+insert,80be246c-255d-480a-a132-f57a3d48dd86,06a13020-5b67-4579-9184-3629d707e75d,Blauen Quelle Strasse 7
 ```
 
 ### utilisationPeriods.csv
@@ -274,7 +274,7 @@ These options are outlined here:
 | **autoImport**   | boolean      | Controls whether to automatically import, or to send confirmation email first |
 | **locale** |  ISO-639 Language Codes  and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`   |
 | **receiveAdminNotifications** |  boolean | Receives Notification-Mails for Tickets with no Assignee. Default setting is true   |
-| **reportEmails** | Array<Email> | List of email addresses which should receive report emails for this job       |
+| **reportEmails** | Array of Strings | List of email addresses which should receive report emails for this job       |
 
 #### Example
 

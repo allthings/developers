@@ -30,7 +30,7 @@ This document specifies the Allthings ERP Data Exchange format.
 ## Import Process Outline
 
 Customer Support will provide a data upload location (an AWS S3 Bucket).
-Uploading a set of CSVs and a [settings.json_](#settingsjson) file constitutes an _Import Job_.
+Uploading a set of CSVs and a [_settings.json_](#settingsjson) file constitutes an _Import Job_.
 The `settings.json` file acts as a trigger to begin the import process for the uploaded set of CSVs.
 This file must be uploaded last to indicate that the _Import Job_ should begin the import.
 

@@ -12,10 +12,12 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [units.csv](#unitscsv)
     1.  [utilisationPeriods.csv](#utilisationperiodscsv)
     1.  [tenantCheckIns.csv](#tenantcheckinscsv)
+    1.  [registrationCodes.csv](#registrationcodescsv)
     1.  [tenants.csv](#tenantscsv)
+    1.  [companies.csv](#companiescsv)
     1.  [propertyTeams.csv](#propertyteamscsv)
     1.  [agents.csv](#agentscsv)
-    1.  [manifest.json](#manifestjson)
+    1.  [settings.json](#settingsjson)
 1.  [Data Types](#data-types)
     1.  [Country Type](#country-type)
     1.  [Date Type](#date-type)
@@ -28,15 +30,15 @@ This document specifies the Allthings ERP Data Exchange format.
 ## Import Process Outline
 
 Customer Support will provide a data upload location (an AWS S3 Bucket).
-Uploading a set of CSVs and a [_manifest.json_](#manifestjson) file constitutes an _Import Job_.
-The `manifest.json` file acts as a trigger to begin the import process for the uploaded set of CSVs.
+Uploading a set of CSVs and a [settings.json_](#settingsjson) file constitutes an _Import Job_.
+The `settings.json` file acts as a trigger to begin the import process for the uploaded set of CSVs.
 This file must be uploaded last to indicate that the _Import Job_ should begin the import.
 
 ## CSV file specifications
 
-There are 9 recognised CSV files:
+There are 11 recognised CSV files:
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
-[_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
+[_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [registrationCodes.csv_](#registrationcodescsv), [_tenants.csv_](#tenantscsv), [companies.csv_](#companies),
 [_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv).
 It is not required that each CSV be included in each Import Job.
 For example, it is possible to include only the `agents.csv` file, or any other combination.
@@ -169,16 +171,39 @@ update,2018-12-07,5bd46ead-14f0-4b74-9a7a-12409e9dad59,,1b6e456c-1ba0-4f04-aed2-
 insert,2020-03-28,0171cf8e-ec7b-4a37-9786-b03645439e6b,1987-04-14,1b6e456c-1ba0-4f04-aed2-f228944836be
 ```
 
-### tenants.csv
 
-The `tenants.csv` file describes registration codes for a tenant.
+### checkIns.csv
+
+The `checkIns.csv` file describes the relation between a registrationCode, tenant, or company and a utilisation period.
+
+#### Fields
+
+| Field                   | Type                        | Description                                                                                           |
+| ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **importType**          | [Import Type](#import-type) | Must always use "insert"
+| **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
+| @TODO needs revision **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant this check-in is for (_tenantss.csv_ `id`)                           |
+
+#### Example
+
+```csv
+importType,tenantId,utilisationPeriodId
+insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
+insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
+insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
+insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
+```
+
+### registrationCodes.csv
+
+The `registrationCodes.csv` file describes registration codes for a tenant.
 
 #### Fields
 
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | Must always use "insert"
-| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant |
+| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant-user that is created when the registrationCode is used |
 | **registrationCode** | [string](#string-type)      |
 
 #### Example
@@ -191,26 +216,49 @@ insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
 insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
 ```
 
-### tenantCheckIns.csv
+### tenants.csv
 
-The `tenantCheckIns.csv` file describes the relation between a tenant and a utilisation period.
+The `tenants.csv` file describes registration codes for a tenant.
 
 #### Fields
 
-| Field                   | Type                        | Description                                                                                           |
-| ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **importType**          | [Import Type](#import-type) | Must always use "insert"
-| **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
-| **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
+| Field                | Type                        | Description              |
+| -------------------- | --------------------------- | ------------------------ |
+| **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
+| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant-user |
+| **name** | [string](#string-type)      | The tenant's name
+| **email** | [Email](#string-type)      | The tenant's email address
 
 #### Example
 
 ```csv
-importType,tenantId,utilisationPeriodId
-insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
-insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
-insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
-insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
+importType,id,registrationCode
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
+insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
+```
+
+### companies.csv
+
+The `companies.csv` file describes companies.
+
+#### Fields
+
+| Field                | Type                        | Description              |
+| -------------------- | --------------------------- | ------------------------ |
+| **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
+| **id**               | [UUID](#uuid-type)          | Your UUID for the company |
+| **name** | [string](#string-type)      | The company name
+
+#### Example
+
+```csv
+importType,id,name
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Big Company, Inc.
+insert,ad257d42-1078-4279-9918-e774859555ae,Auto GmbH
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Fuji LLC
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,West & Smith, Inc.
 ```
 
 ### agents.csv
@@ -260,11 +308,11 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 ```
 
-### manifest.json
+### settings.json
 
-The `manifest.json` file controls the Import Jobs execution and behavior.
-The upload/presence of a `manifest.json` file at a Job Import upload location triggers the import process.
-While Customer Support will set up default configuration for each ERP Import Customer, the `manifest.json` file also allows for some customisation of options.
+The `settings.json` file controls the Import Jobs execution and behavior.
+The upload/presence of a `settings.json` file at a Job Import upload location triggers the import process.
+While Customer Support will set up default configuration for each ERP Import Customer, the `settings.json` file also allows for some customisation of options.
 These options are outlined here:
 
 #### Fields

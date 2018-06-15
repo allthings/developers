@@ -11,7 +11,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [groups.csv](#groupscsv)
     1.  [units.csv](#unitscsv)
     1.  [utilisationPeriods.csv](#utilisationperiodscsv)
-    1.  [tenantCheckIns.csv](#tenantcheckinscsv)
+    1.  [checkIns.csv](#checkinscsv)
     1.  [registrationCodes.csv](#registrationcodescsv)
     1.  [tenants.csv](#tenantscsv)
     1.  [companies.csv](#companiescsv)

@@ -174,7 +174,7 @@ insert,2020-03-28,0171cf8e-ec7b-4a37-9786-b03645439e6b,1987-04-14,1b6e456c-1ba0-
 
 ### checkIns.csv
 
-The `checkIns.csv` file describes the relation between a registrationCode, tenant, or company and a utilisation period.
+The `checkIns.csv` file describes the relation between a tenant, or company and a utilisation period.
 
 #### Fields
 

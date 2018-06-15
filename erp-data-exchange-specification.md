@@ -38,7 +38,7 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 There are 11 recognised CSV files:
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
-[_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [registrationCodes.csv_](#registrationcodescsv), [_tenants.csv_](#tenantscsv), [companies.csv_](#companies),
+[_utilisationPeriods.csv_](#utilisationperiodscsv), [_checkIns.csv_](#checkinscsv), [registrationCodes.csv_](#registrationcodescsv), [_tenants.csv_](#tenantscsv), [companies.csv_](#companies),
 [_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv).
 It is not required that each CSV be included in each Import Job.
 For example, it is possible to include only the `agents.csv` file, or any other combination.

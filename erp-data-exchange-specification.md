@@ -232,11 +232,11 @@ The `tenants.csv` file describes registration codes for a tenant.
 #### Example
 
 ```csv
-importType,residentId,registrationCode
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
-insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
-insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
-insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
+importType,residentId,name, email
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4, Harry Potter. harrypotter@hogwards.edu
+insert,ad257d42-1078-4279-9918-e774859555ae,Dolores Umbridge, doloresumbridge@hogwards.edu
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Severus Snape, severus.snape@hogwards.edu
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,Albus Dumbledore, albus-d@hogwards.edu
 ```
 
 ### companies.csv
@@ -249,16 +249,17 @@ The `companies.csv` file describes companies.
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
 | **residentId**               | [UUID](#uuid-type)          | Your UUID for the company |
-| **name** | [string](#string-type)      | The company name
+| **name** | [string](#string-type)      | The company name |
+| **email** | [Email](#string-type)      | The company agents email address
 
 #### Example
 
 ```csv
 importType,residentId,name
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Big Company, Inc.
-insert,ad257d42-1078-4279-9918-e774859555ae,Auto GmbH
-insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Fuji LLC
-insert,41f93044-e050-4a33-9e52-ebdada55f9a7,West & Smith, Inc.
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Big Company, Inc., info@bigcomp.com
+insert,ad257d42-1078-4279-9918-e774859555ae,Auto GmbH, ceo@autogmbh.com
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Fuji LLC, boss@fuji.com
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,West & Smith, Inc., manager@ws.com
 ```
 
 ### agents.csv

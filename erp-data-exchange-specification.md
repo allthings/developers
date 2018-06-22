@@ -218,7 +218,7 @@ insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
 
 ### tenants.csv
 
-The `tenants.csv` file describes registration codes for a tenant.
+The `tenants.csv` file describes a tenant.
 
 #### Fields
 

@@ -182,12 +182,12 @@ The `checkIns.csv` file describes the relation between a tenant, or company and 
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **importType**          | [Import Type](#import-type) | Must always use "insert"
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
-| @TODO needs revision **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant this check-in is for (_tenantss.csv_ `id`)                           |
+| **residentId**          | [UUID](#uuid-type)          | The foreign UUID of the tenant this check-in is for (_tenantss.csv_ `id`)                           |
 
 #### Example
 
 ```csv
-importType,tenantId,utilisationPeriodId
+importType,residentId,utilisationPeriodId
 insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
 insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
 insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
@@ -203,13 +203,13 @@ The `registrationCodes.csv` file describes registration codes for a tenant.
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | Must always use "insert"
-| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant-user that is created when the registrationCode is used |
+| **residentId**               | [UUID](#uuid-type)          | Your UUID for the tenant/company/-user that is created when the registrationCode is used |
 | **registrationCode** | [string](#string-type)      |
 
 #### Example
 
 ```csv
-importType,id,registrationCode
+importType,residentId,registrationCode
 insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
 insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
@@ -225,14 +225,14 @@ The `tenants.csv` file describes registration codes for a tenant.
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
-| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant-user |
+| **residentId**               | [UUID](#uuid-type)          | Your UUID for the tenant-user |
 | **name** | [string](#string-type)      | The tenant's name
 | **email** | [Email](#string-type)      | The tenant's email address
 
 #### Example
 
 ```csv
-importType,id,registrationCode
+importType,residentId,registrationCode
 insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
 insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
@@ -248,13 +248,13 @@ The `companies.csv` file describes companies.
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
-| **id**               | [UUID](#uuid-type)          | Your UUID for the company |
+| **residentId**               | [UUID](#uuid-type)          | Your UUID for the company |
 | **name** | [string](#string-type)      | The company name
 
 #### Example
 
 ```csv
-importType,id,name
+importType,residentId,name
 insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Big Company, Inc.
 insert,ad257d42-1078-4279-9918-e774859555ae,Auto GmbH
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Fuji LLC
@@ -270,7 +270,7 @@ The `agents.csv` file describes agent-user account data.
 | Field          | Type                               | Description             |
 | -------------- | ---------------------------------- | ----------------------- |
 | **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` 
-| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent |
+| **agentId**    | [UUID](#uuid-type)                 | Your UUID for the agent |
 | **email**      | [string](#string-type)             |
 | **firstName**  | [string](#string-type)             |
 | **lastName**   | [string](#string-type)             |
@@ -279,7 +279,7 @@ The `agents.csv` file describes agent-user account data.
 #### Example
 
 ```csv
-importType,company,email,firstName,id,lastName,phone
+importType,company,email,firstName,agentId,lastName,phone
 insert,Mueller Group,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
 insert,Douglas Ltd,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,+9679915262
 update,,sjudah@Amos.test,,ea9012a3-3e98-4be3-8d60-6af255759962,,+5643541048

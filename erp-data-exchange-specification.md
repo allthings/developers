@@ -196,7 +196,7 @@ insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
 
 ### registrationCodes.csv
 
-The `registrationCodes.csv` file describes registration codes for a tenant.
+The `registrationCodes.csv` file describes registration codes for one or more utilizationPeriods. It contains the registrationCode and the reseidentId of those entities that are checked into these utilizationPeriods.
 
 #### Fields
 

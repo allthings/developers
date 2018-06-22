@@ -85,13 +85,13 @@ The `properties.csv` file imports property resource data.
 | Field          | Type                        | Description                 |
 | -------------- | --------------------------- | --------------------------- |
 | **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
-| **id**         | [UUID](#uuid-type)          | Your UUID for this property |
+| **propertyId** | [UUID](#uuid-type)          | Your UUID for this property |
 | **name**       | [string](#string-type)      | The property name           |
 
 #### Example
 
 ```csv
-importType,id,name
+importType,propertyId,name
 insert,ab463b8b-a76c-4f6a-a726-75ab5730b69b,Christiannaurus Tower II
 insert,9b86a4d7-ab95-4b65-a553-24fac1c60627,Nickalonius Gardens
 insert,40456bad-f487-4a49-b94a-9d215ce32379,Achimalon Acres
@@ -106,7 +106,7 @@ The `groups.csv` file imports group data.
 | Field           | Type                            | Description                                                                    |
 | --------------- | ------------------------------- | ------------------------------------------------------------------------------ |
 | **importType**  | [Import Type](#import-type)     | One of:<br/>`insert`, `update`
-| **id**          | [UUID](#uuid-type)              | Your UUID for the group                                                        |
+| **groupId**     | [UUID](#uuid-type)              | Your UUID for the group                                                        |
 | **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property the group belongs to (_properties.csv_ `id`)  |
 | **name**        | [string](#string-type)          |
 | **country**     | [Country](#country-type)        |
@@ -133,7 +133,7 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 | Field          | Type                        | Description                                                           |
 | -------------- | --------------------------- | --------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
-| **id**         | [UUID](#uuid-type)          | Your UUID for the unit                                                |
+| **unitId**         | [UUID](#uuid-type)          | Your UUID for the unit                                                |
 | **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
 | **name**       | [string](#string-type)      |
 
@@ -156,7 +156,7 @@ The `utilisationPeriods.csv` describes utilisation periods.
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
-| **id**         | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
+| **utilizationPeriodId**  | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
 | **unitId**     | [UUID](#uuid-type)          | The foreign UUID of the unit the utilisation period belongs to (_units.csv_ `id`) |
 | **startDate**  | [Date](#date-type)          |
 | **endDate**    | [Date](#date-type)          |
@@ -164,7 +164,7 @@ The `utilisationPeriods.csv` describes utilisation periods.
 #### Example
 
 ```csv
-importType,endDate,id,startDate,unitId
+importType,endDate,utilizationPeriodId,startDate,unitId
 insert,2021-03-04,7d87a383-1778-401b-a421-b60c900479c3,1985-05-22,1b6e456c-1ba0-4f04-aed2-f228944836be
 insert,2019-12-26,2ab719f8-8c1a-42d0-9078-001a8b77e259,1989-07-20,1b6e456c-1ba0-4f04-aed2-f228944836be
 update,2018-12-07,5bd46ead-14f0-4b74-9a7a-12409e9dad59,,1b6e456c-1ba0-4f04-aed2-f228944836be

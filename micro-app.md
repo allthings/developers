@@ -44,3 +44,40 @@ The reason Cookies are not supported is that Apple’s Safari rejects 3rd-party
 cookies by default, no matter if they’re set in an iframe or via XHR request.
 Safari will accept cookies from domains that have been visited before, but that
 would only work if the Micro-App is opened in the top level frame.
+
+## Security considerations
+
+### Clickjacking mitigation
+
+#### Modern browsers
+To prevent [Clickjacking](https://en.wikipedia.org/wiki/Clickjacking), it is
+recommended to set the
+[Content-Security-Policy frame-ancestors](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors)
+header, which is supported by all modern browsers.
+
+Since MicroApps are displayed in an IFrame, the Allthings app domains need to be
+allowed:
+```
+Content-Security-Policy: frame-ancestors *.allthings.me *.allthings.app;
+```
+
+#### Internet Explorer
+To prevent Clickjacking in Internet Explorer - which does not support the
+`frame-ancestors` policy - the
+[X-Frame-Options](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options)
+header must be used, which unfortunately only supports a single non-wildcard
+domain as framing exception.
+
+To still support multiple (wildcard-) domain exceptions, the current app domain
+can be appended to the iFrame URL, e.g.:
+```
+https://example.com/?frame-ancestor=https%3A%2F%2Fexample.allthings.app
+```
+
+The framed MicroApp (`example.com` in this example) can then compare the
+`frame-ancestor` parameter (the URL-encoded `https://example.allthings.app`)
+with a predefined whitelist and if valid, set the appropriate `X-Frame-Options`
+header:
+```
+X-Frame-Options: ALLOW-FROM https://example.allthings.app
+```

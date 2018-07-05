@@ -108,8 +108,6 @@ Is to be used when a server acts as OAuth2 client and the client should have a
 long term API access on behalf of the user. Invalid or expired access tokens can
 be refreshed.
 
-**This is the preferred authorization grant type for MicroApps.**
-
 ### 1. Authorization
 
 When the user wants to use the 3rd-party application (i.e. the MicroApp), they

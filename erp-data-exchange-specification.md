@@ -203,6 +203,7 @@ The `registrationCodes.csv` file describes registration codes for one or more ut
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | Must always use "insert"
+| **id**               | [UUID](#uuid-type)          | UUID to identify registrationCode |
 | **residentId**               | [UUID](#uuid-type)          | Your UUID for the tenant/company/-user that is created when the registrationCode is used |
 | **registrationCode** | [string](#string-type)      |
 

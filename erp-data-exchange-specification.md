@@ -182,8 +182,8 @@ The `checkIns.csv` file describes the relation between a tenant, or company and 
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **importType**          | [Import Type](#import-type) | Must always use "insert"
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
-| **residentId**          | [UUID](#uuid-type)          | The foreign UUID of the tenant this check-in is for (_tenantss.csv_ or _companies.csv_ `id`)                           |
-| **registrationCodeId**          | [UUID](#uuid-type)          | The foreign UUID of the registrationCode this check-in is for (_registrationCodes.csv_ `id`)                           |
+| **residentId**          | [UUID](#uuid-type)          | The foreign UUID of the tenant or the company this check-in is for (_tenantss.csv_ or _companies.csv_ `id`)                           |
+| **registrationCodeId**          | [UUID](#uuid-type)          | The foreign UUID of the registrationCode this check-in is for this is optional. (_registrationCodes.csv_ `id`)                           |
 
 #### Example
 

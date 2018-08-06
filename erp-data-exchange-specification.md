@@ -188,11 +188,11 @@ The `checkIns.csv` file describes the relation between a tenant, or company and 
 #### Example
 
 ```csv
-importType,residentId,utilisationPeriodId
-insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
-insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4
-insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
-insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
+importType,residentId,utilisationPeriodId, registrationCodeId
+insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,f598b428-997f-11e8-9eb6-529269fb1459
+insert,7d87a383-1778-401b-a421-b60c900479c3,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,f598b6bc-997f-11e8-9eb6-529269fb145
+insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae,1be814ca-9980-11e8-9eb6-529269fb1459
+insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae,1be81286-9980-11e8-9eb6-529269fb1459
 ```
 
 ### registrationCodes.csv
@@ -205,13 +205,12 @@ The `registrationCodes.csv` file describes registration codes for one or more ut
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | Must always use "insert"
 | **id**               | [UUID](#uuid-type)          | UUID to identify registrationCode |
-| **residentId**               | [UUID](#uuid-type)          | Your UUID for the tenant/company/-user that is created when the registrationCode is used |
 | **registrationCode** | [string](#string-type)      |
 
 #### Example
 
 ```csv
-importType,residentId,registrationCode
+importType,id,residentId,registrationCode
 insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
 insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg

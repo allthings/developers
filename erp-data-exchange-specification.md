@@ -249,7 +249,7 @@ The `companies.csv` file describes companies.
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
-| **residentId**               | [UUID](#uuid-type)          | Your UUID for the company |
+| **id**               | [UUID](#uuid-type)          | Your UUID for the company |
 | **name** | [string](#string-type)      | The company name |
 | **email** | [Email](#string-type)      | The company agents email address
 

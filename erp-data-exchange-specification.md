@@ -204,13 +204,14 @@ The `registrationCodes.csv` file describes registration codes for one or more ut
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | Must always use "insert"
-| **id**               | [UUID](#uuid-type)          | UUID to identify registrationCode |
+| **registrationCodeId**               | [UUID](#uuid-type)          | UUID to identify registrationCode |
+| **residentId**       | [UUID](#uuid-type)          | The resident's UUID |
 | **registrationCode** | [string](#string-type)      |
 
 #### Example
 
 ```csv
-importType,id,residentId,registrationCode
+importType,registrationCodeId,residentId,registrationCode
 insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
 insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
@@ -233,11 +234,11 @@ The `tenants.csv` file describes a tenant.
 #### Example
 
 ```csv
-importType,residentId,name, email
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4, Harry Potter. harrypotter@hogwards.edu
-insert,ad257d42-1078-4279-9918-e774859555ae,Dolores Umbridge, doloresumbridge@hogwards.edu
-insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Severus Snape, severus.snape@hogwards.edu
-insert,41f93044-e050-4a33-9e52-ebdada55f9a7,Albus Dumbledore, albus-d@hogwards.edu
+importType,residentId,name,email
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Harry Potter,harrypotter@hogwards.edu
+insert,ad257d42-1078-4279-9918-e774859555ae,Dolores Umbridge,doloresumbridge@hogwards.edu
+insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Severus Snape,severus.snape@hogwards.edu
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,Albus Dumbledore,albus-d@hogwards.edu
 ```
 
 ### companies.csv
@@ -249,18 +250,18 @@ The `companies.csv` file describes companies.
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
 | **importType**       | [Import Type](#import-type) | One of:<br/>`insert`, `update` 
-| **id**               | [UUID](#uuid-type)          | Your UUID for the company |
+| **companyId**               | [UUID](#uuid-type)          | Your UUID for the company |
 | **name** | [string](#string-type)      | The company name |
 | **email** | [Email](#string-type)      | The company agents email address
 
 #### Example
 
 ```csv
-importType,residentId,name
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,Big Company, Inc., info@bigcomp.com
+importType,companyId,name,email
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,"Big Company, Inc.", info@bigcomp.com
 insert,ad257d42-1078-4279-9918-e774859555ae,Auto GmbH, ceo@autogmbh.com
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,Fuji LLC, boss@fuji.com
-insert,41f93044-e050-4a33-9e52-ebdada55f9a7,West & Smith, Inc., manager@ws.com
+insert,41f93044-e050-4a33-9e52-ebdada55f9a7,"West & Smith, Inc.", manager@ws.com
 ```
 
 ### agents.csv
@@ -273,6 +274,7 @@ The `agents.csv` file describes agent-user account data.
 | -------------- | ---------------------------------- | ----------------------- |
 | **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` 
 | **agentId**    | [UUID](#uuid-type)                 | Your UUID for the agent |
+| **company**    | [string](#string-type)             |
 | **email**      | [string](#string-type)             |
 | **firstName**  | [string](#string-type)             |
 | **lastName**   | [string](#string-type)             |

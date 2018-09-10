@@ -28,7 +28,7 @@ The Allthings platform supports two authorization grant types:
 2. The **authorization code grant** flow
 
 **Notice**
-> Please replace `api-sandbox.allthings.me` in the following sections with the
+> Please replace `api-sandbox.app.allthings.me` in the following sections with the
 > domain of the Allthings app you want to authorize against.  
 > Please also replace `www.example.com` with the domain of your
 > [MicroApp](micro-app.md) or widget.
@@ -48,7 +48,7 @@ When the user wants to use the 3rd-party application (i.e. a widget), they must
 be redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize
+https://api-sandbox.app.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -65,7 +65,7 @@ state         | Value used by the client to maintain state between the request a
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
+https://api-sandbox.app.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 
 If the user is not already logged into the app, they are redirected to a login
@@ -114,7 +114,7 @@ When the user wants to use the 3rd-party application (i.e. the MicroApp), they
 get redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize
+https://api-sandbox.app.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -131,7 +131,7 @@ state         | Value used by the client to maintain state between the request a
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile
+https://api-sandbox.app.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile
 &state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 

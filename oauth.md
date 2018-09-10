@@ -82,7 +82,7 @@ When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
 ```
-https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&state=color%3Agreen
+https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 
 ### 2. Make API calls
@@ -133,7 +133,8 @@ state         | Value used by the client to maintain state between the request a
 **Example URL:**
 
 ```
-https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d&scope=user:profile
+https://api-sandbox.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile
+&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 
 As MicroApps usually run inside the context of the Allthings app, the user is
@@ -153,7 +154,7 @@ When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with an auth code appended as `code` query parameter:
 
 ```
-https://www.example.com/?code=zzzzzz
+https://www.example.com/?code=zzzzzz&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
 ```
 
 Your app will have to use the auth code to request an `access_token` by
@@ -198,7 +199,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "access_token": "aaaaaa",
   "expires_in": 3600,
   "token_type": "bearer",
-  "scope": null,
+  "scope": "user:profile",
   "refresh_token": "bbbbbb"
 }
 ```
@@ -259,7 +260,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "access_token":  "aaaaaa",
   "expires_in": 3600,
   "token_type": "bearer",
-  "scope": null,
+  "scope": "user:profile",
   "refresh_token":  "bbbbbb"
 }
 ```

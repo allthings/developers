@@ -271,6 +271,7 @@ These options are outlined here:
 
 | Field            | Type         | Description                                                                   |
 | ---------------- | ------------ | ----------------------------------------------------------------------------- |
+| **agentPermissions**   | Array of Strings      | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] |
 | **autoImport**   | boolean      | Controls whether to automatically import, or to send confirmation email first |
 | **locale** |  ISO-639 Language Codes  and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`   |
 | **receiveAdminNotifications** |  boolean | Receives Notification-Mails for Tickets with no Assignee. Default setting is true   |

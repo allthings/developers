@@ -50,6 +50,7 @@ Issues in resolving data relationships will result in an error, terminating the 
 * Column field names are case-sensitive
 * All fields are required when _importType_ is `insert`
 * Only UUID type fields required when _importType_ is `update`
+* Files must use the UTF-8 character encoding
 
 ### uuidRemappings.csv
 

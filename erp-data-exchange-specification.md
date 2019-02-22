@@ -268,12 +268,12 @@ The `responsibilityChannels.csv` file describes the relation between an agent an
 
 #### Fields
 
-| Field            | Type                            | Description                                                                                        |
-| ---------------- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                  |
-| **agentId**      | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)         |
-| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the property that the team belongs to ([resource].csv\_ `id`)                  |
-| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (#resource-type `property/group/unit`) |
+| Field            | Type                            | Description                                                                                |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
+| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                          |
+| **agentId**      | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`) |
+| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource].csv)                |
+| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property/group/unit`)        |
 
 #### Example
 

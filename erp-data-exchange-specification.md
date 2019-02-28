@@ -15,7 +15,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [tenants.csv](#tenantscsv)
     1.  [agents.csv](#agentscsv)
     1.  [propertyTeams.csv](#propertyteamscsv)
-    1.  [responsibilityChannels.csv](#responsibilitychannelscsv)
+    1.  [userRelations.csv](#userRelationscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Country Type](#country-type)
@@ -262,18 +262,18 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 ```
 
-### responsibilityChannels.csv
+### userRelations.csv
 
-The `responsibilityChannels.csv` file describes the relation between an agent and a resource channel
+The `userRelations.csv` file describes the relation between an agent and a resource channel
 
 #### Fields
 
-| Field            | Type                            | Description                                                                                |
-| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                          |
-| **agentId**      | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`) |
-| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv)                |
-| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property/group/unit`)        |
+| Field            | Type                            | Description                                                                                 |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------- |
+| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                           |
+| **userId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
+| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) |
+| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
 
 #### Example
 
@@ -281,8 +281,8 @@ The `responsibilityChannels.csv` file describes the relation between an agent an
 importType,agentId,resourceId,resourceType
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, group
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, group
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
 ```
 
 ### manifest.json

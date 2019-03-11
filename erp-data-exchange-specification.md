@@ -264,7 +264,7 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 
 ### userRelations.csv
 
-The `userRelations.csv` file describes the relation between an agent and a resource channel
+The `userRelations.csv` file describes the relation between an agent and a resource
 
 #### Fields
 

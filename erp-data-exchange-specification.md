@@ -13,8 +13,9 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [utilisationPeriods.csv](#utilisationperiodscsv)
     1.  [tenantCheckIns.csv](#tenantcheckinscsv)
     1.  [tenants.csv](#tenantscsv)
-    1.  [propertyTeams.csv](#propertyteamscsv)
     1.  [agents.csv](#agentscsv)
+    1.  [propertyTeams.csv](#propertyteamscsv)
+    1.  [userRelations.csv](#userRelationscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Country Type](#country-type)
@@ -45,12 +46,12 @@ Issues in resolving data relationships will result in an error, terminating the 
 
 #### Global Observations:
 
-* Columns can be in any order
-* First row in CSV file must contain column field name
-* Column field names are case-sensitive
-* Unless noted otherwise, all fields are required when _importType_ is `insert`
-* Only UUID type fields required when _importType_ is `update`
-* Files must use the UTF-8 character encoding
+- Columns can be in any order
+- First row in CSV file must contain column field name
+- Column field names are case-sensitive
+- Unless noted otherwise, all fields are required when _importType_ is `insert`
+- Only UUID type fields required when _importType_ is `update`
+- Files must use the UTF-8 character encoding
 
 ### uuidRemappings.csv
 
@@ -58,12 +59,12 @@ The `uuidRemappings.csv` file allows for the remapping of UUIDs on resources. **
 
 #### Fields
 
-| Field        | Type                       | Description                               |
-| ------------ | -------------------------- | ----------------------------------------- |
-| **importType** | [Import Type](#import-type) | Always use "update" |
-| **resource** | [Resource](#resource-type) | The type of resource these UUIDs refer to |
-| **oldUuid**  | [UUID](#uuid-type)         | The previous UUID                         |
-| **newUuid**  | [UUID](#uuid-type)         | The new UUID                              |
+| Field          | Type                        | Description                               |
+| -------------- | --------------------------- | ----------------------------------------- |
+| **importType** | [Import Type](#import-type) | Always use "update"                       |
+| **resource**   | [Resource](#resource-type)  | The type of resource these UUIDs refer to |
+| **oldUuid**    | [UUID](#uuid-type)          | The previous UUID                         |
+| **newUuid**    | [UUID](#uuid-type)          | The new UUID                              |
 
 #### Example
 
@@ -81,11 +82,11 @@ The `properties.csv` file imports property resource data.
 
 #### Fields
 
-| Field          | Type                        | Description                 |
-| -------------- | --------------------------- | --------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
-| **id**         | [UUID](#uuid-type)          | Your UUID for this property |
-| **name**       | [string](#string-type)      | The property name           |
+| Field          | Type                        | Description                    |
+| -------------- | --------------------------- | ------------------------------ |
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update` |
+| **id**         | [UUID](#uuid-type)          | Your UUID for this property    |
+| **name**       | [string](#string-type)      | The property name              |
 
 #### Example
 
@@ -104,7 +105,7 @@ The `groups.csv` file imports group data.
 
 | Field           | Type                            | Description                                                                    |
 | --------------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| **importType**  | [Import Type](#import-type)     | One of:<br/>`insert`, `update`
+| **importType**  | [Import Type](#import-type)     | One of:<br/>`insert`, `update`                                                 |
 | **id**          | [UUID](#uuid-type)              | Your UUID for the group                                                        |
 | **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property the group belongs to (_properties.csv_ `id`)  |
 | **name**        | [string](#string-type)          |
@@ -131,7 +132,7 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 
 | Field          | Type                        | Description                                                           |
 | -------------- | --------------------------- | --------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                        |
 | **id**         | [UUID](#uuid-type)          | Your UUID for the unit                                                |
 | **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
 | **name**       | [string](#string-type)      |
@@ -154,7 +155,7 @@ The `utilisationPeriods.csv` describes utilisation periods.
 
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                                    |
 | **id**         | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
 | **unitId**     | [UUID](#uuid-type)          | The foreign UUID of the unit the utilisation period belongs to (_units.csv_ `id`) |
 | **startDate**  | [Date](#date-type)          |
@@ -178,7 +179,7 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 | Field                | Type                        | Description              |
 | -------------------- | --------------------------- | ------------------------ |
-| **importType**       | [Import Type](#import-type) | Must always use "insert"
+| **importType**       | [Import Type](#import-type) | Must always use "insert" |
 | **id**               | [UUID](#uuid-type)          | Your UUID for the tenant |
 | **registrationCode** | [string](#string-type)      |
 
@@ -200,7 +201,7 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 | Field                   | Type                        | Description                                                                                           |
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **importType**          | [Import Type](#import-type) | Must always use "insert"
+| **importType**          | [Import Type](#import-type) | Must always use "insert"                                                                              |
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
 | **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
 
@@ -220,14 +221,14 @@ The `agents.csv` file describes agent-user account data.
 
 #### Fields
 
-| Field          | Type                               | Description             |
-| -------------- | ---------------------------------- | ----------------------- |
-| **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` 
-| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent |
+| Field          | Type                               | Description                    |
+| -------------- | ---------------------------------- | ------------------------------ |
+| **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
+| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent        |
 | **email**      | [string](#string-type)             |
 | **firstName**  | [string](#string-type)             |
 | **lastName**   | [string](#string-type)             |
-| **phone**      | [Phone Number](#phone-number-type) | Optional
+| **phone**      | [Phone Number](#phone-number-type) | Optional                       |
 
 #### Example
 
@@ -247,7 +248,7 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, or `delete` 
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, or `delete`                                                 |
 | **propertyId** | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`) |
 | **agentId**    | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)        |
 
@@ -261,6 +262,29 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 ```
 
+### userRelations.csv
+
+The `userRelations.csv` file describes the relation between an agent and a resource
+
+#### Fields
+
+| Field            | Type                            | Description                                                                                 |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------- |
+| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                           |
+| **userId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
+| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) |
+| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
+
+#### Example
+
+```csv
+importType,agentId,resourceId,resourceType
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
+```
+
 ### manifest.json
 
 The `manifest.json` file controls the Import Jobs execution and behavior.
@@ -270,14 +294,14 @@ These options are outlined here:
 
 #### Fields
 
-| Field            | Type         | Description                                                                   |
-| ---------------- | ------------ | ----------------------------------------------------------------------------- |
-| **agentPermissions**   | Array of Strings      | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] |
-| **autoImport**   | boolean      | Controls whether to automatically import, or to send confirmation email first |
-| **locale** |  ISO-639 Language Codes  and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`   |
-| **receiveAdminNotifications** |  boolean | Receives Notification-Mails for Tickets with no Assignee. Default setting is true   |
-| **reportEmails** | Array of Strings | List of email addresses which should receive report emails for this job       |
-| **unitType** | string |  Controls the type of import Units, one of type 'rented' or 'owned'      |
+| Field                         | Type                                              | Description                                                                                                                                                       |
+| ----------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **agentPermissions**          | Array of Strings                                  | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] |
+| **autoImport**                | boolean                                           | Controls whether to automatically import, or to send confirmation email first                                                                                     |
+| **locale**                    | ISO-639 Language Codes and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`                                                                                                      |
+| **receiveAdminNotifications** | boolean                                           | Receives Notification-Mails for Tickets with no Assignee. Default setting is true                                                                                 |
+| **reportEmails**              | Array of Strings                                  | List of email addresses which should receive report emails for this job                                                                                           |
+| **unitType**                  | string                                            | Controls the type of import Units, one of type 'rented' or 'owned'                                                                                                |
 
 #### Example
 
@@ -301,7 +325,7 @@ In other words, a single invalid field will terminate the entire import process 
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.            | `CH`, `DE`, `FR`                                                                                                       |
 | **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
-| **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`, `update`, `delete`                                                                | `insert`                                                                                                               |
+| **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`, `update`, `delete`                                                        | `insert`                                                                                                               |
 | **Phone Number**<a name="phone-number-type" />                | plus symbol `+` followed by only numbers, no formatting                                         | `+4134567890`                                                                                                          |
 | **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                        | `123-4567`, `3457`, `93012`                                                                                            |
 | **Resource**<a name="resource-type" />                        | One of:<br/>`property`, `group`, `unit`, `utilisationPeriod`                                    | `group`                                                                                                                |

@@ -233,11 +233,11 @@ The `agents.csv` file describes agent-user account data.
 #### Example
 
 ```csv
-importType,company,email,firstName,id,lastName,phone
-insert,Mueller Group,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
-insert,Douglas Ltd,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,+9679915262
-update,,sjudah@Amos.test,,ea9012a3-3e98-4be3-8d60-6af255759962,,+5643541048
-update,,,,da79623e-a03b-4c4f-a569-571ce4ac620b,,+8804272042
+importType,email,firstName,id,lastName,phone
+insert,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
+insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,
+update,sjudah@Amos.test,Saean,ea9012a3-3e98-4be3-8d60-6af255759962,Judah,+5643541048
+update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,
 ```
 
 ### propertyTeams.csv

@@ -246,20 +246,22 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 
 #### Fields
 
-| Field          | Type                        | Description                                                                       |
-| -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, or `delete`                                                 |
-| **propertyId** | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`) |
-| **agentId**    | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)        |
+| Field             | Type                        | Description                                                                                           |
+| ----------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **importType**    | [Import Type](#import-type) | One of:<br/>`insert`, or `delete`                                                                     |
+| **propertyId**    | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`)                     |
+| **agentId**       | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)                            |
+| **validFromDate** | [Date](#date-type)          | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [Date](#date-type)          | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
 
 #### Example
 
 ```csv
-importType,agentId,propertyId
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
+importType,agentId,propertyId,validFromDate,validToDate
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01,2019-03-01
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01,2019-03-01
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01,2019-03-01
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01,2019-03-01
 ```
 
 ### userRelations.csv

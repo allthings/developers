@@ -273,7 +273,7 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 | Field            | Type                            | Description                                                                                 |
 | ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------- |
 | **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                           |
-| **userId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
+| **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
 | **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) |
 | **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
 

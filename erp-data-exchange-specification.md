@@ -305,7 +305,7 @@ These options are outlined here:
 | **reportEmails**              | Array of Strings                                  | List of email addresses which should receive report emails for this job                                                                                           |
 | **unitType**                  | string                                            | Controls the type of import Units, one of type 'rented' or 'owned'                                                                                                |
 
-#### Example
+#### Examples
 
 ```json
 {
@@ -314,6 +314,12 @@ These options are outlined here:
   "receiveAdminNotifications": false,
   "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
 }
+```
+
+if no default option should be overwritten, the manifest.json should include at least an empty JSON-Object:
+
+```json
+{}
 ```
 
 ## Data Types

@@ -35,8 +35,8 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-There are 9 recognised CSV files:
-[_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv),
+There are 10 recognised CSV files:
+[_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv), [_userRelations.csv_](#userrelationscsv)
 [_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
 [_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv).
 It is not required that each CSV be included in each Import Job.
@@ -251,17 +251,17 @@ The `propertyTeams.csv` file describes the relation between a property and an ag
 | **importType**    | [Import Type](#import-type) | One of:<br/>`insert`, or `delete`                                                                     |
 | **propertyId**    | [UUID](#uuid-type)          | The foreign UUID of the property that the team belongs to (_properties.csv_ `id`)                     |
 | **agentId**       | [UUID](#uuid-type)          | The foreign UUID of the agent that belongs to the team (_agents.csv_ `id`)                            |
-| **validFromDate** | [Date](#date-type)          | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
-| **validToDate**   | [Date](#date-type)          | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
 
 #### Example
 
 ```csv
 importType,agentId,propertyId,validFromDate,validToDate
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01,2019-03-01
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01,2019-03-01
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01,2019-03-01
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01,2019-03-01
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 ```
 
 ### userRelations.csv
@@ -276,15 +276,17 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 | **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
 | **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) |
 | **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
+| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
 
 #### Example
 
 ```csv
-importType,agentId,resourceId,resourceType
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b, property
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627, property
+importType,agentId,resourceId,resourceType,validFromDate,validToDate
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 ```
 
 ### manifest.json
@@ -332,7 +334,8 @@ In other words, a single invalid field will terminate the entire import process 
 | Type                                                          | Description                                                                                     | Example                                                                                                                |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.            | `CH`, `DE`, `FR`                                                                                                       |
-| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
+| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`
+| **DateTime**<a name="datetime-type" />                                | [ISO 8601 Combined date and time representation](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)  | `2015-01-17T18:23:02+06:45`, `2015-01-17T18:23:02Z`                                                                                   |
 | **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`, `update`, `delete`                                                        | `insert`                                                                                                               |
 | **Phone Number**<a name="phone-number-type" />                | plus symbol `+` followed by only numbers, no formatting                                         | `+4134567890`                                                                                                          |
 | **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                        | `123-4567`, `3457`, `93012`                                                                                            |

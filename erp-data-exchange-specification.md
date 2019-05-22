@@ -177,14 +177,14 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 #### Fields
 
-| Field                | Type                        | Description              |
-| -------------------- | --------------------------- | ------------------------ |
-| **importType**       | [Import Type](#import-type) | Must always use "insert" |
-| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant |
-| **registrationCode** | [string](#string-type)      |
-| **email** | [string](#string-type)      | Optional
-| **phone** | [Phone Number](#phone-number-type)      | Optional
-| **name** | [string](#string-type)      | Optional
+| Field                | Type                               | Description                    |
+| -------------------- | ---------------------------------- | ------------------------------ |
+| **importType**       | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
+| **id**               | [UUID](#uuid-type)                 | Your UUID for the tenant       |
+| **registrationCode** | [string](#string-type)             |                                |
+| **email**            | [string](#string-type)             | Optional                       |
+| **phone**            | [Phone Number](#phone-number-type) | Optional                       |
+| **name**             | [string](#string-type)             | Optional                       |
 #### Example
 
 ```csv

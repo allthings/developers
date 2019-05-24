@@ -203,7 +203,7 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 | Field                   | Type                        | Description                                                                                           |
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **importType**          | [Import Type](#import-type) | Must always use "insert"                                                                              |
+| **importType**          | [Import Type](#import-type) | One of:<br/>`insert`, `update                                                                              |
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
 | **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
 

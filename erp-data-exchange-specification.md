@@ -177,17 +177,19 @@ The `tenants.csv` file describes registration codes for a tenant.
 
 #### Fields
 
-| Field                | Type                        | Description              |
-| -------------------- | --------------------------- | ------------------------ |
-| **importType**       | [Import Type](#import-type) | Must always use "insert" |
-| **id**               | [UUID](#uuid-type)          | Your UUID for the tenant |
-| **registrationCode** | [string](#string-type)      |
-
+| Field                | Type                               | Description                    |
+| -------------------- | ---------------------------------- | ------------------------------ |
+| **importType**       | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
+| **id**               | [UUID](#uuid-type)                 | Your UUID for the tenant       |
+| **registrationCode** | [string](#string-type)             |                                |
+| **email**            | [string](#string-type)             | Optional                       |
+| **phone**            | [Phone Number](#phone-number-type) | Optional                       |
+| **name**             | [string](#string-type)             | Optional                       |
 #### Example
 
 ```csv
-importType,id,registrationCode
-insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7
+importType,id,registrationCode,email,phone,name
+insert,db8b732f-e0ff-41d9-9c15-ca1be2776fd4,3fdfdssf7,max@mustermann.de,+1700471246,Max Mustermann
 insert,ad257d42-1078-4279-9918-e774859555ae,18ggjbs9d
 insert,2f0fc4c6-3a5e-4cd7-9007-9add50653be5,ffhh3t4jg
 insert,41f93044-e050-4a33-9e52-ebdada55f9a7,1awh74hgf
@@ -201,7 +203,7 @@ The `tenantCheckIns.csv` file describes the relation between a tenant and a util
 
 | Field                   | Type                        | Description                                                                                           |
 | ----------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **importType**          | [Import Type](#import-type) | Must always use "insert"                                                                              |
+| **importType**          | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                                                        |
 | **utilisationPeriodId** | [UUID](#uuid-type)          | The foreign UUID of the utilisation period the tenant check-in is for (_utilisationPeriods.csv_ `id`) |
 | **tenantId**            | [UUID](#uuid-type)          | The foreign UUID of the tenant tenant check-in is for (_tenantss.csv_ `id`)                           |
 

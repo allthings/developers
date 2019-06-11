@@ -13,6 +13,7 @@ Use the steps to create new credentials for a new external data-provider.
     Choose access-type `programmatic  assess`   
     
 3. Add the new user to group `import` (attached policies should be `import-access`)  
+    _Important: If the uploaded data from this user should be imported via nisaba, add the user to group `nisaba-import` instead._
 
 4. Download the credentials, maybe test them in cyberduck and send them to the customer vie a save channel (keybase).  
     Also add the credentials to the keybase-git-repository.  

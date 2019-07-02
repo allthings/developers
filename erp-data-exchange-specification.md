@@ -46,12 +46,12 @@ Issues in resolving data relationships will result in an error, terminating the 
 
 #### Global Observations:
 
-- Columns can be in any order
-- First row in CSV file must contain column field name
-- Column field names are case-sensitive
-- Unless noted otherwise, all fields are required when _importType_ is `insert`
-- Only UUID type fields required when _importType_ is `update`
-- Files must use the UTF-8 character encoding
+-   Columns can be in any order
+-   First row in CSV file must contain column field name
+-   Column field names are case-sensitive
+-   Unless noted otherwise, all fields are required when _importType_ is `insert`
+-   Only UUID type fields required when _importType_ is `update`
+-   Files must use the UTF-8 character encoding
 
 ### uuidRemappings.csv
 
@@ -308,15 +308,93 @@ These options are outlined here:
 | **receiveAdminNotifications** | boolean                                           | Receives Notification-Mails for Tickets with no Assignee. Default setting is true                                                                                 |
 | **reportEmails**              | Array of Strings                                  | List of email addresses which should receive report emails for this job                                                                                           |
 | **unitType**                  | string                                            | Controls the type of import Units, one of type 'rented' or 'owned'                                                                                                |
+| **webhooks**                  | Array of [webhooks](#webhooks)                    | List of [webhooks](#webhooks) that can be called for each job, triggered by defined events.                                                                       |
 
 #### Examples
 
 ```json
 {
-  "autoImport": false,
-  "locale": "de_DE",
-  "receiveAdminNotifications": false,
-  "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
+	"autoImport": false,
+	"locale": "de_DE",
+	"receiveAdminNotifications": false,
+	"reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"],
+	"webhooks": [
+		{
+			"description": "allthings#slackbot-noise",
+			"format": "slack",
+			"triggers": true,
+			"url": "https://hooks.slack.com/services/"
+		}
+	]
+}
+```
+
+### webhooks
+
+If webhooks are defined, each webhook is called when the defined event triggers. The webhooks can be defined in the import configuration or in the manifest.json.
+The webhooks from the manifest.json are merged to the configuration.  
+With this, a customer can define a webhook and also the event when it should be called.
+
+The options webhooks needed are outlined here:
+
+#### Fields
+
+| Field           | Type                        | Description                                                                                                                                        |
+| --------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **description** | string                      | A description or name of the webhook.                                                                                                              |
+| **format**      | string                      | Either `'slack'` or `'rest'`                                                                                                                       |
+| **triggers**    | Array of strings OR boolean | Either an array of trigger-events or `true` to match all. Possible trigger events are: `'imported', 'created', 'failed', 'processing'`             |
+| **url**         | string                      | The url of the webhook which is called with a `put` request. This url can include some parameters like f.e. `jobID` which are just passed through. |
+
+#### Examples
+
+```json
+{
+	"description": "custom-slack-channel",
+	"format": "slack",
+	"triggers": true,
+	"url": "https://hooks.slack.com/services/cdsdfe3"
+}
+```
+
+or
+
+```json
+{
+	"description": "custom-rest-api",
+	"format": "rest",
+	"triggers": ["imported", "failed"],
+	"url": "https://some/rest/endpoint"
+}
+```
+
+### webhook-data
+
+The payload that is sent to the rest api includes following fields:
+
+#### Fields
+
+| Field             | Type             | Description                                                                         |
+| ----------------- | ---------------- | ----------------------------------------------------------------------------------- |
+| **customerId**    | string           | The customerID, defined in the import configuration                                 |
+| **jobCreateDate** | number           | The timestamp when the job was created                                              |
+| **jobId**         | string           | The nisaba jobID                                                                    |
+| **jobStatus**     | string           | The status of the job lik f.e.: `'importing', 'pending', 'processing', 'validated'` |
+| **jobUpdateDate** | number           | The timestamp when the job was last updated                                         |
+| **status**        | Array of strings | The list of the imported CSVs                                                       |
+| **totalJobRows**  | number           | The total number of imported rows                                                   |
+
+#### Example
+
+```json
+{
+	"customerId": "foo-bar",
+	"jobCreateDate": 1554465632000,
+	"jobId": "sfd7we",
+	"jobStatus": "finished",
+	"jobUpdateDate": 1554465813000,
+	"status": ["properties.csv"],
+	"totalJobRows": 23
 }
 ```
 

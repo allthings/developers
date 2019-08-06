@@ -19,6 +19,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [agentPermissions.csv](#agentPermissionscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
+    1.  [Agent Type](#agent-type)
     1.  [Country Type](#country-type)
     1.  [Date Type](#date-type)
     1.  [Import Type Enumerable Type](#import-type)
@@ -241,11 +242,11 @@ The `agents.csv` file describes agent-user account data.
 #### Example
 
 ```csv
-importType,email,firstName,id,lastName,phone
+importType,email,firstName,id,lastName,phone,country,city,streetName,houseNumber,zipcode
 insert,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
 insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,
 update,sjudah@Amos.test,Saean,ea9012a3-3e98-4be3-8d60-6af255759962,Judah,+5643541048
-update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,
+update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,DE,Freiburg,Merzhauserstraße,161,79100
 ```
 
 ### propertyTeams.csv
@@ -291,11 +292,11 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 #### Example
 
 ```csv
-importType,agentId,resourceId,resourceType,validFromDate,validToDate
+importType,agentId,resourceId,resourceType,validFromDate,validToDate,jobRole
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z,gardener
 ```
 
 
@@ -312,6 +313,14 @@ The `agentPermissions.csv` file describes the agents permissions on a certain re
 | **agentType**      | [Agent Type](#agent-type)       | Defines the type of an agent |
 | **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
 | **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+
+
+#### Example
+
+```csv
+importType,resourceType,resourceId,agentId,agentType,validFromDate,validToDate
+insert,property,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,craftsmen,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+
 ### manifest.json
 
 The `manifest.json` file controls the Import Jobs execution and behavior.

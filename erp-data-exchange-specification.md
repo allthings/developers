@@ -320,6 +320,7 @@ The `agentPermissions.csv` file describes the agents permissions on a certain re
 ```csv
 importType,resourceType,resourceId,agentId,agentType,validFromDate,validToDate
 insert,property,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,craftsmen,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+```
 
 ### manifest.json
 

@@ -227,10 +227,15 @@ The `agents.csv` file describes agent-user account data.
 | -------------- | ---------------------------------- | ------------------------------ |
 | **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
 | **id**         | [UUID](#uuid-type)                 | Your UUID for the agent        |
-| **email**      | [string](#string-type)             |
-| **firstName**  | [string](#string-type)             |
-| **lastName**   | [string](#string-type)             |
+| **email**      | [string](#string-type)             |                                |
+| **firstName**  | [string](#string-type)             |                                |
+| **lastName**   | [string](#string-type)             |                                |
 | **phone**      | [Phone Number](#phone-number-type) | Optional                       |
+| **country**    | [Country](#country-type)           | Optional                       |
+| **city**       | [string](#string-type)             | Optional                       |
+| **streetName** | [string](#string-type)             | Optional                       |
+| **housenumber**| [string](#string-type)             | Optional                       |
+| **zipcode**    | [Postal Code](#postalcode-type)    | Optional                       |
 
 #### Example
 
@@ -280,6 +285,7 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 | **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
 | **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
 | **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+| **jobRole**   | [string](#string-type)  | Optional |
 
 #### Example
 
@@ -291,6 +297,20 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 ```
 
+
+### agentPermissions.csv
+
+The `agentPermissions.csv` file describes the agents permissions on a certain resource via predefined agentTypes
+
+| Field              | Type                            | Description                          |
+| ------------------ | ------------------------------- | ------------------------------------ |
+| **importType**     | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`    |
+| **resourceType**   | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)
+| **resourceId**     | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) | (#resource-type).csv) |
+| **agentId**        | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
+| **agentType**      | [Agent Type](#agent-type)       | Defines the type of an agent |
+| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
 ### manifest.json
 
 The `manifest.json` file controls the Import Jobs execution and behavior.
@@ -335,6 +355,7 @@ In other words, a single invalid field will terminate the entire import process 
 
 | Type                                                          | Description                                                                                     | Example                                                                                                                |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Agent Type**<a name="agent-type" />                          | One of:<br/> `agent`, `craftsmen`            | `craftsmen`                                                                                                       |
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.            | `CH`, `DE`, `FR`                                                                                                       |
 | **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`
 | **DateTime**<a name="datetime-type" />                                | [ISO 8601 Combined date and time representation](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)  | `2015-01-17T18:23:02+06:45`, `2015-01-17T18:23:02Z`                                                                                   |

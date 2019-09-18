@@ -236,7 +236,7 @@ The `agents.csv` file describes agent-user account data.
 | **country**    | [Country](#country-type)           | Optional                       |
 | **city**       | [string](#string-type)             | Optional                       |
 | **streetName** | [string](#string-type)             | Optional                       |
-| **housenumber**| [string](#string-type)             | Optional                       |
+| **houseNumber**| [string](#string-type)             | Optional                       |
 | **zipcode**    | [Postal Code](#postalcode-type)    | Optional                       |
 
 #### Example

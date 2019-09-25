@@ -239,11 +239,11 @@ The `agents.csv` file describes agent-user account data.
 #### Example
 
 ```csv
-importType,email,firstName,id,lastName,phone,country,city,streetName,houseNumber,zipcode
+importType,email,firstName,id,lastName,phone,serviceProviderId
 insert,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
-insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,
+insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag
 update,sjudah@Amos.test,Saean,ea9012a3-3e98-4be3-8d60-6af255759962,Judah,+5643541048
-update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,DE,Freiburg,Merzhauserstraße,161,79100
+update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,07955b8c-41ac-4a47-ae57-3c6fb6650ef4
 ```
 
 ### propertyTeams.csv
@@ -331,8 +331,15 @@ The `serviceProviders.csv` file describes a service providers name + address
 | **country**                   | [Country](#country-type)           |                        |
 | **city**                      | [string](#string-type)             |                        |
 | **streetName**                | [string](#string-type)             |                         |
-| **housenumber**               | [string](#string-type)             |                        |
+| **houseNumber**               | [string](#string-type)             |                        |
 | **zipCode**                   | [Postal Code](#postalcode-type)    |                        |
+
+#### Example
+
+```csv
+importType,id,name,country,city,streetName,houseNumber,zipcCode
+insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100
+```
 
 ### manifest.json
 

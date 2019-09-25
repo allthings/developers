@@ -17,6 +17,7 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [propertyTeams.csv](#propertyteamscsv)
     1.  [userRelations.csv](#userRelationscsv)
     1.  [agentPermissions.csv](#agentPermissionscsv)
+    1.  [serviceProviders.csv](#serviceProviderscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Agent Type](#agent-type)
@@ -37,10 +38,10 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-There are 10 recognised CSV files:
+There are 12 recognised CSV files:
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv), [_userRelations.csv_](#userrelationscsv)
 [_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
-[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv).
+[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv).
 It is not required that each CSV be included in each Import Job.
 For example, it is possible to include only the `agents.csv` file, or any other combination.
 However, when inserting new data, the necessary data to resolve the foreign ID relationships _must_ also be included.

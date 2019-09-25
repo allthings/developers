@@ -225,19 +225,15 @@ The `agents.csv` file describes agent-user account data.
 
 #### Fields
 
-| Field          | Type                               | Description                    |
-| -------------- | ---------------------------------- | ------------------------------ |
-| **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
-| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent        |
-| **email**      | [string](#string-type)             |                                |
-| **firstName**  | [string](#string-type)             |                                |
-| **lastName**   | [string](#string-type)             |                                |
-| **phone**      | [Phone Number](#phone-number-type) | Optional                       |
-| **country**    | [Country](#country-type)           | Optional                       |
-| **city**       | [string](#string-type)             | Optional                       |
-| **streetName** | [string](#string-type)             | Optional                       |
-| **housenumber**| [string](#string-type)             | Optional                       |
-| **zipcode**    | [Postal Code](#postalcode-type)    | Optional                       |
+| Field                 | Type                               | Description                    |
+| --------------------- | ---------------------------------- | ------------------------------ |
+| **importType**        | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
+| **id**                | [UUID](#uuid-type)                 | Your UUID for the agent        |
+| **email**             | [string](#string-type)             |                                |
+| **firstName**         | [string](#string-type)             |                                |
+| **lastName**          | [string](#string-type)             |                                |
+| **phone**             | [Phone Number](#phone-number-type) | Optional                       |
+| **serviceProviderId** | [UUID](#uuid-type)                 | Optional                       |
 
 #### Example
 
@@ -321,6 +317,21 @@ The `agentPermissions.csv` file describes the agents permissions on a certain re
 importType,resourceType,resourceId,agentId,agentType,validFromDate,validToDate
 insert,property,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,craftsmen,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 ```
+
+### serviceProviders.csv
+
+The `serviceProviders.csv` file describes a service providers name + address
+
+| Field                         | Type                               | Description                          |
+| ----------------------------- | ---------------------------------- | -------------------------------------|
+| **importType**                | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`    |
+| **id**                        | [UUID](#uuid-type)                 | Your UUID for the service provider   |
+| **name**                      | [string](#string-type)             | Name of the service provider         |
+| **country**                   | [Country](#country-type)           |                        |
+| **city**                      | [string](#string-type)             |                        |
+| **streetName**                | [string](#string-type)             |                         |
+| **housenumber**               | [string](#string-type)             |                        |
+| **zipCode**                   | [Postal Code](#postalcode-type)    |                        |
 
 ### manifest.json
 

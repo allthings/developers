@@ -337,7 +337,7 @@ The `serviceProviders.csv` file describes a service providers name + address
 #### Example
 
 ```csv
-importType,id,name,country,city,streetName,houseNumber,zipcCode
+importType,id,name,country,city,streetName,houseNumber,zipCode
 insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100
 ```
 

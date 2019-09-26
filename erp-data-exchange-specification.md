@@ -333,12 +333,12 @@ The `serviceProviders.csv` file describes a service providers name + address
 | **streetName**                | [string](#string-type)             |                         |
 | **houseNumber**               | [string](#string-type)             |                        |
 | **zipCode**                   | [Postal Code](#postalcode-type)    |                        |
-
+| **phone**                     | [Phone Number](#phone-number-type) | Optional                       |
 #### Example
 
 ```csv
-importType,id,name,country,city,streetName,houseNumber,zipCode
-insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100
+importType,id,name,country,city,streetName,houseNumber,zipCode,phone
+insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100,+4907113434
 ```
 
 ### manifest.json

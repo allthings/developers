@@ -14,7 +14,7 @@ OAuth                 | Allthings platform
 ----------------------|-------------------
 Resource owner        | User
 Resource server       | Allthings platform
-Authorisation service | Allthings platform
+Authorisation service | Allthings accounts
 Client application    | your Micro-App
 
 The authorization the user grants to your app is represented by an
@@ -28,10 +28,18 @@ The Allthings platform supports two authorization grant types:
 2. The **authorization code grant** flow
 
 **Notice**
-> Please replace `api-sandbox.app.allthings.me` in the following sections with the
-> domain of the Allthings app you want to authorize against.  
-> Please also replace `www.example.com` with the domain of your
+> Please replace `www.example.com` with the domain of your
 > [MicroApp](micro-app.md) or widget.
+
+## URLs
+
+### Authorization URL
+
+`https://accounts.allthings.me/oauth/authorize`
+
+### Token URL
+
+`https://accounts.allthings.me/oauth/token`
 
 ## Implicit Grant
 
@@ -48,7 +56,7 @@ When the user wants to use the 3rd-party application (i.e. a widget), they must
 be redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.app.allthings.me/oauth/authorize
+https://accounts.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -59,13 +67,13 @@ Key           | Value
 client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `token`
 redirect_uri  | The widget URL, e.g. `https://www.example.com`
-scope         | Specifies the scope of the access (currently only `user:profile`)
-state         | Value used by the client to maintain state between the request and callback (for example an urlencoded json object)
+scope         | Specifies the scope of the access (currently only `user-profile:read`)
+state         | Value used by the client to maintain state between the request and callback
 
 **Example URL:**
 
 ```
-https://api-sandbox.app.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
+https://accounts.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=token&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user-profile:read&state=XC13Did93
 ```
 
 If the user is not already logged into the app, they are redirected to a login
@@ -82,7 +90,7 @@ When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with the access token as URI fragment:
 
 ```
-https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
+https://example.com#access_token=aaaaaa&expires_in=3600&token_type=bearer&state=XC13Did93
 ```
 
 ### 2. Make API calls
@@ -114,7 +122,7 @@ When the user wants to use the 3rd-party application (i.e. the MicroApp), they
 get redirected to the authorisation endpoint first:
 
 ```
-https://api-sandbox.app.allthings.me/oauth/authorize
+https://accounts.allthings.me/oauth/authorize
 ```
 
 The authorisation endpoint requires the following query parameters for the
@@ -125,14 +133,14 @@ Key           | Value
 client_id     | Will be provided by Allthings, `xxxxxx` in the example below
 response_type | `code`
 redirect_uri  | The MicroApp URL, e.g. `https://www.example.com`
-scope         | Specifies the scope of the access (currently only `user:profile`)
-state         | Value used by the client to maintain state between the request and callback (for example an urlencoded json object)
+scope         | Specifies the scope of the access (currently only `user-profile:read`)
+state         | Value used by the client to maintain state between the request and callback
 
 **Example URL:**
 
 ```
-https://api-sandbox.app.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user:profile
-&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
+https://accounts.allthings.me/oauth/authorize?client_id=xxxxxx&response_type=code&redirect_uri=https%3A%2F%2Fwww.example.com&scope=user-profile:read
+&state=XC13Did93
 ```
 
 As MicroApps usually run inside the context of the Allthings app, the user is
@@ -152,19 +160,15 @@ When the authorization succeeded, the user gets redirected to the `redirect_uri`
 with an auth code appended as `code` query parameter:
 
 ```
-https://www.example.com/?code=zzzzzz&state=%7b%22color%22%3a+%22green%22%2c+%22theme%22%3a+%22dark%22%7d
+https://www.example.com/?code=zzzzzz&state=XC13Did93
 ```
 
 Your app will have to use the auth code to request an `access_token` by
 sending a `POST` request to the token endpoint:
 
 ```
-https://app.allthings.me/oauth/token
+https://accounts.allthings.me/oauth/token
 ```
-
-**Notice**
-> The token endpoint can be used on any app domain - e.g. the generic
-> `app.allthings.me` in this example - as it does not require a user session.
 
 The required form data for the auth code exchange:
 
@@ -197,7 +201,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "access_token": "aaaaaa",
   "expires_in": 3600,
   "token_type": "bearer",
-  "scope": "user:profile",
+  "scope": "user-profile:read",
   "refresh_token": "bbbbbb"
 }
 ```
@@ -221,12 +225,8 @@ invalid, you have to use the `refresh_token` to request a new `access_token` by
 sending a `POST` request to the token endpoint:
 
 ```
-https://app.allthings.me/oauth/token
+https://accounts.allthings.me/oauth/token
 ```
-
-**Notice**
-> The token endpoint can be used on any app domain - e.g. the generic
-> `app.allthings.me` in this example - as it does not require a user session.
 
 The required form data to refresh the `access_token`:
 
@@ -258,7 +258,7 @@ while the `refresh_token` can be used to retrieve a new `access_token`.
   "access_token":  "aaaaaa",
   "expires_in": 3600,
   "token_type": "bearer",
-  "scope": "user:profile",
+  "scope": "user-profile:read",
   "refresh_token":  "bbbbbb"
 }
 ```

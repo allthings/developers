@@ -16,8 +16,11 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [agents.csv](#agentscsv)
     1.  [propertyTeams.csv](#propertyteamscsv)
     1.  [userRelations.csv](#userRelationscsv)
+    1.  [agentPermissions.csv](#agentPermissionscsv)
+    1.  [serviceProviders.csv](#serviceProviderscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
+    1.  [Agent Type](#agent-type)
     1.  [Country Type](#country-type)
     1.  [Date Type](#date-type)
     1.  [Import Type Enumerable Type](#import-type)
@@ -35,10 +38,10 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-There are 10 recognised CSV files:
+There are 12 recognised CSV files:
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv), [_userRelations.csv_](#userrelationscsv)
 [_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
-[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv).
+[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv).
 It is not required that each CSV be included in each Import Job.
 For example, it is possible to include only the `agents.csv` file, or any other combination.
 However, when inserting new data, the necessary data to resolve the foreign ID relationships _must_ also be included.
@@ -223,23 +226,24 @@ The `agents.csv` file describes agent-user account data.
 
 #### Fields
 
-| Field          | Type                               | Description                    |
-| -------------- | ---------------------------------- | ------------------------------ |
-| **importType** | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
-| **id**         | [UUID](#uuid-type)                 | Your UUID for the agent        |
-| **email**      | [string](#string-type)             |
-| **firstName**  | [string](#string-type)             |
-| **lastName**   | [string](#string-type)             |
-| **phone**      | [Phone Number](#phone-number-type) | Optional                       |
+| Field                 | Type                               | Description                    |
+| --------------------- | ---------------------------------- | ------------------------------ |
+| **importType**        | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
+| **id**                | [UUID](#uuid-type)                 | Your UUID for the agent        |
+| **email**             | [string](#string-type)             |                                |
+| **firstName**         | [string](#string-type)             |                                |
+| **lastName**          | [string](#string-type)             |                                |
+| **phone**             | [Phone Number](#phone-number-type) | Optional                       |
+| **serviceProviderId** | [UUID](#uuid-type)                 | Optional                       |
 
 #### Example
 
 ```csv
-importType,email,firstName,id,lastName,phone
+importType,email,firstName,id,lastName,phone,serviceProviderId
 insert,orrin.welch@yahoo.test,Orrin,07955b8c-41ac-4a47-9157-3c6fb8450ef4,Welch,+1700471246
-insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag,
+insert,ahaag@gmail.test,Ari,c3b41a1a-bc06-4a84-ba52-484b540b66e3,Haag
 update,sjudah@Amos.test,Saean,ea9012a3-3e98-4be3-8d60-6af255759962,Judah,+5643541048
-update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,
+update,tom@ming.test,Tom,da79623e-a03b-4c4f-a569-571ce4ac620b,Ming,07955b8c-41ac-4a47-ae57-3c6fb6650ef4
 ```
 
 ### propertyTeams.csv
@@ -280,15 +284,61 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 | **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
 | **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
 | **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+| **jobRole**   | [string](#string-type)  | Optional |
 
 #### Example
 
 ```csv
-importType,agentId,resourceId,resourceType,validFromDate,validToDate
+importType,agentId,resourceId,resourceType,validFromDate,validToDate,jobRole
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
-insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z,gardener
+```
+
+
+### agentPermissions.csv
+
+The `agentPermissions.csv` file describes the agents permissions on a certain resource via predefined agentTypes
+
+| Field              | Type                            | Description                          |
+| ------------------ | ------------------------------- | ------------------------------------ |
+| **importType**     | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`    |
+| **resourceType**   | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)
+| **resourceId**     | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) | (#resource-type).csv) |
+| **agentId**        | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
+| **agentType**      | [Agent Type](#agent-type)       | Defines the type of an agent |
+| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+
+
+#### Example
+
+```csv
+importType,resourceType,resourceId,agentId,agentType,validFromDate,validToDate
+insert,property,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75ab5730b69b,craftsmen,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z
+```
+
+### serviceProviders.csv
+
+The `serviceProviders.csv` file describes a service providers name + address
+
+| Field                         | Type                               | Description                          |
+| ----------------------------- | ---------------------------------- | -------------------------------------|
+| **importType**                | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`    |
+| **id**                        | [UUID](#uuid-type)                 | Your UUID for the service provider   |
+| **name**                      | [string](#string-type)             | Name of the service provider         |
+| **country**                   | [Country](#country-type)           |                        |
+| **city**                      | [string](#string-type)             |                        |
+| **streetName**                | [string](#string-type)             |                         |
+| **houseNumber**               | [string](#string-type)             |                        |
+| **zipCode**                   | [Postal Code](#postalcode-type)    |                        |
+| **phone**                     | [Phone Number](#phone-number-type) | Optional                       |
+#### Example
+
+```csv
+importType,id,name,country,city,streetName,houseNumber,zipCode,phone
+insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100,+4907113434
 ```
 
 ### manifest.json
@@ -335,6 +385,7 @@ In other words, a single invalid field will terminate the entire import process 
 
 | Type                                                          | Description                                                                                     | Example                                                                                                                |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Agent Type**<a name="agent-type" />                          | One of:<br/> `agent`, `craftsmen`            | `craftsmen`                                                                                                       |
 | **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.            | `CH`, `DE`, `FR`                                                                                                       |
 | **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`
 | **DateTime**<a name="datetime-type" />                                | [ISO 8601 Combined date and time representation](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)  | `2015-01-17T18:23:02+06:45`, `2015-01-17T18:23:02Z`                                                                                   |

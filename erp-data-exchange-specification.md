@@ -49,12 +49,12 @@ Issues in resolving data relationships will result in an error, terminating the 
 
 #### Global Observations:
 
-- Columns can be in any order
-- First row in CSV file must contain column field name
-- Column field names are case-sensitive
-- Unless noted otherwise, all fields are required when _importType_ is `insert`
-- Only UUID type fields required when _importType_ is `update`
-- Files must use the UTF-8 character encoding
+-   Columns can be in any order
+-   First row in CSV file must contain column field name
+-   Column field names are case-sensitive
+-   Unless noted otherwise, all fields are required when _importType_ is `insert`
+-   Only UUID type fields required when _importType_ is `update`
+-   Files must use the UTF-8 character encoding
 
 ### uuidRemappings.csv
 
@@ -188,6 +188,7 @@ The `tenants.csv` file describes registration codes for a tenant.
 | **email**            | [string](#string-type)             | Optional                       |
 | **phone**            | [Phone Number](#phone-number-type) | Optional                       |
 | **name**             | [string](#string-type)             | Optional                       |
+
 #### Example
 
 ```csv
@@ -276,15 +277,15 @@ The `userRelations.csv` file describes the relation between an agent and a resou
 
 #### Fields
 
-| Field            | Type                            | Description                                                                                 |
-| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------- |
-| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                           |
-| **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
-| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) |
-| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                    |
-| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
-| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
-| **jobRole**   | [string](#string-type)  | Optional |
+| Field             | Type                            | Description                                                                                           |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **importType**    | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                     |
+| **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)            |
+| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv)           |
+| **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (`property`)                              |
+| **validFromDate** | [DateTime](#datetime-type)      | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)      | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
+| **jobRole**       | [string](#string-type)          | Optional                                                                                              |
 
 #### Example
 
@@ -296,21 +297,19 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627,property,2019-01-01T00:00:00Z,2019-03-01T00:00:00Z,gardener
 ```
 
-
 ### agentPermissions.csv
 
 The `agentPermissions.csv` file describes the agents permissions on a certain resource via predefined agentTypes
 
-| Field              | Type                            | Description                          |
-| ------------------ | ------------------------------- | ------------------------------------ |
-| **importType**     | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`    |
-| **resourceType**   | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)
-| **resourceId**     | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv) | (#resource-type).csv) |
-| **agentId**        | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)  |
-| **agentType**      | [Agent Type](#agent-type)       | Defines the type of an agent |
-| **validFromDate** | [DateTime](#datetime-type)  | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
-| **validToDate**   | [DateTime](#datetime-type)  | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
-
+| Field             | Type                            | Description                                                                                           |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **importType**    | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                     |
+| **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                         |
+| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv)           | (#resource-type).csv) |
+| **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)            |
+| **agentType**     | [Agent Type](#agent-type)       | Defines the type of an agent                                                                          |
+| **validFromDate** | [DateTime](#datetime-type)      | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |
+| **validToDate**   | [DateTime](#datetime-type)      | Optional end date of the validity of the relation (if provided **validFromDate** is required as well) |
 
 #### Example
 
@@ -323,17 +322,18 @@ insert,property,07955b8c-41ac-4a47-9157-3c6fb8450ef4,ab463b8b-a76c-4f6a-a726-75a
 
 The `serviceProviders.csv` file describes a service providers name + address
 
-| Field                         | Type                               | Description                          |
-| ----------------------------- | ---------------------------------- | -------------------------------------|
-| **importType**                | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`    |
-| **id**                        | [UUID](#uuid-type)                 | Your UUID for the service provider   |
-| **name**                      | [string](#string-type)             | Name of the service provider         |
-| **country**                   | [Country](#country-type)           |                        |
-| **city**                      | [string](#string-type)             |                        |
-| **streetName**                | [string](#string-type)             |                         |
-| **houseNumber**               | [string](#string-type)             |                        |
-| **zipCode**                   | [Postal Code](#postalcode-type)    |                        |
-| **phone**                     | [Phone Number](#phone-number-type) | Optional                       |
+| Field           | Type                               | Description                        |
+| --------------- | ---------------------------------- | ---------------------------------- |
+| **importType**  | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
+| **id**          | [UUID](#uuid-type)                 | Your UUID for the service provider |
+| **name**        | [string](#string-type)             | Name of the service provider       |
+| **country**     | [Country](#country-type)           |                                    |
+| **city**        | [string](#string-type)             |                                    |
+| **streetName**  | [string](#string-type)             |                                    |
+| **houseNumber** | [string](#string-type)             |                                    |
+| **zipCode**     | [Postal Code](#postalcode-type)    |                                    |
+| **phone**       | [Phone Number](#phone-number-type) | Optional                           |
+
 #### Example
 
 ```csv
@@ -363,10 +363,10 @@ These options are outlined here:
 
 ```json
 {
-  "autoImport": false,
-  "locale": "de_DE",
-  "receiveAdminNotifications": false,
-  "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
+	"autoImport": false,
+	"locale": "de_DE",
+	"receiveAdminNotifications": false,
+	"reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test"]
 }
 ```
 
@@ -383,15 +383,15 @@ Data is validated before import, and any errors are reported.
 Import Jobs with validation errors are not processed.
 In other words, a single invalid field will terminate the entire import process for all CSV files in the Import Job.
 
-| Type                                                          | Description                                                                                     | Example                                                                                                                |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Agent Type**<a name="agent-type" />                          | One of:<br/> `agent`, `craftsman`            | `craftsman`                                                                                                       |
-| **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.            | `CH`, `DE`, `FR`                                                                                                       |
-| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)  | `2001-05-11`, `2018-03-06`, `2063-04-05`
-| **DateTime**<a name="datetime-type" />                                | [ISO 8601 Combined date and time representation](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)  | `2015-01-17T18:23:02+06:45`, `2015-01-17T18:23:02Z`                                                                                   |
-| **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`, `update`, `delete`                                                        | `insert`                                                                                                               |
-| **Phone Number**<a name="phone-number-type" />                | plus symbol `+` followed by only numbers (5-20 characters), no formatting                                         | `+4134567890`                                                                                                          |
-| **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                        | `123-4567`, `3457`, `93012`                                                                                            |
-| **Resource**<a name="resource-type" />                        | One of:<br/>`property`, `group`, `unit`, `utilisationPeriod`                                    | `group`                                                                                                                |
-| **String**<a name="string-type" />                            | any UTF-8 string                                                                                | `This is OK`, `This 1 is also good.`, `これも大丈夫`                                                                   |
-| **UUID**<a name="uuid-type" />                                | [RFC 4122 version 4 (random) UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) | `71b63eef-3c50-4632-924c-b3c59f45c0ef`, `71fc860f-7fa9-4012-a32e-88be33d607af`, `bf9d6003-19a2-4c3e-b68c-828c45d2cf10` |
+| Type                                                          | Description                                                                                                                     | Example                                                                                                                |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Agent Type**<a name="agent-type" />                         | One of:<br/> `agent`, `externalAgent`                                                                                           | `externalAgent`                                                                                                        |
+| **Country**<a name="country-type" />                          | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.                                            | `CH`, `DE`, `FR`                                                                                                       |
+| **Date**<a name="date-type" />                                | [ISO 8601 Calendar Date](https://en.wikipedia.org/wiki/ISO_8601#Calendar_dates) (`yyyy-mm-dd`)                                  | `2001-05-11`, `2018-03-06`, `2063-04-05`                                                                               |
+| **DateTime**<a name="datetime-type" />                        | [ISO 8601 Combined date and time representation](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | `2015-01-17T18:23:02+06:45`, `2015-01-17T18:23:02Z`                                                                    |
+| **Import Type**<a name="import-type" /><a name="date-type" /> | One of:<br/>`insert`, `update`, `delete`                                                                                        | `insert`                                                                                                               |
+| **Phone Number**<a name="phone-number-type" />                | plus symbol `+` followed by only numbers (5-20 characters), no formatting                                                       | `+4134567890`                                                                                                          |
+| **Postal Code**<a name="postalcode-type" />                   | Only numbers and hyphens                                                                                                        | `123-4567`, `3457`, `93012`                                                                                            |
+| **Resource**<a name="resource-type" />                        | One of:<br/>`property`, `group`, `unit`, `utilisationPeriod`                                                                    | `group`                                                                                                                |
+| **String**<a name="string-type" />                            | any UTF-8 string                                                                                                                | `This is OK`, `This 1 is also good.`, `これも大丈夫`                                                                   |
+| **UUID**<a name="uuid-type" />                                | [RFC 4122 version 4 (random) UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)                                 | `71b63eef-3c50-4632-924c-b3c59f45c0ef`, `71fc860f-7fa9-4012-a32e-88be33d607af`, `bf9d6003-19a2-4c3e-b68c-828c45d2cf10` |

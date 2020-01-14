@@ -91,7 +91,6 @@ The `properties.csv` file imports property resource data.
 | **id**                     | [UUID](#uuid-type)          | Your UUID for this property         |
 | **name**                   | [string](#string-type)      | The property name                   |
 | **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
-| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
 | **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
 | **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
 

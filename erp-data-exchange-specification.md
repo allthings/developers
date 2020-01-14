@@ -85,11 +85,14 @@ The `properties.csv` file imports property resource data.
 
 #### Fields
 
-| Field          | Type                        | Description                    |
-| -------------- | --------------------------- | ------------------------------ |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update` |
-| **id**         | [UUID](#uuid-type)          | Your UUID for this property    |
-| **name**       | [string](#string-type)      | The property name              |
+| Field                      | Type                        | Description                         |
+| -------------------------- | --------------------------- | ----------------------------------- |
+| **importType**             | [Import Type](#import-type) | One of:<br/>`insert`, `update`      |
+| **id**                     | [UUID](#uuid-type)          | Your UUID for this property         |
+| **name**                   | [string](#string-type)      | The property name                   |
+| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
+| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
+| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
 
 #### Example
 
@@ -117,7 +120,9 @@ The `groups.csv` file imports group data.
 | **streetName**  | [string](#string-type)          | The name of the street the structure is located on, e.g. Kaiser-Joseph-Strasse |
 | **houseNumber** | [string](#string-type)          | The number of the structure on the street, e.g. 123                            |
 | **zipCode**     | [Postal Code](#postalcode-type) |
-
+| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
+| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
+| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
 #### Example
 
 ```csv
@@ -136,9 +141,12 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 | Field          | Type                        | Description                                                           |
 | -------------- | --------------------------- | --------------------------------------------------------------------- |
 | **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                        |
-| **id**         | [UUID](#uuid-type)          | Your UUID for the unit                                                |
-| **groupId**    | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
-| **name**       | [string](#string-type)      |
+| **id**                     | [UUID](#uuid-type)          | Your UUID for the unit                                                |
+| **groupId**                | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
+| **name**                   | [string](#string-type)      |
+| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
+| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
+| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
 
 #### Example
 

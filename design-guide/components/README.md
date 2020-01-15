@@ -4,7 +4,7 @@
 
 Microapps should always come with an app bar.
 
-![App Bar](https://raw.githubusercontent.com/allthings/developers/master/design-guide/components/assets/app.bar.svg)
+![App Bar](https://raw.githubusercontent.com/allthings/developers/master/design-guide/components/assets/app.bar.svg?sanitize=true)
 
 ## Fluid Layout
 

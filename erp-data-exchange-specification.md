@@ -166,7 +166,7 @@ The `utilisationPeriods.csv` describes utilisation periods.
 
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                                    |
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`, `delete`                                                    |
 | **id**         | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
 | **unitId**     | [UUID](#uuid-type)          | The foreign UUID of the unit the utilisation period belongs to (_units.csv_ `id`) |
 | **startDate**  | [Date](#date-type)          |

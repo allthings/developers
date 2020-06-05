@@ -1,7 +1,7 @@
 # Developer Guides
 
 The Allthings platform has been built as an interoperable platform and provides
-a [REST API](rest.md) to exchange data with third-party applications, as well as
+a [REST API](api-core-data.md) to exchange data with third-party applications, as well as
 a back-end for the Allthings app itself.
 
 Third-party applications integrated into the Allthings interface are called

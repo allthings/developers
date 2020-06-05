@@ -1,4 +1,4 @@
-# Allthings Platform Master Data Interface
+# Master Data Interface
 
 The aim of this guide is to provide a technical, but high level introduction
 to importing and managing Master Data on the Allthings Platform. It does not

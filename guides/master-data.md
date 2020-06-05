@@ -420,6 +420,7 @@ We can run this script on the command line like so:
 ```sh
 ALLTHINGS_APP_ID="<place your app ID here>" \
 ALLTHINGS_APP_PROPERTY_MANAGER_ID="<place your property manager ID here>" \
-DEBUG=* \
 node ./master-data.js
 ```
+
+Full example source is available [here](https://github.com/allthings/node-sdk/blob/master/examples/erp-master-data-interface/master-data.js).

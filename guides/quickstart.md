@@ -18,8 +18,48 @@ To create an OAuth Client, head over to the [Developer Console](https://console.
 
 Once logged in, from the Developer Console, create a new project.
 
-## Creating a simple integration
+## A simple integration
 
+```html
+<html>
+  <head>
+    <title>Allthings Quickstart Micro-App</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="container">Authorizing...</div>
+  </body>
+</html>    
+```
+
+```html
+<html>
+  <head>
+    <title>Allthings Quickstart Micro-App</title>
+    <meta charset="UTF-8" />
++    <script src="https://unpkg.com/@allthings/sdk@latest/dist/lib.umd.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">Authorizing...</div>
+  </body>
+</html>    
+```
+
+```diff
+<html>
+  <head>
+    <title>Allthings Quickstart Micro-App</title>
+    <meta charset="UTF-8" />
++    <script src="https://unpkg.com/@allthings/sdk@latest/dist/lib.umd.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">Authorizing...</div>
+  </body>
+</html>    
+```
 
 ### Complete Example
 

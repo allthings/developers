@@ -1,4 +1,4 @@
-# Quickstart
+# Quickstart Guide
 
 This guide will walk you through the process of creating a _very_ basic client-side integration and can be used as the basis for developing simple Micro-Apps on the Allthings Platform.
 
@@ -10,7 +10,7 @@ In this guide, you will learn how to:
 
 ## Obtaining Access
 
-All authorization on the Allthings Platform is done with [OAuth 2.0](https://oauth.net/2/). As a developer, you'll need to create your own OAuth Client to gain access.
+All authorization on the Allthings Platform is done with [OAuth 2.0](https://oauth.net/2/). As a developer, you'll need to create an Allthings OAuth Client in the [Developer Console](https://console.allthings.me/projects) to gain access to APIs.
 
 ### Creating an OAuth Client
 
@@ -113,7 +113,7 @@ window.history.replaceState(undefined, undefined, currentUrlClean)
 // We'll make an API request here.
 ```
 
-The above code is all you will need to add to make authorization with OAuth work.
+The above code is all you will need to make authorization with OAuth work.
 In the code you just pasted, we need to replace `👉 Put your OAuth Client ID here` with your Oauth Client's _Client ID_. You can find your OAuth Client's _Client ID_ back in the [Developer Console](https://console.allthings.me/projects) where you previously created your OAuth Client.
 
 ```diff
@@ -121,12 +121,12 @@ const client = allthings.restClient({
   authorizationCode: maybeAuthorizationCode,
   clientId:
 -    '👉 Put your OAuth Client ID here',
-+    'example397d6d9260e2d955d_example2daoc5oogwkpkksw484aacwcw84404cc8o48ccko84'
++    'example397d6d9260e2d955d_example2daoc5oogwkpkksw484aacwcw84404cc8o48ccko84',
   redirectUri: currentUrlClean,
 })
 ```
 
-Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same where you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client. You'll find your CodeSandbox's preview URL in the left preview pane.
+Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same screen you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client. You'll find your CodeSandbox's preview URL in the left preview pane.
 
 Also make sure that you've also provided either a Terms of Use or Privacy Policy link (or both) on the OAuth Client. Without one of these, you won't be able to authorize users.
 

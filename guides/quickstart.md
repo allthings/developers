@@ -43,6 +43,9 @@ With an OAuth client created, we're ready to use it. In the next section we'll c
 
 Our simple integration will be, well, _very_ simple. We will ask a user to authorize our integration so that we can perform API requests as, or on behalf of that user. Then, in our simple web application we will display a welcome message with the user's name. That's it. While simple, this is the basis on which you'll be able to build further features simply by making further API requests or integrating with your own APIs. Let's get started.
 
+> You can jump to the complete example source code [here](#complete-example).
+> You can also run the completed example in your browser [here](https://codesandbox.io/s/the-smallest-allthings-micro-app-v2-biod3?fontsize=14&hidenavigation=1&theme=dark). Just make sure to update the _clientId_ with your OAuth Client ID and update your OAuth Client with your _Redirect URL_.
+
 We'll use [CodeSandbox](https://codesandbox.io/) in this guide as it allows us to build this whole integration without ever needing to install anything locally on your computer or to run your own server—and it doesn't require any signup.
 
 Let's create a new sandbox. Open up [this link](https://codesandbox.io/s/github/codesandbox-app/static-template/tree/master/?file=/index.html) in a new browser tab or window. You'll be presented with a small code editor on the left of your screen, and a preview on the right.
@@ -63,22 +66,71 @@ Delete all of the text in the _index.html_ file the editor window. Next, copy th
     
     <script type="text/javascript">
       window.addEventListener('load', async () => {
-      
+        // we'll add code here.
       })
     </script>    
   </body>
 </html>    
 ```
 
-This markup code is laying down some scaffolding. Of interest is line 5. There, we add load the [Allthings Javascript SDK](https://github.com/allthings/node-sdk). The SDK will do most of the heavy lifting for us including abstracting away most of the complexity of the OAuth authorization flow.
+This markup code lays down some scaffolding. Of interest is line 5. There we load the [Allthings Javascript SDK](https://github.com/allthings/node-sdk). The SDK will do most of the heavy lifting for us including abstracting away most of the complexity of the OAuth authorization flow.
 
 Having pasted the above code into CodeSandbox, you should see something like this:
 
 ![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.1.png)
 
-You can run the complete example in your browser [here](https://codesandbox.io/s/the-smallest-allthings-micro-app-v2-biod3?fontsize=14&hidenavigation=1&theme=dark). Just make sure to update the _clientId_ with your OAuth Client ID and update your OAuth Client with your _Redirect URL_.
+Next, replace the text `// we'll add code here.` with the following code:
 
-You can jump to the complete example source code [here](#complete-example).
+```js
+const currentUrl = new URL(window.location.href)
+const currentUrlClean = window.location.href.split('?')[0]
+
+const maybeAuthorizationCode = currentUrl.searchParams.get('code')
+const maybeOauthState = currentUrl.searchParams.get('state')
+
+const client = allthings.restClient({
+  authorizationCode: maybeAuthorizationCode,
+  clientId:
+    '👉 Put your OAuth Client ID here',
+  redirectUri: currentUrlClean,
+})
+
+const localOauthState = localStorage.getItem('oauthState')
+
+if (!maybeAuthorizationCode || localOauthState !== maybeOauthState) {
+  const state = client.oauth.generateState()
+  const authorizationUri = client.oauth.authorizationCode.getUri(state)
+
+  localStorage.setItem('oauthState', state)
+
+  return (window.location = authorizationUri)
+}
+
+localStorage.removeItem('oauthState')
+window.history.replaceState(undefined, undefined, currentUrlClean)
+
+// We'll make an API request here.
+```
+
+The above code is all you will need to add to make authorization with OAuth work.
+In the code you just pasted, we need to replace `👉 Put your OAuth Client ID here` with your Oauth Client's _Client ID_. You can find your OAuth Client's _Client ID_ back in the [Developer Console](https://console.allthings.me/projects) where you previously created your OAuth Client.
+
+```diff
+const client = allthings.restClient({
+  authorizationCode: maybeAuthorizationCode,
+  clientId:
+-    '👉 Put your OAuth Client ID here',
++    'example397d6d9260e2d955d_example2daoc5oogwkpkksw484aacwcw84404cc8o48ccko84'
+  redirectUri: currentUrlClean,
+})
+```
+
+Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same where you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client.
+
+You'll find your CodeSandbox's preview URL in the left preview pane:
+
+![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.2.gif)
+
 
 ### Complete Example
 

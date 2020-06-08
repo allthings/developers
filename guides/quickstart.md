@@ -5,7 +5,7 @@ This guide will walk you through the process of creating a _very_ basic client-s
 In this guide, you will learn how to:
 
 1. [Obtain access](#obtaining-access)
-1. [Create a simple integration](#creating-a-simple-integration)
+1. [Create a simple integration](#a-simple-integration)
 
 
 ## Obtaining Access
@@ -18,7 +18,20 @@ To create an OAuth Client, head over to the [Developer Console](https://console.
 
 Once logged in to the Developer Console, [create a new project](https://console.allthings.me/projects/create). Enter a project name and description to complete the project creation. You can change these fields later.
 
-Once your project is created, you'll be taken to the new project's details screen. From here, using the left-hand menu "Permissions" section, navigate to the "OAuth clients" screen.
+Once your project is created, you'll be taken to the new project's details screen. Using the left-hand menu "Permissions" section, navigate to the "OAuth clients" screen. From this screen we can create new OAuth Clients.
+
+Allthings allows developers to make use of three different types of OAuth Clients: Code Flow ([public-client authorization-code flow](https://oauth.net/2/grant-types/authorization-code/)), Code Flow ([confidential-client authorization-code flow](https://oauth.net/2/grant-types/authorization-code/)), and System-to-System ([client-credentials flow](https://oauth.net/2/grant-types/client-credentials/)).
+
+> If you wish to perform API requests as, or on behalf of a user, you will want to create a _Code Flow_ client. If you want to make machine-to-machine API requests, for example as part of a Webhook-based integration, you'll want to create a _System-to-System_ client. You can find further details about OAuth and OAuth Clients in our Authorization documentation [here](../oauth.md).
+
+For the purposes of this Quickstart guide, let's create a "Code Flow - client only" client.
+
+![Creating an OAuth Code Flow public client](assets/guides.quickstart.creating-an-oauth-client.1.png)
+
+
+
+![Configuring the OAuth client](assets/guides.quickstart.creating-an-oauth-client.2.png)
+
 
 ## A simple integration
 

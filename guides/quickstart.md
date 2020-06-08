@@ -16,7 +16,9 @@ All authorization on the Allthings Platform is done with OAuth 2.0. As a develop
 
 To create an OAuth Client, head over to the [Developer Console](https://console.allthings.me/projects). If you don't yet have an Allthings user account, you can create one when prompted to log in by following the "Sign Up" link.
 
-Once logged in, from the Developer Console, create a new project.
+Once logged in to the Developer Console, [create a new project](https://console.allthings.me/projects/create). Enter a project name and description to complete the project creation. You can change these fields later.
+
+Once your project is created, you'll be taken to the new project's details screen. From here, using the left-hand menu "Permissions" section, navigate to the "OAuth clients" screen.
 
 ## A simple integration
 

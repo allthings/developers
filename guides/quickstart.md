@@ -41,8 +41,16 @@ With an OAuth client created, we're ready to use it. In the next section we'll c
 
 ## A simple integration
 
+Our simple integration will be, well, _very_ simple. We will ask a user to authorize our integration so that we can perform API requests as, or on behalf of that user. Then, in our simple web application we will display a welcome message with the user's name. That's it. While simple, this is the basis on which you'll be able to build further features simply by making further API requests or integrating with your own APIs. Let's get started.
 
-```html
+We'll use [CodeSandbox](https://codesandbox.io/) in this guide as it allows us to build this whole integration without ever needing to install anything locally on your computer or to run your own server—and it doesn't require any signup.
+
+Let's create a new sandbox. Open up [this link](https://codesandbox.io/s/github/codesandbox-app/static-template/tree/master/?file=/index.html) in a new browser tab or window. You'll be presented with a small code editor on the left of your screen, and a preview on the right.
+
+Delete all of the text in the _index.html_ file the editor window. Next, copy the following code and paste it into _index.html_.
+
+
+```js
 <html>
   <head>
     <title>Allthings Quickstart Micro-App</title>
@@ -52,9 +60,25 @@ With an OAuth client created, we're ready to use it. In the next section we'll c
 
   <body>
     <div id="container">Authorizing...</div>
+    
+    <script type="text/javascript">
+      window.addEventListener('load', async () => {
+      
+      })
+    </script>    
   </body>
 </html>    
 ```
+
+This markup code is laying down some scaffolding. Of interest is line 5. There, we add load the [Allthings Javascript SDK](https://github.com/allthings/node-sdk). The SDK will do most of the heavy lifting for us including abstracting away most of the complexity of the OAuth authorization flow.
+
+Having pasted the above code into CodeSandbox, you should see something like this:
+
+![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.1.png)
+
+You can run the complete example in your browser [here](https://codesandbox.io/s/the-smallest-allthings-micro-app-v2-biod3?fontsize=14&hidenavigation=1&theme=dark). Just make sure to update the _clientId_ with your OAuth Client ID and update your OAuth Client with your _Redirect URL_.
+
+You can jump to the complete example source code [here](#complete-example).
 
 ### Complete Example
 

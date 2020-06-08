@@ -33,6 +33,7 @@ For the purposes of this Quickstart guide, let's create a "Code Flow - client on
 Once you've created your OAuth client, you'll be presented with a screen that allows you to configure a number of fields on the OAuth Client:
 
 - **Client ID**: This is the ID of your OAuth Client. You need to provide it during the OAuth flow. We'll use it later in this guide.
+- **Name**: The name of your OAuth Client. This name is displayed to users when they perform the authorization flow with your Client.
 - **Redirect URIs**: A Redirect URI is a URI (or URL) where a user will be redirected after authorizing your application. Your OAuth Client can have more than one redirect URI configured but you are required to use one of these during the OAuth authorization flow. We'll touch on it again later in this guide.
 - **Terms of use** & **Privacy Policy** fields: In production, you must provide at least one of these. These are shown to users on the Authorization screen during the OAuth Code Flow. For this guickstart guide, you can use a test value like [https://example.test/](https://example.test/).
 
@@ -125,11 +126,25 @@ const client = allthings.restClient({
 })
 ```
 
-Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same where you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client.
-
-You'll find your CodeSandbox's preview URL in the left preview pane:
+Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same where you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client. You'll find your CodeSandbox's preview URL in the left preview pane.
 
 ![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.2.gif)
+
+With all that setup, let's add the final piece of code. Replace the line `// We'll make an API request here.` with the following code:
+
+```js
+const user = await client.getCurrentUser()
+
+document.getElementById('container').innerHTML = `<p>Hi there, ${
+  user.username
+} (${user.email}). You're logged in!</p>`
+```
+
+These few lines will fetch information about the currently logged in user from the Allthings API and display it in the page. We make use of the Javascript SDKs `client.getCurrentUser()` method to do all of the work for us.
+
+Finally, we can test our simple integration. Open the preview URL you copied earlier (the _redirectUri_) in a new browser tab or window. If everything was set up correctly, you will be redirected to the Allthings ID account service and prompted to authorize your integration (OAuth Client). Once you've granted authorization, you'll be redirected to your _redirectUri_, in this case, your CodeSandbox URL where you'll be greeted with a welcome message, `Hi there, {{username}}. You're logged in!`
+
+🎉 That's it! You've just completed your first Allthings integration!
 
 
 ### Complete Example

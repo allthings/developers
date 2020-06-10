@@ -78,7 +78,7 @@ Delete all of the text in the _index.html_ file the editor window. Next, copy th
 
 This markup code lays down some scaffolding. Of interest is line 5. There we load the [Allthings Javascript SDK](https://github.com/allthings/node-sdk). The SDK will do most of the heavy lifting for us including abstracting away most of the complexity of the OAuth authorization flow.
 
-Having pasted the above code into CodeSandbox, you should see something like this:
+Having pasted the above code into CodeSandbox and saving your changes to _index.html_, you should see something like this:
 
 ![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.1.png)
 

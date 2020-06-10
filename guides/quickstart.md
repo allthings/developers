@@ -112,7 +112,7 @@ if (!maybeAuthorizationCode || localOauthState !== maybeOauthState) {
 localStorage.removeItem('oauthState')
 window.history.replaceState(undefined, undefined, currentUrlClean)
 
-// Copy the following line, too! We'll add more code there later on.
+// Copy the following line, too! We'll add more code here later on.
 // We'll make an API request here.
 
 ```

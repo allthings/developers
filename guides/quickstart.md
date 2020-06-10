@@ -16,9 +16,11 @@ All authorization on the Allthings Platform is done with [OAuth 2.0](https://oau
 
 To create an OAuth Client, head over to the [Developer Console](https://console.allthings.me/projects). If you don't yet have an Allthings user account, you can create one when prompted to log in by following the "Sign Up" link.
 
-Once logged in to the Developer Console, [create a new project](https://console.allthings.me/projects/create). Enter a project name and description to complete the project creation. You can change these fields later.
+Next, once logged in to the Developer Console, follow these steps to create a new OAuth Client:
 
-Once your project is created, you'll be taken to the new project's details screen. Using the left-hand menu "Permissions" section, navigate to the "OAuth clients" screen. From this screen we can create new OAuth Clients.
+1. From the "My Projects" overview screen, click on "New project" or click [here](https://console.allthings.me/projects/create) to create a new project directly. When prompted, enter a project name and description to complete the project creation. You can change these fields later.
+1. Once your project is created, you'll be taken to the new project's details screen. You can also get back to your new project's details screen from the "My Projects" overview by clicking on "View" on your project. On your project's details screen, using the left-hand menu "Permissions" section, navigate to the "OAuth clients" screen.
+1. From your project's "OAuth clients" screen, click on "Create OAuth Client" to create a new OAuth Client for your project.
 
 ![Creating an OAuth Code Flow public client](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.creating-an-oauth-client.1.png)
 
@@ -110,7 +112,9 @@ if (!maybeAuthorizationCode || localOauthState !== maybeOauthState) {
 localStorage.removeItem('oauthState')
 window.history.replaceState(undefined, undefined, currentUrlClean)
 
+// Copy the following line, too! We'll add more code there later on.
 // We'll make an API request here.
+
 ```
 
 The above code is all you will need to make authorization with OAuth work.

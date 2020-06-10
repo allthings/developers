@@ -148,6 +148,8 @@ document.getElementById('container').innerHTML = `<p>Hi there, ${
 
 These few lines will fetch information about the currently logged in user from the Allthings API and display it in the page. We make use of the Javascript SDKs `client.getCurrentUser()` method to do all of the work for us.
 
+Now, make sure to save your changes to _index.html_ in CodeSandbox.
+
 Finally, we can test our simple integration. Open the preview URL you copied earlier (the _redirectUri_) in a new browser tab or window. If everything was set up correctly, you will be redirected to the Allthings ID account service and prompted to authorize your integration (OAuth Client). Once you've granted authorization, you'll be redirected to your _redirectUri_, in this case, your CodeSandbox URL where you'll be greeted with a welcome message, `Hi there, {{username}}. You're logged in!`
 
 🎉 That's it! You've just completed your first Allthings integration!

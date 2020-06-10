@@ -132,6 +132,8 @@ const client = allthings.restClient({
 
 Next, we need to configure the  _RedirectUri_ in your OAuth Client. Again, in the Developer Console, on the same screen you've copied the _Client ID_ from, we need to add a new redirect URI. Add your CodeSandbox's preview URL as a new redirect URI to your OAuth Client. You'll find your CodeSandbox's preview URL in the left preview pane.
 
+When adding a redirect URI, make sure to click the "add" button, then "save".
+
 Also make sure that you've also provided either a Terms of Use or Privacy Policy link (or both) on the OAuth Client. Without one of these, you won't be able to authorize users.
 
 ![Example index.html on the left, browser preview on the right](https://raw.githubusercontent.com/allthings/developers/master/guides/assets/guides.quickstart.a-simple-integration.2.gif)

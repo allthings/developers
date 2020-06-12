@@ -32,7 +32,11 @@ You can think of a webhook a little bit like a phone call. You share with us you
 
 #### Pinboard posts
 
-#### registration-codes
+#### Registration Codes
 
 
+
+
+
+<br /><br /><br />
 ➡️ **Next Step:** [Set up and configure a webhook](./setup.md)

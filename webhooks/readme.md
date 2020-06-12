@@ -9,7 +9,7 @@ Listen for events on occurring within your App so that your integration can auto
     1. [Ticketing](#ticketing)
     1. [Booking](#booking)
     1. [Pinboard posts](#pinboard-posts)
-    1. [registration-codes](#registration-codes)
+    1. [Registration Codes](#registration-codes)
 
 
  ## Introduction

@@ -20,7 +20,7 @@ The following implementation of `hasVerifiedPayload()` checks both that the sign
 ```javascript
 const crypto = require('crypto')
 
-const TIMESTAMP_TOLERANCE_IN_MILISECONDS = 5 * 60 * 1000 // 5 minutes
+const TIMESTAMP_TOLERANCE_IN_MILISECONDS = 2 * 60 * 1000 // 2 minutes
 
 exports.hasVerifiedPayload = ({ sharedSecret, headers, body }) => {
   const requestSecret = headers['x-allthings-signature']

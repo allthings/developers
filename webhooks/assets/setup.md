@@ -3,9 +3,10 @@
 ## Contents
 
 1. [Permission requirements](#permission-requirements)
-1. [Adding a webhook to an App](#other-configuration-options)
+1. [Adding a webhook to an App using the Cockpit](#adding-a-webhook-to-an-app-using-the-cockpit)
+1. [Adding a webhook programatically](#adding-a-webhook-programatically)
+   1. [cURL example](#curl-example)
 1. [Configuring event scope using URNs](#configuring-event-scope-using-urns)
-1. [Other configuration options](#other-configuration-options)
    1. [Registering a webhook across multiple Apps](#registering-a-webhook-across-multiple-apps)
    1. [Receiving events only on a sub-segment of a resource](#receiving-events-only-on-a-sub-segment-of-a-resource)
 
@@ -68,23 +69,24 @@ curl 'https://webhooks.allthings.me/' \
 
 ## Configuring event scope using URNs
 
-More about URNs [here](../urns.md).
+Developers can specify the scope of events they're interested in receiving. This can be done specifing a Uniform Resource Name (URN) filter on a webhook. For example, the default behavior is to set the URN filter on a webhook to the whole App, e.g. by specifying `urn:allthings:app:{{appId here}}:*`. Filtering webhooks with URNs can be useful when you're only interested in events on a sub-segment of a resource.
 
+For example, you may only be interested in events on tickets in the "Damage report" category. To achieve this, create a webhook where the `urns` input field has a value like `["urn:allthings:app:<put your app ID here>:ticket:<your ticket category ID>:*]`
 
-## Other configuration options
+Learn more about URNs [here](../urns.md).
 
 ### Registering a webhook across multiple Apps
 
-It is possible for developers to subscribe to events across multiple Apps. This may be useful when your integration is offered to multiple Allthings customers or across multiple Apps.
+It is possible for developers to subscribe to events across multiple Apps by providing URNs from multiple Apps. This may be useful when your integration is offered to multiple Allthings customers or across multiple Apps.
 
-We don't currently have a UI which exposes this functionality. If you are interested in registering a single webhook for events across more than one App, please [contact our support](https://support.allthings.me/hc/en-us/requests/new) and we'll get it set up for you.
+We don't currently have a UI which exposes this functionality. If you are interested in registering a single webhook for events across more than one App, please register a webhook programatically using the Webhooks API. If you're an App administrator, please feel free to [contact our support team](https://support.allthings.me/hc/en-us/requests/new) and we'll get it set up for you.
 
 
 ### Receiving events only on a sub-segment of a resource
 
 It is possible to receive events for only a sub-segment of some resources. For example, it is possible to configure a webhook to receive only those events occurring on tickets within a selection of ticket categories.
 
-We don't currently have a UI which exposes this functionality. If you are interested in receiving only a sub-segment of events, please [contact our support](https://support.allthings.me/hc/en-us/requests/new) and we'll get it set up for you.
+We don't currently have a UI which exposes this functionality. If you are interested in receiving only a sub-segment of events please register a webhook programatically using the Webhooks API. If you're an App administrator, please [contact our support team](https://support.allthings.me/hc/en-us/requests/new) and we'll get it set up for you.
 
 
 

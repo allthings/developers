@@ -42,8 +42,10 @@ Developers should verify the webhook payload signature to confirm that the data 
 
 This can be done by computing an HMAC with the SHA256 hash function. Use the endpoint’s shared signing secret as the key, and the raw request body sent by us to your webhook endpoint string as the message. Once computed, compare your hash against the hash that was sent in the `x-allthings-signature` header. If they are identical, then the request came from Allthings.
 
+
 ### Prevent replay attacks
 
+To mitigate against [replay attacks](https://en.wikipedia.org/wiki/Replay_attack), we includes a `x-allthings-signature-timestamp` header for each webhook delivery. Because this timestamp is part of the signed payload, it is also verified by the signature, so an attacker cannot change the timestamp without invalidating the signature. If the signature is valid but the timestamp is too old, you can have your application reject the payload.
 
 
 ### Example code
@@ -82,6 +84,6 @@ if (!hasVerifiedPayload({
   headers: request.headers,
   body: request.body // make sure it's the raw request body string (not the parsed JSON)
 })) {
-  throw new Error('Invalid webhook signature.')
+  throw new Error('Cannot verify webhook.')
 }
 ```

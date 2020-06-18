@@ -1,6 +1,6 @@
 # Receive event notifications with webhooks
 
-Listen for events occurring within your App so that you can automatically trigger reactions.
+Listen for events occurring within Apps and automatically trigger reactions.
 
 ## Contents
 
@@ -28,13 +28,15 @@ You can think of a webhook a little bit like a phone call. You share with us you
 
 #### Ticketing
 
+![Ticket use case flow chart](https://raw.githubusercontent.com/allthings/developers/master/webhooks/assets/webhooks.introduction.common-use-cases.ticketing.1.svg)
+
 #### Booking
 
 #### Pinboard posts
 
 #### Registration Codes
 
-
+For example, you could use Zapier's [Incoming Webhook integration](https://zapier.com/apps/webhook/integrations) feature to automatically have new registration codes [exported to a Google Spreadsheet](https://zapier.com/app/editor/template/1035?referrer=%2Fapps%2Fwebhook%2Fintegrations%2Fgoogle-sheets).
 
 
 

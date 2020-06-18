@@ -8,7 +8,6 @@ Listen for events occurring within Apps and automatically trigger reactions.
 1.  [Common use cases](#common-use-cases)
     1. [Ticketing](#ticketing)
     1. [Booking](#booking)
-    1. [Pinboard posts](#pinboard-posts)
     1. [Registration Codes](#registration-codes)
 
 
@@ -28,15 +27,20 @@ You can think of a webhook a little bit like a phone call. You share with us you
 
 #### Ticketing
 
+Ticket events are a common webhook use case. Ticket events can be used to synchronize tickets between Allthings and another ticketing or ERP system. More common is for ticket events to be used by partners who offer services or platforms which revolve around service delivery. For example, an integration might seek to automate the damage-case and crafts-person work order creation automatically from Allthings tickets.
+
 ![Ticket use case flow chart](https://raw.githubusercontent.com/allthings/developers/master/webhooks/assets/webhooks.introduction.common-use-cases.ticketing.1.svg)
+
 
 #### Booking
 
-#### Pinboard posts
+Webhooks are a useful way to integrate Bookings with partner services like door access systems.
+
 
 #### Registration Codes
 
-For example, you could use Zapier's [Incoming Webhook integration](https://zapier.com/apps/webhook/integrations) feature to automatically have new registration codes [exported to a Google Spreadsheet](https://zapier.com/app/editor/template/1035?referrer=%2Fapps%2Fwebhook%2Fintegrations%2Fgoogle-sheets).
+You can use webhooks to export newly created registration codes. Perhaps you send out registration codes by physical mail, but only want to send new ones. A simple way to implement this is by using Zapier's [Incoming Webhook integration](https://zapier.com/apps/webhook/integrations) feature to automatically have new registration codes [exported to a Google Spreadsheet](https://zapier.com/app/editor/template/1035?referrer=%2Fapps%2Fwebhook%2Fintegrations%2Fgoogle-sheets).
+
 
 
 

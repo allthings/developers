@@ -2,10 +2,15 @@
 
 ## Contents
 
+1. [Protect data privacy](#)
 1. [Verify events are sent from Allthings](#verify-events-are-sent-from-allthings)
    1. [Check signatures](#check-signatures)
    1. [Prevent replay attacks](#prevent-replay-attacks)
    1. [Example code](#example-code)
+
+
+## Protect data privacy
+
 
 ## Verify events are sent from Allthings
 

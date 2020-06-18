@@ -24,7 +24,7 @@ Listening for extra events (or all events) is not recommended. When configuring 
 
 ## Delivery attempts and retries
 
-We attempt to deliver events to your webhooks for up to seven days with an exponential back off. After seven days we will give up. You can still retrieve the events using the [Webhooks API](#../apis/webhooks.md). You'll find more guidance on debugging or retrieving past delivery attempts [here](./build-webhooks.md#debugging-delivery-issues).
+We attempt to deliver events to your webhooks for up to seven days with an exponential back off. After seven days we will give up. You can still retrieve the events using the [Webhooks API](../apis/webhooks.md). You'll find more guidance on debugging or retrieving past delivery attempts [here](./build-webhooks.md#debugging-delivery-issues).
 
 
 ## Event handling

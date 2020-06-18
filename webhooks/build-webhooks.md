@@ -4,7 +4,7 @@ This page walks you through the code that properly handles webhook notifications
 
 To make use of Allthings webhooks, you first need to build your own custom endpoint. A webhook endpoint is no different from any other server-side functionality you might implement. At its simplest, it is some server-side code which can receive POST requests.
 
-Before building a webhook endpoint, there are several key considerations regardless of the technology involved. Please also review the [best practices for using webhooks](#./best-practices.md).
+Before building a webhook endpoint, there are several key considerations regardless of the technology involved. Please also review the [best practices for using webhooks](./best-practices.md).
 
 
 ## Key considerations

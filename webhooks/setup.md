@@ -44,3 +44,8 @@ It is possible to receive events for only a sub-segment of some resources. For e
 
 We don't currently have a UI which exposes this functionality. If you are interested in receiving only a sub-segment of events, please [contact our support](https://support.allthings.me/hc/en-us/requests/new) and we'll get it set up for you.
 
+
+
+
+<br /><br /><br />
+➡️ **Next Step:** [Build a webhook](./build-webhooks.md)

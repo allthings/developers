@@ -39,6 +39,8 @@ Follow these steps to create a new webhook in the Cockpit:
 
 Developers can add webhooks programatically using the GraphQL-based [Webhooks API](../apis/webhooks.md).
 
+For a complete list of available events, head to the [Types of events](./registerable-webhook-events/) documentation.
+
 A new webhook can be created with the `registerWebhook` mutation:
 
 **Request mutation**

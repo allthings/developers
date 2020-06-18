@@ -4,6 +4,7 @@
 
 1. [Permission requirements](#permission-requirements)
 1. [Adding a webhook to an App](#other-configuration-options)
+1. [Configuring event scope using URNs](#configuring-event-scope-using-urns)
 1. [Other configuration options](#other-configuration-options)
    1. [Registering a webhook across multiple Apps](#registering-a-webhook-across-multiple-apps)
    1. [Receiving events only on a sub-segment of a resource](#receiving-events-only-on-a-sub-segment-of-a-resource)
@@ -27,6 +28,47 @@ App administrators can add and manage webhooks on their Apps from within the Coc
 
 ## Adding a webhook programatically
 
+Developers can add webhooks programatically using the GraphQL-based [Webhooks API](../apis/webhooks.md).
+
+A new webhook can be created with the `registerWebhook` mutation:
+
+**Request mutation**
+```graphql
+mutation RegisterNewWebhook($webhook: RegisterWebhookInput!) {
+  registerWebhook(webhook: $webhook) {
+    code
+    message
+    success
+  }
+}
+```
+
+**Request variables**
+```js
+{
+	"webhook": {
+		"description": "An example webhook",
+  		"events": ["ticket.created", "ticket.updated"],
+  		"url": "https://httpbin.org/status/200",
+  		"urns": ["urn:allthings:app:<put your app ID here>:*"]
+    }
+}
+```
+
+### cURL example
+
+```sh
+curl 'https://webhooks.allthings.me/' \
+   -H 'Content-Type: application/json' \
+   -H 'Accept: application/json' \
+   -H 'Authorization: Bearer <put your authorization token here>' \
+   --data-binary '{"query":"mutation RegisterNewWebhook($webhook:RegisterWebhookInput!){registerWebhook(webhook:$webhook){code message success}}","variables":{"webhook":{"description":"An example webhook","events":["ticket.created","ticket.updated"],"url":"https://httpbin.org/status/200","urns":["urn:allthings:app:<put your app ID here>:*"]}}}'
+```
+
+
+## Configuring event scope using URNs
+
+More about URNs [here](../urns.md).
 
 
 ## Other configuration options

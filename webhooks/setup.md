@@ -25,6 +25,7 @@ The `edit-app` permission can also be granted to a developer's OAuth Client. To 
 App administrators can add and manage webhooks on their Apps from within the Cockpit's [App Settings](https://cockpit.allthings.me/apps) section.
 
 Follow these steps to create a new webhook in the Cockpit:
+
 1. Go to the Cockpit's "App Settings".
 1. Pick the App to which you'd like to add a webhook. If you only have access to one App, it will automatically be selected for you. You're now on the "App Settings > Edit App" screen.
 1. From the "App Settings > Edit App" screen, select the "Webhooks" tab. This screen gives you an overview of all webhooks for the App.

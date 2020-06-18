@@ -45,7 +45,7 @@ This can be done by computing an HMAC with the SHA256 hash function. Use the end
 
 ### Prevent replay attacks
 
-To mitigate against [replay attacks](https://en.wikipedia.org/wiki/Replay_attack), we includes a `x-allthings-signature-timestamp` header for each webhook delivery. Because this timestamp is part of the signed payload, it is also verified by the signature, so an attacker cannot change the timestamp without invalidating the signature. If the signature is valid but the timestamp is too old, you can have your application reject the payload.
+To mitigate against [replay attacks](https://en.wikipedia.org/wiki/Replay_attack), we include a `x-allthings-signature-timestamp` header with each webhook delivery. Because this timestamp is part of the signed payload, it is also verified by the signature, so an attacker cannot change the timestamp without invalidating the signature. If the signature is valid but the timestamp is too old, you can have your application reject the payload.
 
 
 ### Example code

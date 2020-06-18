@@ -46,12 +46,12 @@ mutation RegisterNewWebhook($webhook: RegisterWebhookInput!) {
 **Request variables**
 ```js
 {
-	"webhook": {
-		"description": "An example webhook",
-  		"events": ["ticket.created", "ticket.updated"],
-  		"url": "https://httpbin.org/status/200",
-  		"urns": ["urn:allthings:app:<put your app ID here>:*"]
-    }
+  "webhook": {
+    "description": "An example webhook",
+    "events": ["ticket.created", "ticket.updated"],
+    "url": "https://httpbin.org/status/200",
+    "urns": ["urn:allthings:app:<put your app ID here>:*"]
+  }
 }
 ```
 

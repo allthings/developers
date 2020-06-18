@@ -19,7 +19,7 @@ Allthings uses webhooks to notify you when an event happens in an App. Webhooks 
 
 ### What are webhooks
 
-_Webhooks_ refers to a combination of technologies tied together so that collectively they create a notification and reaction system. Webhooks allow App administrators, partners, and 3rd-party developers to augment or enhance the Allthings Platform with additional custom behaviors and functionality.
+_Webhooks_ refers to a combination of technologies tied together so that collectively they create a notification and reaction system. Webhooks allow App administrators and developers to augment or enhance the Allthings Platform with additional custom behaviors and functionality.
 
 You can think of a webhook a little bit like a phone call. You share with us your phone number, and whenever there is activity in your App, we call your phone number to share that information with you.
 

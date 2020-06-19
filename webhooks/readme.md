@@ -9,6 +9,7 @@ Listen for events occurring within Apps and automatically trigger reactions.
     1. [Ticketing](#ticketing)
     1. [Booking](#booking)
     1. [Registration Codes](#registration-codes)
+    1. [Updating ERP systems](#updating-erp-systems)
 
 
  ## Introduction
@@ -43,6 +44,10 @@ Webhooks are a useful way to integrate Bookings with partner services like door 
 
 You can use webhooks to export newly created registration codes. Perhaps you send out registration codes by physical mail, but only want to send new ones. A simple way to implement this is by using Zapier's [Incoming Webhook integration](https://zapier.com/apps/webhook/integrations) feature to automatically have new registration codes [exported to a Google Spreadsheet](https://zapier.com/app/editor/template/1035?referrer=%2Fapps%2Fwebhook%2Fintegrations%2Fgoogle-sheets).
 
+
+#### Updating ERP systems
+
+Webhooks are a convenient way to keep your ERP system up to date with changes to tenant profile data. For example, when a tenant changes their data like phone number or email address, your ERP system can be automatically updated. Please note that, given the privacy implications of such data synchronization, such integrations must be validated by Allthings before being enabled on production data.
 
 
 

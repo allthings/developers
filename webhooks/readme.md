@@ -36,6 +36,8 @@ Ticket events are a common webhook use case. Ticket events can be used to synchr
 
 Webhooks are a useful way to integrate Bookings with partner services like door access systems.
 
+![Booking use case flow chart](https://raw.githubusercontent.com/allthings/developers/master/webhooks/assets/webhooks.introduction.common-use-cases.booking.1.svg)
+
 
 #### Registration Codes
 

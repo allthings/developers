@@ -34,7 +34,7 @@ Ticket events are a common webhook use case. Ticket events can be used to synchr
 
 #### Booking
 
-Webhooks are a useful way to integrate Bookings with partner services like door access systems.
+Webhooks are a useful way to integrate Bookings with partner services like door access systems. A tenant can make a booking for an asset like a guest room or common room. When the booking is paid for and/or has been accepted by an Agent, a webhook can deliver the booking to the access-control system used to restrict or control access to the asset. The access-control system can then update the booking with a PIN or access code which is valid only during the period of the booking. Allthings will then deliver this access code to the tenant who made the original booking.
 
 ![Booking use case flow chart](https://raw.githubusercontent.com/allthings/developers/master/webhooks/assets/webhooks.introduction.common-use-cases.booking.1.svg)
 

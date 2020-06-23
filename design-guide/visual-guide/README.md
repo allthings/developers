@@ -48,4 +48,4 @@ All our colors are fine! But don’t overuse them. For dark Text you should use
 
 We either use the Logo with the name “Allthings” to the right, or just the Logo. 
 
-You can find the logo files right [here](assets/logos/)
+You can find the logo files [here](logos.md)

@@ -359,7 +359,7 @@ The `collections.csv` file describes a collection
 | Field           | Type                               | Description                        |
 | --------------- | ---------------------------------- | ---------------------------------- |
 | **importType**  | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
-| **id**          | [UUID](#uuid-type)                 | Your UUID for the service provider |
+| **id**          | [UUID](#uuid-type)                 | Your UUID for the collection |
 | **name**        | [string](#string-type)             | Name of the collection             |
 
 #### Example

@@ -18,6 +18,8 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [userRelations.csv](#userRelationscsv)
     1.  [agentPermissions.csv](#agentPermissionscsv)
     1.  [serviceProviders.csv](#serviceProviderscsv)
+    1.  [collections.csv](#collectionscsv)
+    1.  [collectionAssignments.csv](#collectionAssignmentscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Agent Type](#agent-type)
@@ -38,10 +40,10 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-There are 12 recognised CSV files:
+There are 14 recognised CSV files:
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv), [_userRelations.csv_](#userrelationscsv)
 [_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
-[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv).
+[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv), [_collections.csv_](#collectionscsv), [_collectionAssignments.csv_](#collectionAssignmentscsv).
 It is not required that each CSV be included in each Import Job.
 For example, it is possible to include only the `agents.csv` file, or any other combination.
 However, when inserting new data, the necessary data to resolve the foreign ID relationships _must_ also be included.
@@ -348,6 +350,41 @@ The `serviceProviders.csv` file describes a service providers name + address
 ```csv
 importType,id,name,country,city,streetName,houseNumber,zipCode,phone
 insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100,+4907113434
+```
+
+### collections.csv
+
+The `collections.csv` file describes a collection
+
+| Field           | Type                               | Description                        |
+| --------------- | ---------------------------------- | ---------------------------------- |
+| **importType**  | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
+| **id**          | [UUID](#uuid-type)                 | Your UUID for the collection |
+| **name**        | [string](#string-type)             | Name of the collection             |
+
+#### Example
+
+```csv
+importType,id,name
+insert,ff955c4c-61af-4a47-9157-35cfb8450ef4,Collection 1
+```
+
+### collectionAssignments.csv
+
+The `collectionAssignments.csv` file describes the relation between a collection and a resource
+
+| Field            | Type                               | Description                        |
+| ---------------- | ---------------------------------- | ---------------------------------- |
+| **importType**   | [Import Type](#import-type)        | One of:<br/>`insert`, `update` or `delete`  |
+| **collectionId** | [UUID](#uuid-type)                 | The uuid of the collection|
+| **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                         |
+| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the collection belongs to ([resource](#resource-type).csv)           | (#resource-type).csv) |
+
+#### Example
+
+```csv
+importType,collectionId,resourceType,resourceId
+insert,ff955c4c-61af-4a47-9157-35cfb8450ef4,property,abc55c4c-67ab-fa47-9157-35cfb8450e57
 ```
 
 ### manifest.json

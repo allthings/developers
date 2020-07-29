@@ -1,8 +1,5 @@
 # DataAmp API
 
-
-# DataAmp API
-
 <details>
   <summary><strong>Table of Contents</strong></summary>
 

@@ -19,7 +19,7 @@ Because properly acknowledging receipt of the webhook notification is so importa
 
 ### Debugging delivery issues
 
-As a developer, you can review all of the events Allthings attempted to deliver to your webhook endpoint using the [Webhooks API](../apis/webhooks.md)
+As a developer, you can review all of the events Allthings attempted to deliver to your webhook endpoint using the [Webhooks API](https://github.com/allthings/developers/blob/master/apis/webhooks.md)
 
 Performing the following GraphQL query on the Webhooks API will return a list of all attempted webhook deliveries, responses from your endpoint, and the respective HTTP status codes we received. Delivery history is kept for 30 days after which time it is irreversibly deleted.
 

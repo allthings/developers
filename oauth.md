@@ -29,7 +29,7 @@ The Allthings platform supports two authorization grant types:
 
 **Notice**
 > Please replace `www.example.com` with the domain of your
-> [MicroApp](micro-app.md) or widget.
+> [MicroApp](guides/micro-app.md) or widget.
 
 ## URLs
 

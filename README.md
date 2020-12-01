@@ -1,11 +1,11 @@
 # Developer Guides
 
 The Allthings platform has been built as an interoperable platform and provides
-a [REST API](api-core-data.md) to exchange data with third-party applications, as well as
+a [REST API](apis/core-data.md) to exchange data with third-party applications, as well as
 a back-end for the Allthings app itself.
 
 Third-party applications integrated into the Allthings interface are called
-[Micro-Apps](micro-app.md), which can be implemented either with or without user
+[Micro-Apps](guides/micro-app.md), which can be implemented either with or without user
 authorization.
 
 To provide a single-sign-on experience for the end user, Allthings makes use of

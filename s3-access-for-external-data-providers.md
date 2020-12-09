@@ -6,7 +6,7 @@ The credentials for external dataproviders shouldn't be managed in the alltings 
 
 Use the steps to create new credentials for a new external data-provider.
 
-1. Login to the aws-console and switch role to `allthings-import`
+1. Login to the aws-console and switch role to `allthings-import` (see: [Switch Role Links](https://github.com/allthings/devenv/blob/master/docs/aws.md#switch-role-links]))
   
 2. Open `IAM-Management` and create a new user.  
     Use the name of the app as username, not the name of the dataprovider.    

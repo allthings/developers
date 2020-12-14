@@ -231,8 +231,7 @@ insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
 insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
 ```
 
-### agents.csv
-
+### 
 The `agents.csv` file describes agent-user account data.
 
 #### Fields
@@ -242,7 +241,7 @@ The `agents.csv` file describes agent-user account data.
 | **importType**        | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
 | **id**                | [UUID](#uuid-type)                 | Your UUID for the agent        |
 | **email**             | [string](#string-type)             |                                |
-| **firstName**         | [string](#string-type)             |                                |
+| **firstName**         | [string](#string-type)             | Optional			      |
 | **lastName**          | [string](#string-type)             |                                |
 | **phone**             | [Phone Number](#phone-number-type) | Optional                       |
 | **serviceProviderId** | [UUID](#uuid-type)                 | Optional                       |

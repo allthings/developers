@@ -396,14 +396,14 @@ These options are outlined here:
 
 #### Fields
 
-| Field                         | Type                                              | Description                                                                                                                                                       |
-| ----------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **agentPermissions**          | Array of Strings                                  | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] |
-| **autoImport**                | boolean                                           | Controls whether to automatically import, or to send confirmation email first                                                                                     |
-| **locale**                    | ISO-639 Language Codes and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE`                                                                                                      |
-| **receiveAdminNotifications** | boolean                                           | Receives Notification-Mails for Tickets with no Assignee. Default setting is true                                                                                 |
-| **reportEmails**              | Array of Strings or a combination of email address + report level either `error` or `success`                                | List of email addresses which should receive report emails for this job                                                                                           |
-| **unitType**                  | string                                            | Controls the type of import Units, one of type 'rented' or 'owned'                                                                                                |
+| Field                         | Type                                              | Description 						| Default     	|
+| ----------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ------------	|
+| **agentPermissions**          | Array of Strings                                  | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] | ['tenantManager', 'pinboardAgent', 'serviceCenterAgent']|
+| **autoImport**                | boolean | Controls whether to automatically import, or to send confirmation email first  | true  |
+| **locale**                    | ISO-639 Language Codes and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE` | en_US |
+| **receiveAdminNotifications** | boolean | Receives Notification-Mails for Tickets with no Assignee. | true |
+| **reportEmails**              | Array of Strings or a combination of email address + report level either `error` or `success` | List of email addresses which should receive report emails for this job |  | 
+| **unitType**                  | string  | Controls the type of import Units, one of type 'rented' or 'owned' | 'rented' |
 
 #### Examples
 

@@ -415,7 +415,8 @@ These options are outlined here:
 	"reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test", {"test@bar.de": ["error"]}]
 }
 ```
-
+In the example above, "mr.foo@bar.test" and "mrs.foo@bar.test" receive report emails for all imports, while "test@bar.de" just receives reports about import errors.   
+  
 if no default option should be overwritten, the manifest.json should include at least an empty JSON-Object:
 
 ```json

@@ -51,12 +51,12 @@ Issues in resolving data relationships will result in an error, terminating the 
 
 #### Global Observations:
 
--   Columns can be in any order
--   First row in CSV file must contain column field name
--   Column field names are case-sensitive
--   Unless noted otherwise, all fields are required when _importType_ is `insert`
--   Only UUID type fields required when _importType_ is `update`
--   Files must use the UTF-8 character encoding
+- Columns can be in any order
+- First row in CSV file must contain column field name
+- Column field names are case-sensitive
+- Unless noted otherwise, all fields are required when _importType_ is `insert`
+- Only UUID type fields required when _importType_ is `update`
+- Files must use the UTF-8 character encoding
 
 ### uuidRemappings.csv
 
@@ -87,14 +87,12 @@ The `properties.csv` file imports property resource data.
 
 #### Fields
 
-| Field                      | Type                        | Description                         |
-| -------------------------- | --------------------------- | ----------------------------------- |
-| **importType**             | [Import Type](#import-type) | One of:<br/>`insert`, `update`      |
-| **id**                     | [UUID](#uuid-type)          | Your UUID for this property         |
-| **name**                   | [string](#string-type)      | The property name                   |
-| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
-| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
-| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
+| Field             | Type                        | Description                         |
+| ----------------- | --------------------------- | ----------------------------------- |
+| **importType**    | [Import Type](#import-type) | One of:<br/>`insert`, `update`      |
+| **id**            | [UUID](#uuid-type)          | Your UUID for this property         |
+| **name**          | [string](#string-type)      | The property name                   |
+| **propertyOwner** | [string](#string-type)      | Optional name of the property owner |
 
 #### Example
 
@@ -111,20 +109,19 @@ The `groups.csv` file imports group data.
 
 #### Fields
 
-| Field           | Type                            | Description                                                                    |
-| --------------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| **importType**  | [Import Type](#import-type)     | One of:<br/>`insert`, `update`                                                 |
-| **id**          | [UUID](#uuid-type)              | Your UUID for the group                                                        |
-| **propertyId**  | [UUID](#uuid-type)              | The foreign UUID of the property the group belongs to (_properties.csv_ `id`)  |
-| **name**        | [string](#string-type)          |
-| **country**     | [Country](#country-type)        |
-| **city**        | [string](#string-type)          |
-| **streetName**  | [string](#string-type)          | The name of the street the structure is located on, e.g. Kaiser-Joseph-Strasse |
-| **houseNumber** | [string](#string-type)          | The number of the structure on the street, e.g. 123                            |
-| **zipCode**     | [Postal Code](#postalcode-type) |
-| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
-| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
-| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
+| Field             | Type                            | Description                                                                    |
+| ----------------- | ------------------------------- | ------------------------------------------------------------------------------ |
+| **importType**    | [Import Type](#import-type)     | One of:<br/>`insert`, `update`                                                 |
+| **id**            | [UUID](#uuid-type)              | Your UUID for the group                                                        |
+| **propertyId**    | [UUID](#uuid-type)              | The foreign UUID of the property the group belongs to (_properties.csv_ `id`)  |
+| **name**          | [string](#string-type)          |
+| **country**       | [Country](#country-type)        |
+| **city**          | [string](#string-type)          |
+| **streetName**    | [string](#string-type)          | The name of the street the structure is located on, e.g. Kaiser-Joseph-Strasse |
+| **houseNumber**   | [string](#string-type)          | The number of the structure on the street, e.g. 123                            |
+| **zipCode**       | [Postal Code](#postalcode-type) |
+| **propertyOwner** | [string](#string-type)          | Optional name of the property owner                                            |
+
 #### Example
 
 ```csv
@@ -140,15 +137,13 @@ The `units.csv` file imports unit data. It allows for associating groups with un
 
 #### Fields
 
-| Field          | Type                        | Description                                                           |
-| -------------- | --------------------------- | --------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                        |
-| **id**                     | [UUID](#uuid-type)          | Your UUID for the unit                                                |
-| **groupId**                | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
-| **name**                   | [string](#string-type)      |
-| **propertyOwner**          | [string](#string-type)      | Optional name of the property owner |
-| **billingPeriodStartDate** | [Date](#date-type)          | Optional billing period start date  |
-| **billingPeriodEndDate**   | [Date](#date-type)          | Optional billing period end date    |
+| Field             | Type                        | Description                                                           |
+| ----------------- | --------------------------- | --------------------------------------------------------------------- |
+| **importType**    | [Import Type](#import-type) | One of:<br/>`insert`, `update`                                        |
+| **id**            | [UUID](#uuid-type)          | Your UUID for the unit                                                |
+| **groupId**       | [UUID](#uuid-type)          | The foreign UUID of the group the unit belongs to (_groups.csv_ `id`) |
+| **name**          | [string](#string-type)      |
+| **propertyOwner** | [string](#string-type)      | Optional name of the property owner                                   |
 
 #### Example
 
@@ -168,7 +163,7 @@ The `utilisationPeriods.csv` describes utilisation periods.
 
 | Field          | Type                        | Description                                                                       |
 | -------------- | --------------------------- | --------------------------------------------------------------------------------- |
-| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`, `delete`                                                    |
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, `update`, `delete`                                          |
 | **id**         | [UUID](#uuid-type)          | Your UUID for the utilisation period                                              |
 | **unitId**     | [UUID](#uuid-type)          | The foreign UUID of the unit the utilisation period belongs to (_units.csv_ `id`) |
 | **startDate**  | [Date](#date-type)          |
@@ -231,7 +226,7 @@ insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
 insert,7d87a383-1778-401b-a421-b60c900479c3,ad257d42-1078-4279-9918-e774859555ae
 ```
 
-### agents.csv  
+### agents.csv
 
 The `agents.csv` file describes agent-user account data.
 
@@ -242,7 +237,7 @@ The `agents.csv` file describes agent-user account data.
 | **importType**        | [Import Type](#import-type)        | One of:<br/>`insert`, `update` |
 | **id**                | [UUID](#uuid-type)                 | Your UUID for the agent        |
 | **email**             | [string](#string-type)             |                                |
-| **firstName**         | [string](#string-type)             | Optional			      |
+| **firstName**         | [string](#string-type)             | Optional                       |
 | **lastName**          | [string](#string-type)             |                                |
 | **phone**             | [Phone Number](#phone-number-type) | Optional                       |
 | **serviceProviderId** | [UUID](#uuid-type)                 | Optional                       |
@@ -312,7 +307,7 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 The `agentPermissions.csv` file describes the agents permissions on a certain resource via predefined agentTypes
 
 | Field             | Type                            | Description                                                                                           |
-| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
 | **importType**    | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                     |
 | **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                         |
 | **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv)           | (#resource-type).csv) |
@@ -356,11 +351,11 @@ insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstra
 
 The `collections.csv` file describes a collection
 
-| Field           | Type                               | Description                        |
-| --------------- | ---------------------------------- | ---------------------------------- |
-| **importType**  | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
-| **id**          | [UUID](#uuid-type)                 | Your UUID for the collection |
-| **name**        | [string](#string-type)             | Name of the collection             |
+| Field          | Type                        | Description                       |
+| -------------- | --------------------------- | --------------------------------- |
+| **importType** | [Import Type](#import-type) | One of:<br/>`insert`, or `update` |
+| **id**         | [UUID](#uuid-type)          | Your UUID for the collection      |
+| **name**       | [string](#string-type)      | Name of the collection            |
 
 #### Example
 
@@ -373,12 +368,12 @@ insert,ff955c4c-61af-4a47-9157-35cfb8450ef4,Collection 1
 
 The `collectionAssignments.csv` file describes the relation between a collection and a resource
 
-| Field            | Type                               | Description                        |
-| ---------------- | ---------------------------------- | ---------------------------------- |
-| **importType**   | [Import Type](#import-type)        | One of:<br/>`insert`, `update` or `delete`  |
-| **collectionId** | [UUID](#uuid-type)                 | The uuid of the collection|
-| **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                         |
-| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the collection belongs to ([resource](#resource-type).csv)           | (#resource-type).csv) |
+| Field            | Type                            | Description                                                                                      |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, `update` or `delete`                                                       |
+| **collectionId** | [UUID](#uuid-type)              | The uuid of the collection                                                                       |
+| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                    |
+| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource that the collection belongs to ([resource](#resource-type).csv) |
 
 #### Example
 
@@ -396,27 +391,28 @@ These options are outlined here:
 
 #### Fields
 
-| Field                         | Type                                              | Description 						| Default     	|
-| ----------------------------- | ------------------------------------------------- | --------------------------------------------------------- | ------------	|
-| **agentPermissions**          | Array of Strings                                  | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] | ['tenantManager', 'pinboardAgent', 'serviceCenterAgent']|
-| **autoImport**                | boolean | Controls whether to automatically import, or to send confirmation email first  | true  |
-| **locale**                    | ISO-639 Language Codes and ISO-3166 Country Codes | Default locale. E.g. locale for new agents. `en_US`, `de_DE` | en_US |
-| **receiveAdminNotifications** | boolean | Receives Notification-Mails for Tickets with no Assignee. | true |
-| **reportEmails**              | Array of Strings or a combination of email address + report level either `error` or `success` | List of email addresses which should receive report emails for this job |  | 
-| **unitType**                  | string  | Controls the type of import Units, one of type 'rented' or 'owned' | 'rented' |
+| Field                         | Type                                                                                          | Description                                                                                                                                                       | Default                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| **agentPermissions**          | Array of Strings                                                                              | List of permissions to be set for agent imported in the Property Teams file E.g. to set permissions for pinboard and documents ['pinboardAdmin', 'documentAdmin'] | ['tenantManager', 'pinboardAgent', 'serviceCenterAgent'] |
+| **autoImport**                | boolean                                                                                       | Controls whether to automatically import, or to send confirmation email first                                                                                     | true                                                     |
+| **locale**                    | ISO-639 Language Codes and ISO-3166 Country Codes                                             | Default locale. E.g. locale for new agents. `en_US`, `de_DE`                                                                                                      | en_US                                                    |
+| **receiveAdminNotifications** | boolean                                                                                       | Receives Notification-Mails for Tickets with no Assignee.                                                                                                         | true                                                     |
+| **reportEmails**              | Array of Strings or a combination of email address + report level either `error` or `success` | List of email addresses which should receive report emails for this job                                                                                           |                                                          |
+| **unitType**                  | string                                                                                        | Controls the type of import Units, one of type 'rented' or 'owned'                                                                                                | 'rented'                                                 |
 
 #### Examples
 
 ```json
 {
-	"autoImport": false,
-	"locale": "de_DE",
-	"receiveAdminNotifications": false,
-	"reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test", {"test@bar.de": ["error"]}]
+  "autoImport": false,
+  "locale": "de_DE",
+  "receiveAdminNotifications": false,
+  "reportEmails": ["mr.foo@bar.test", "mrs.foo@bar.test", { "test@bar.de": ["error"] }]
 }
 ```
-In the example above, "mr.foo@bar.test" and "mrs.foo@bar.test" receive report emails for all imports, while "test@bar.de" just receives reports about import errors.   
-  
+
+In the example above, "mr.foo@bar.test" and "mrs.foo@bar.test" receive report emails for all imports, while "test@bar.de" just receives reports about import errors.
+
 if no default option should be overwritten, the manifest.json should include at least an empty JSON-Object:
 
 ```json

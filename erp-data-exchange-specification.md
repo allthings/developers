@@ -307,10 +307,10 @@ insert,07955b8c-41ac-4a47-9157-3c6fb8450ef4,9b86a4d7-ab95-4b65-a553-24fac1c60627
 The `agentPermissions.csv` file describes the agents permissions on a certain resource via predefined agentTypes
 
 | Field             | Type                            | Description                                                                                           |
-| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
+| ----------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **importType**    | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                     |
 | **resourceType**  | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId (e.g. `property`)                         |
-| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to ([resource](#resource-type).csv)           | (#resource-type).csv) |
+| **resourceId**    | [UUID](#uuid-type)              | The foreign UUID of the resource that the agent belongs to [resource](#resource-type).csv `id`        |
 | **agentId**       | [UUID](#uuid-type)              | The foreign UUID of the agent that is responsible for the channel path (_agents.csv_ `id`)            |
 | **agentType**     | [Agent Type](#agent-type)       | Defines the type of an agent                                                                          |
 | **validFromDate** | [DateTime](#datetime-type)      | Optional start date of the validity of the relation (if provided **validToDate** is required as well) |

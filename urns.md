@@ -1,3 +1,0 @@
-# Uniform Resource Names (URNs)
-
-

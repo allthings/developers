@@ -1,8 +1,0 @@
-steps:
-  - trigger: documentation
-    label: ":rocket: building + deploying documentation"
-    branches: "master"
-    async: true
-    build:
-      branch: "$BUILDKITE_BRANCH"
-      message: "$BUILDKITE_PIPELINE_SLUG / $BUILDKITE_MESSAGE"

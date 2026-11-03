@@ -18,6 +18,10 @@ This document specifies the Allthings ERP Data Exchange format.
     1.  [userRelations.csv](#userRelationscsv)
     1.  [agentPermissions.csv](#agentPermissionscsv)
     1.  [serviceProviders.csv](#serviceProviderscsv)
+    1.  [owners.csv](#ownerscsv)
+    1.  [ownerRelations.csv](#ownerrelationscsv)
+    1.  [facilityManagers.csv](#facilitymanagerscsv)
+    1.  [facilityManagerRelations.csv](#facilitymanagerrelationscsv)
     1.  [manifest.json](#manifestjson)
 1.  [Data Types](#data-types)
     1.  [Agent Type](#agent-type)
@@ -38,10 +42,11 @@ This file must be uploaded last to indicate that the _Import Job_ should begin t
 
 ## CSV file specifications
 
-There are 12 recognised CSV files:  
+There are 16 recognised CSV files:  
 [_uuidRemappings.csv_](#uuidremappingscsv), [_properties.csv_](#propertiescsv), [_groups.csv_](#groupscsv), [_units.csv_](#unitscsv), [_userRelations.csv_](#userrelationscsv),  
 [_utilisationPeriods.csv_](#utilisationperiodscsv), [_tenantCheckIns.csv_](#tenantcheckinscsv), [_tenants.csv_](#tenantscsv),
-[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv).
+[_propertyTeams.csv_](#propertyteamscsv), [_agents.csv_](#agentscsv), [_agentPermissions.csv_](#agentPermissionscsv), [_serviceProviders.csv_](#serviceProviderscsv),
+[_owners.csv_](#ownerscsv), [_ownerRelations.csv_](#ownerrelationscsv), [_facilityManagers.csv_](#facilitymanagerscsv), [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv).
 
 It is not required that each CSV is included in each Import Job.
 
@@ -347,6 +352,101 @@ The `serviceProviders.csv` file describes a service providers name + address
 ```csv
 importType,id,name,country,city,streetName,houseNumber,zipCode,phone
 insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstraße,161,79100,+4907113434
+```
+
+### owners.csv
+
+The `owners.csv` file describes the owners of properties, groups or units. Link an owner to a resource with [_ownerRelations.csv_](#ownerrelationscsv).
+
+#### Fields
+
+| Field             | Type                               | Description                       |
+| ----------------- | ---------------------------------- | --------------------------------- |
+| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, or `update` |
+| **id**            | [UUID](#uuid-type)                 | Your UUID for the owner           |
+| **name**          | [string](#string-type)             | Name of the person or company     |
+| **\*email**       | [string](#string-type)             |                                   |
+| **\*phone**       | [Phone Number](#phone-number-type) |                                   |
+| **\*streetName**  | [string](#string-type)             |                                   |
+| **\*houseNumber** | [string](#string-type)             |                                   |
+| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                   |
+| **\*city**        | [string](#string-type)             |                                   |
+| **\*country**     | [Country](#country-type)           |                                   |
+
+#### Example
+
+```csv
+importType,id,name,streetName,houseNumber,zipCode,city,country,email,phone
+insert,3f2504e0-4f89-41d3-9a0c-0305e82c3301,Owner One AG,Teststrasse,1,1000,Testtown,CH,owner-one@example.com,+41000000001
+insert,3f2504e0-4f89-41d3-9a0c-0305e82c3302,Owner Two AG,,,,,,,
+```
+
+### ownerRelations.csv
+
+The `ownerRelations.csv` file links an owner to a property, group or unit. A resource has at most one owner: linking an owner replaces the resource's current owner.
+
+#### Fields
+
+| Field            | Type                            | Description                                                                                |
+| ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
+| **importType**   | [Import Type](#import-type)     | `insert`                                                                                   |
+| **ownerId**      | [UUID](#uuid-type)              | The foreign UUID of the owner (_owners.csv_ `id`)                                          |
+| **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource the owner owns ([resource](#resource-type).csv `id`)      |
+| **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId: `property`, `group` or `unit` |
+
+#### Example
+
+```csv
+importType,ownerId,resourceId,resourceType
+insert,3f2504e0-4f89-41d3-9a0c-0305e82c3301,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
+insert,3f2504e0-4f89-41d3-9a0c-0305e82c3302,e60bde24-7202-4a1e-b255-9b3e2b9e4475,unit
+```
+
+### facilityManagers.csv
+
+The `facilityManagers.csv` file describes the facility managers (janitors) of properties, groups or units. Link a facility manager to a resource with [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv).
+
+#### Fields
+
+| Field             | Type                               | Description                        |
+| ----------------- | ---------------------------------- | ---------------------------------- |
+| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
+| **id**            | [UUID](#uuid-type)                 | Your UUID for the facility manager |
+| **name**          | [string](#string-type)             | Name of the person or company      |
+| **\*email**       | [string](#string-type)             |                                    |
+| **\*phone**       | [Phone Number](#phone-number-type) |                                    |
+| **\*streetName**  | [string](#string-type)             |                                    |
+| **\*houseNumber** | [string](#string-type)             |                                    |
+| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                    |
+| **\*city**        | [string](#string-type)             |                                    |
+| **\*country**     | [Country](#country-type)           |                                    |
+
+#### Example
+
+```csv
+importType,id,name,streetName,houseNumber,zipCode,city,country,email,phone
+insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,Hauswart Muster,Hauswartweg,5,3000,Bern,CH,fm@example.com,+41791112233
+```
+
+### facilityManagerRelations.csv
+
+The `facilityManagerRelations.csv` file links a facility manager to a property, group or unit. A resource has at most one facility manager: linking a facility manager replaces the resource's current one.
+
+#### Fields
+
+| Field                 | Type                            | Description                                                                                             |
+| --------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **importType**        | [Import Type](#import-type)     | `insert`                                                                                                |
+| **facilityManagerId** | [UUID](#uuid-type)              | The foreign UUID of the facility manager (_facilityManagers.csv_ `id`)                                  |
+| **resourceId**        | [UUID](#uuid-type)              | The foreign UUID of the resource the facility manager looks after ([resource](#resource-type).csv `id`) |
+| **resourceType**      | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId: `property`, `group` or `unit`              |
+
+#### Example
+
+```csv
+importType,facilityManagerId,resourceId,resourceType
+insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
+insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,ab463b8b-a76c-4f6a-a726-75ab5730b69b,group
 ```
 
 ### manifest.json

@@ -356,22 +356,22 @@ insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstra
 
 ### owners.csv
 
-The `owners.csv` file describes the owners of properties, groups or units. Link an owner to a resource with [_ownerRelations.csv_](#ownerrelationscsv).
+The `owners.csv` file describes the owners of properties, groups or units. Link an owner to a resource with [_ownerRelations.csv_](#ownerrelationscsv). A `delete` row only needs the `id`; it removes the owner. An `insert` of an owner that already exists updates it.
 
 #### Fields
 
-| Field             | Type                               | Description                       |
-| ----------------- | ---------------------------------- | --------------------------------- |
-| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, or `update` |
-| **id**            | [UUID](#uuid-type)                 | Your UUID for the owner           |
-| **name**          | [string](#string-type)             | Name of the person or company     |
-| **\*email**       | [string](#string-type)             |                                   |
-| **\*phone**       | [Phone Number](#phone-number-type) |                                   |
-| **\*streetName**  | [string](#string-type)             |                                   |
-| **\*houseNumber** | [string](#string-type)             |                                   |
-| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                   |
-| **\*city**        | [string](#string-type)             |                                   |
-| **\*country**     | [Country](#country-type)           |                                   |
+| Field             | Type                               | Description                              |
+| ----------------- | ---------------------------------- | ---------------------------------------- |
+| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, `update`, `delete` |
+| **id**            | [UUID](#uuid-type)                 | Your UUID for the owner                  |
+| **name**          | [string](#string-type)             | Name of the person or company            |
+| **\*email**       | [string](#string-type)             |                                          |
+| **\*phone**       | [Phone Number](#phone-number-type) |                                          |
+| **\*streetName**  | [string](#string-type)             |                                          |
+| **\*houseNumber** | [string](#string-type)             |                                          |
+| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                          |
+| **\*city**        | [string](#string-type)             |                                          |
+| **\*country**     | [Country](#country-type)           |                                          |
 
 #### Example
 
@@ -379,17 +379,18 @@ The `owners.csv` file describes the owners of properties, groups or units. Link 
 importType,id,name,streetName,houseNumber,zipCode,city,country,email,phone
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3301,Owner One AG,Teststrasse,1,1000,Testtown,CH,owner-one@example.com,+41000000001
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3302,Owner Two AG,,,,,,,
+delete,3f2504e0-4f89-41d3-9a0c-0305e82c3303,,,,,,,,
 ```
 
 ### ownerRelations.csv
 
-The `ownerRelations.csv` file links an owner to a property, group or unit. A resource has at most one owner: linking an owner replaces the resource's current owner.
+The `ownerRelations.csv` file links an owner to a property, group or unit. A resource has at most one owner: linking an owner replaces the resource's current owner. A `delete` row unlinks the owner from the resource and keeps the owner.
 
 #### Fields
 
 | Field            | Type                            | Description                                                                                |
 | ---------------- | ------------------------------- | ------------------------------------------------------------------------------------------ |
-| **importType**   | [Import Type](#import-type)     | `insert`                                                                                   |
+| **importType**   | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                          |
 | **ownerId**      | [UUID](#uuid-type)              | The foreign UUID of the owner (_owners.csv_ `id`)                                          |
 | **resourceId**   | [UUID](#uuid-type)              | The foreign UUID of the resource the owner owns ([resource](#resource-type).csv `id`)      |
 | **resourceType** | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId: `property`, `group` or `unit` |
@@ -400,43 +401,45 @@ The `ownerRelations.csv` file links an owner to a property, group or unit. A res
 importType,ownerId,resourceId,resourceType
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3301,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3302,e60bde24-7202-4a1e-b255-9b3e2b9e4475,unit
+delete,3f2504e0-4f89-41d3-9a0c-0305e82c3303,1b6e456c-1ba0-4f04-aed2-f228944836be,unit
 ```
 
 ### facilityManagers.csv
 
-The `facilityManagers.csv` file describes the facility managers (janitors) of properties, groups or units. Link a facility manager to a resource with [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv).
+The `facilityManagers.csv` file describes the facility managers (janitors) of properties, groups or units. Link a facility manager to a resource with [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv). A `delete` row only needs the `id`; it removes the facility manager. An `insert` of a facility manager that already exists updates it.
 
 #### Fields
 
-| Field             | Type                               | Description                        |
-| ----------------- | ---------------------------------- | ---------------------------------- |
-| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, or `update`  |
-| **id**            | [UUID](#uuid-type)                 | Your UUID for the facility manager |
-| **name**          | [string](#string-type)             | Name of the person or company      |
-| **\*email**       | [string](#string-type)             |                                    |
-| **\*phone**       | [Phone Number](#phone-number-type) |                                    |
-| **\*streetName**  | [string](#string-type)             |                                    |
-| **\*houseNumber** | [string](#string-type)             |                                    |
-| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                    |
-| **\*city**        | [string](#string-type)             |                                    |
-| **\*country**     | [Country](#country-type)           |                                    |
+| Field             | Type                               | Description                              |
+| ----------------- | ---------------------------------- | ---------------------------------------- |
+| **importType**    | [Import Type](#import-type)        | One of:<br/>`insert`, `update`, `delete` |
+| **id**            | [UUID](#uuid-type)                 | Your UUID for the facility manager       |
+| **name**          | [string](#string-type)             | Name of the person or company            |
+| **\*email**       | [string](#string-type)             |                                          |
+| **\*phone**       | [Phone Number](#phone-number-type) |                                          |
+| **\*streetName**  | [string](#string-type)             |                                          |
+| **\*houseNumber** | [string](#string-type)             |                                          |
+| **\*zipCode**     | [Postal Code](#postalcode-type)    |                                          |
+| **\*city**        | [string](#string-type)             |                                          |
+| **\*country**     | [Country](#country-type)           |                                          |
 
 #### Example
 
 ```csv
 importType,id,name,streetName,houseNumber,zipCode,city,country,email,phone
 insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,Hauswart Muster,Hauswartweg,5,3000,Bern,CH,fm@example.com,+41791112233
+delete,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a12,,,,,,,,
 ```
 
 ### facilityManagerRelations.csv
 
-The `facilityManagerRelations.csv` file links a facility manager to a property, group or unit. A resource has at most one facility manager: linking a facility manager replaces the resource's current one.
+The `facilityManagerRelations.csv` file links a facility manager to a property, group or unit. A resource has at most one facility manager: linking a facility manager replaces the resource's current one. A `delete` row unlinks the facility manager from the resource and keeps the facility manager.
 
 #### Fields
 
 | Field                 | Type                            | Description                                                                                             |
 | --------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **importType**        | [Import Type](#import-type)     | `insert`                                                                                                |
+| **importType**        | [Import Type](#import-type)     | One of:<br/>`insert`, or `delete`                                                                       |
 | **facilityManagerId** | [UUID](#uuid-type)              | The foreign UUID of the facility manager (_facilityManagers.csv_ `id`)                                  |
 | **resourceId**        | [UUID](#uuid-type)              | The foreign UUID of the resource the facility manager looks after ([resource](#resource-type).csv `id`) |
 | **resourceType**      | [Resource Type](#resource-type) | The type of the resource being referenced by the resourceId: `property`, `group` or `unit`              |
@@ -447,6 +450,7 @@ The `facilityManagerRelations.csv` file links a facility manager to a property, 
 importType,facilityManagerId,resourceId,resourceType
 insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
 insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,ab463b8b-a76c-4f6a-a726-75ab5730b69b,group
+delete,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a12,9b86a4d7-ab95-4b65-a553-24fac1c60627,group
 ```
 
 ### manifest.json

@@ -356,7 +356,7 @@ insert,aa955c4c-41ac-4a47-9157-3c6fb8450ef4,Test GmbH,DE,Freiburg,Merzhauserstra
 
 ### owners.csv
 
-The `owners.csv` file describes the owners of properties, groups or units. Link an owner to a resource with [_ownerRelations.csv_](#ownerrelationscsv). A `delete` row only needs the `id`; it removes the owner. An `insert` of an owner that already exists updates it.
+The `owners.csv` file describes the owners of properties, groups or units. Link an owner to a resource with [_ownerRelations.csv_](#ownerrelationscsv). A `delete` row only needs the `id`; it removes the owner. An `insert` of an owner that already exists updates it. An update replaces the email, phone and address: fields left empty are cleared.
 
 #### Fields
 
@@ -401,12 +401,12 @@ The `ownerRelations.csv` file links an owner to a property, group or unit. A res
 importType,ownerId,resourceId,resourceType
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3301,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
 insert,3f2504e0-4f89-41d3-9a0c-0305e82c3302,e60bde24-7202-4a1e-b255-9b3e2b9e4475,unit
-delete,3f2504e0-4f89-41d3-9a0c-0305e82c3303,1b6e456c-1ba0-4f04-aed2-f228944836be,unit
+delete,3f2504e0-4f89-41d3-9a0c-0305e82c3301,1b6e456c-1ba0-4f04-aed2-f228944836be,unit
 ```
 
 ### facilityManagers.csv
 
-The `facilityManagers.csv` file describes the facility managers (janitors) of properties, groups or units. Link a facility manager to a resource with [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv). A `delete` row only needs the `id`; it removes the facility manager. An `insert` of a facility manager that already exists updates it.
+The `facilityManagers.csv` file describes the facility managers (janitors) of properties, groups or units. Link a facility manager to a resource with [_facilityManagerRelations.csv_](#facilitymanagerrelationscsv). A `delete` row only needs the `id`; it removes the facility manager. An `insert` of a facility manager that already exists updates it. An update replaces the email, phone and address: fields left empty are cleared.
 
 #### Fields
 
@@ -450,7 +450,7 @@ The `facilityManagerRelations.csv` file links a facility manager to a property, 
 importType,facilityManagerId,resourceId,resourceType
 insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,7cfc69f4-6b44-4a84-994a-f6b60ff63b94,property
 insert,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,ab463b8b-a76c-4f6a-a726-75ab5730b69b,group
-delete,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a12,9b86a4d7-ab95-4b65-a553-24fac1c60627,group
+delete,8c1f6a2e-5b7d-4e3a-9f10-2d4b6c8e0a11,9b86a4d7-ab95-4b65-a553-24fac1c60627,group
 ```
 
 ### manifest.json
